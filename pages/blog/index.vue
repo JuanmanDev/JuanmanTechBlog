@@ -10,8 +10,6 @@
         <p>{{ article.short }}</p>
       </div>
     </ContentList>
-    __
-    {{ posts }}
     </div>
   </template>
   
@@ -19,20 +17,6 @@
   export default {
     name: 'BlogOverview',
     async asyncData({ $content, app, error }) {
-      const posts = await $content(app.i18n.locale, 'blog')
-        .only(['short', 'path'])
-        .sortBy('createdAt', 'asc')
-        .fetch()
-        .catch(() => {
-          error({ statusCode: 404, message: 'Page not found' })
-        })
-  
-      return {
-        posts: posts.map((posts) => ({
-          ...posts,
-          path: posts.path.replace(`/${app.i18n.locale}`, ''),
-        }))
-      }
     },
   }
   </script>

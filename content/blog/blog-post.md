@@ -11,3 +11,6 @@ tags:
 This is a try, let's check
 
 Thanks https://studioterabyte.nl/en/blog/nuxt-content-i18n
+
+
+Look at the [Document Driven documentation](https://content.nuxtjs.org/guide/writing/document-driven) to learn more.
