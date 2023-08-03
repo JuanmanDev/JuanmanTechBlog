@@ -10,13 +10,13 @@
         <p>{{ article.short }}</p>
       </div>
     </ContentList>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    name: 'BlogOverview',
-    async asyncData({ $content, app, error }) {
-    },
-  }
-  </script>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'BlogOverview',
+  async asyncData({ $content, app, error }) {
+  },
+}
+</script>
