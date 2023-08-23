@@ -25,4 +25,8 @@ export default defineNuxtConfig({
     langDir: 'locales/',
     vueI18n: "en"
   },
+  css: [
+    '@/assets/styles/reset.scss',
+    '@/assets/styles/main.scss',
+  ],
 })
