@@ -33,7 +33,8 @@ export default defineNuxtConfig({
     }
     ],
     langDir: 'locales/',
-    vueI18n: "en"
+    vueI18n: "en",
+    lazy: true,
   },
 
   tailwindcss: {
