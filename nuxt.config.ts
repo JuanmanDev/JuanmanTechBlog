@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/guide/directory-structure/nuxt.config#nuxt-config-file
-export default defineNuxtConfig({  
+export default defineNuxtConfig({
   extends: ['@nuxt/ui-pro'],
 
   modules: [
@@ -48,11 +48,13 @@ export default defineNuxtConfig({
     gray: 'neutral',
     icons: ['mdi', 'heroicons']
   },
+
   colorMode: {
     preference: 'light',
     fallback: 'light',
     classSuffix: ''
   },
+
   css: [
     '~/assets/css/main.css'
   ],
@@ -64,4 +66,5 @@ export default defineNuxtConfig({
     },
   },
 
+  compatibilityDate: '2024-11-15',
 })
