@@ -6,10 +6,6 @@ const route = useRoute()
 const localePath = useLocalePath()
 const t = useI18n().t;
 
-const isActive = (to) => {
-  return route.path === to
-}
-
 const links = computed(() => [{
   label: t('start'),
   to: localePath('/'),
@@ -19,12 +15,12 @@ const links = computed(() => [{
   label: t('blog'),
   to: localePath('/blog'),
   icon: 'i-heroicons-credit-card',
-  active: isActive('/blog'),
+  active: route.path.startsWith(localePath('/blog')),
 }, {
   label: t('contact'),
   to: localePath('/contact'),
   icon: 'i-heroicons-academic-cap',
-  active: isActive('/contact'),
+  active: route.path === localePath('/contact'),
 }])
 
 </script>
