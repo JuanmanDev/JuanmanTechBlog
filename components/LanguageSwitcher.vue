@@ -1,19 +1,10 @@
+
 <template>
-    <div>
-      <nuxt-link
-        v-for="locale in availableLocales"
-        :key="locale.code"
-        :to="switchLocalePath(locale.code)">{{ locale.name }}</nuxt-link>
-  </div>
+  <USelectMenu v-model="currentLocale" :options="locales" option-attribute="name"  @change="(locale) => setLocale(locale.code)">
+  </USelectMenu>
 </template>
-  
-<script>
-  export default {
-    name: 'LanguageSwitcher',
-    computed: {
-      availableLocales () {
-          return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
-      }
-    }
-  }
-  </script>
+
+<script setup>
+const { locales, locale, setLocale } = useI18n()
+const currentLocale = ref(locales.value.find(l => l.code === locale.value))
+</script>

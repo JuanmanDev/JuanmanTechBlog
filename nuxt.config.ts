@@ -1,12 +1,16 @@
 // https://nuxt.com/docs/guide/directory-structure/nuxt.config#nuxt-config-file
 export default defineNuxtConfig({
-  modules: [
-    '@nuxt/content',
-    '@nuxtjs/i18n',
+  extends: ['@nuxt/ui-pro'],
+
+  modules: ['@nuxt/content', // '@nuxtjs/tailwindcss',
+  '@nuxtjs/i18n', '@nuxt/eslint', '@nuxt/fonts', '@nuxt/image', '@nuxt/ui', 'nuxt-disqus',
+  "nuxt-disqus",
   ],
+
   content: {
     documentDriven: true
   },
+
   i18n: {
     defaultLocale: 'en',
     locales: [{ 
@@ -23,6 +27,43 @@ export default defineNuxtConfig({
     }
     ],
     langDir: 'locales/',
-    vueI18n: "en"
+    vueI18n: "en",
+    lazy: true,
   },
+
+  tailwindcss: {
+    config: {
+      darkMode: 'class',
+    }
+  },
+
+  ui: {
+    primary: 'blue',
+    gray: 'neutral',
+    icons: ['mdi', 'heroicons']
+  },
+
+  colorMode: {
+    preference: 'light',
+    fallback: 'light',
+    classSuffix: ''
+  },
+
+  css: [
+    '~/assets/css/main.css'
+  ],
+
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
+
+  
+  disqus: {
+    shortname: "juanmantech",
+  },
+
+  compatibilityDate: '2024-11-15',
 })
