@@ -19,6 +19,7 @@ Al comprar una persiana eléctrica, si no tiene control de velocidad, tendrá 4 
 - Azul: Neutro (Retorno de electricidad)
 - Negro: Línea para subir la persiana
 - Marrón: Línea para bajar la persiana
+
 _Revisa el manual de instruccione de tu persiana para verificar el código de colores_
 
 
