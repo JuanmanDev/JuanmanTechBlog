@@ -1,7 +1,4 @@
 <script setup lang="ts">
-// const { data: page } = await useAsyncData('index', () => queryContent('/').findOne())
-// const { data: page } = await useAsyncData('index', () => queryContent('/').findOne())
-
 useSeoMeta({
   title: "Juanman Tech - Welcome!",
   ogTitle: "Juanman Tech - Welcome!",
@@ -9,13 +6,8 @@ useSeoMeta({
   ogDescription: "This is my website"
 })
 
-
-const { locales, locale, setLocale } = useI18n()
-
-
-const t = useI18n().t;
-
-const links =  t('start');
+const { locale } = useI18n()
+const localePath = useLocalePath()
 
 const page = {
   "hero": {
@@ -50,6 +42,15 @@ const page = {
     ]
   },
 };
+
+if (locale.value === 'es') {
+  page.hero.title = "¡Hola! Soy Juanma :)";
+  page.hero.description = "Aquí encontrarás todos mis proyectos y posts de blog.";
+  page.hero.links[0].label = "Ir al Blog";
+  page.hero.links[1].label = "Ver este proyecto en github";
+  page.logos.title = "Usando las mejores tecnologías:";
+}
+
 </script>
 
 <template>
@@ -67,7 +68,7 @@ const page = {
           class="relative rounded-full font-semibold"
         >
           <NuxtLink
-            :to="page.hero.headline.to"
+            :to="localePath(page.hero.headline.to)"
             target="_blank"
             class="focus:outline-none"
             tabindex="-1"
