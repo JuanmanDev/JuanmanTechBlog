@@ -2,15 +2,9 @@
 export default defineNuxtConfig({
   extends: ['@nuxt/ui-pro'],
 
-  modules: [
-    '@nuxt/content',
-    // '@nuxtjs/tailwindcss',
-    '@nuxtjs/i18n',
-    
-    '@nuxt/eslint',
-    '@nuxt/fonts',
-    '@nuxt/image',
-    '@nuxt/ui',
+  modules: ['@nuxt/content', // '@nuxtjs/tailwindcss',
+  '@nuxtjs/i18n', '@nuxt/eslint', '@nuxt/fonts', '@nuxt/image', '@nuxt/ui', 'nuxt-disqus',
+  "nuxt-disqus",
   ],
 
   content: {
@@ -64,6 +58,11 @@ export default defineNuxtConfig({
       tailwindcss: {},
       autoprefixer: {},
     },
+  },
+
+  
+  disqus: {
+    shortname: "juanmantech",
   },
 
   compatibilityDate: '2024-11-15',
