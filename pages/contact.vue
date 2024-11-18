@@ -15,7 +15,7 @@ const page = {
     "description": "Find me here:",
     "links": [
       {
-        "label": "LinkdIn",
+        "label": "LinkedIn",
         "icon": "i-simple-icons-linkedin",
         "size": "xl",
         "color": "gray",
