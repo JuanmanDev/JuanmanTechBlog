@@ -18,7 +18,7 @@ const page = {
         "label": "Go to the Blog",
         "icon": "i-heroicons-arrow-right-20-solid",
         "trailing": true,
-        "to": "/blog",
+        "to": localePath("/blog"),
         "size": "xl"
       },
       {
