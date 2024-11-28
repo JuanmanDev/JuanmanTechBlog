@@ -1,6 +1,4 @@
-
 ---
-
 title: Libera espacio en el SSD de tu servidor con un HDD adicional  
 short: He conseguido librarme de los errores de disco lleno gracias a conectar un HDD en mi servidor  
 tags:  
@@ -10,7 +8,6 @@ tags:
   - symlink  
 created: 28/11/2024 18:00  
 updated: 28/11/2024 18:00  
-
 ---
 
 # La situación
