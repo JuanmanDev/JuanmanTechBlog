@@ -5,7 +5,7 @@
       Blog
     </h1>
     <UPageGrid>
-      <ContentList :path="localePath(`/blog`)" v-slot="{ list }">
+      <ContentList :query="query" v-slot="{ list }">
         <template v-for="article in list" :key="article._path">
           <NuxtLink :to="article._path">
             <ULandingCard
@@ -27,10 +27,10 @@
   </UContainer>
 </template>
 
-<script>
-export default {
-  name: 'BlogOverview',
-  async asyncData({ $content, app, error }) {
-  },
-}
+<script setup>
+const localePath = useLocalePath();
+
+
+const name = 'BlogOverview';
+const query = { path: localePath(`/`), limit: 25, sort: [{ updated: -1 }] }
 </script>

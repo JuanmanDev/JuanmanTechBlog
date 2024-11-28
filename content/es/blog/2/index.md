@@ -6,8 +6,8 @@ tags:
   - hdd  
   - espacio  
   - symlink  
-created: 28/11/2024 18:00  
-updated: 28/11/2024 18:00  
+created: 2024-11-28 18:00  
+updated: 2024-11-28 18:00  
 ---
 
 # La situación
@@ -32,11 +32,11 @@ Mi servidor tiene un **HDD de 750 GB** conectado que no estaba utilizando. Inici
 
 Este es el disco en **Proxmox**:
 
-![Discos en Proxmox](image.png)  
+![Discos en Proxmox](image.png)
 
 El disco está montado en Proxmox y es accesible:  
 
-![Contenido del disco](image-1.png)  
+![Contenido del disco](/image-1.png)  
 
 Para utilizarlo en un contenedor **LXC**, necesito compartir un punto de montaje.
 

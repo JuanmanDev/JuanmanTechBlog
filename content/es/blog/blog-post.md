@@ -6,6 +6,10 @@ tags:
   - i18n
   - markdown
 layout: blogpost
+
+
+created: 2023-08-02 23:00
+updated: 2023-08-02 23:00
 ---
 ## Este es el primer post de un blog
 

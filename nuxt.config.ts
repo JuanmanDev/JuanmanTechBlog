@@ -2,9 +2,16 @@
 export default defineNuxtConfig({
   extends: ['@nuxt/ui-pro'],
 
-  modules: ['@nuxt/content', // '@nuxtjs/tailwindcss',
-  '@nuxtjs/i18n', '@nuxt/eslint', '@nuxt/fonts', '@nuxt/image', '@nuxt/ui', 'nuxt-disqus',
-  "nuxt-disqus",
+  modules: [
+    'nuxt-content-assets',
+    '@nuxt/content', // '@nuxtjs/tailwindcss',
+    '@nuxtjs/i18n',
+    '@nuxt/eslint',
+    '@nuxt/fonts',
+    // '@nuxt/image',
+    '@nuxt/ui',
+    'nuxt-disqus',
+    'nuxt-disqus',
   ],
 
   content: {

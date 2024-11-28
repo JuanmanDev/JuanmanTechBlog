@@ -8,8 +8,8 @@ tags:
   - Cables electricos
   - Relé
   - Relé quemado
-created: 03/08/2023 23:00
-updated: 03/08/2023 23:00
+created: 2023-08-03 23:00
+updated: 2023-08-03 23:00
 ---
 
 # Cómo controlar una persiana electrica
