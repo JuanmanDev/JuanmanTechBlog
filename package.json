@@ -24,6 +24,7 @@
     "nuxt-disqus": "^1.1.1"
   },
   "dependencies": {
+    "@d0rich/nuxt-content-mermaid": "^0.4.1",
     "nuxt-content-assets": "^1.4.4"
   }
 }

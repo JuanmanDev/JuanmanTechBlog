@@ -1,6 +1,9 @@
 // https://nuxt.com/docs/guide/directory-structure/nuxt.config#nuxt-config-file
 export default defineNuxtConfig({
-  extends: ['@nuxt/ui-pro'],
+  extends: [
+    '@nuxt/ui-pro',
+    '@d0rich/nuxt-content-mermaid',
+  ],
 
   modules: [
     'nuxt-content-assets',
@@ -15,7 +18,7 @@ export default defineNuxtConfig({
   ],
 
   content: {
-    documentDriven: true
+    documentDriven: true,
   },
 
   i18n: {
