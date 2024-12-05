@@ -8,6 +8,7 @@ tags:
   - symlink  
 created: 2024-11-28 18:00  
 updated: 2024-11-28 18:00  
+image: ./image.png
 ---
 
 # La situación

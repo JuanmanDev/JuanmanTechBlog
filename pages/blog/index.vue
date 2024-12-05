@@ -12,10 +12,10 @@
               :title="article.title"
               :description="article.short"
               color="primary"
-              :orientation="article.image ? 'horizontal' : 'vertical'"
+              orientation="vertical"
             >
               <img
-                v-if="!article.image"
+                v-if="article.image"
                 :src="article.image"
                 class="w-full rounded-md"
               />
