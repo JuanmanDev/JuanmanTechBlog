@@ -32,5 +32,6 @@ const localePath = useLocalePath();
 
 
 const name = 'BlogOverview';
-const query = { path: localePath(`/`), limit: 25, sort: [{ updated: -1 }] }
+const query = { path: localePath(`/blog`), limit: 25, sort: [{ updated: -1 }] }
+
 </script>
