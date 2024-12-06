@@ -5,6 +5,8 @@ tags:
   - content
   - i18n
   - markdown
+created: 2023-08-01 23:00
+updated: 2023-08-01 23:00
 ---
 ## This is the first blog post on your brand new website in multiple languages
 
