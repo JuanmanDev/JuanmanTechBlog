@@ -5,24 +5,23 @@
       Blog
     </h1>
     <UPageGrid>
-      <ContentList :query="query" v-slot="{ list }">
-        <template v-for="article in list" :key="article._path">
-          <NuxtLink :to="article._path">
-            <ULandingCard
-              :title="article.title"
-              :description="article.short"
-              color="primary"
-              orientation="vertical"
-            >
-              <img
-                v-if="article.image"
-                :src="article.image"
-                class="w-full rounded-md"
-              />
-            </ULandingCard>
-          </NuxtLink>
-        </template>
-      </ContentList>
+      <template v-for="article in data" :key="article._path">
+        <NuxtLink :to="article._path">
+          {{ article.updated }}
+          <ULandingCard
+            :title="article.title"
+            :description="article.short"
+            color="primary"
+            orientation="vertical"
+          >
+            <img
+              v-if="article.image"
+              :src="article.image"
+              class="w-full rounded-md"
+            />
+          </ULandingCard>
+        </NuxtLink>
+      </template>
     </UPageGrid>
   </UContainer>
 </template>
@@ -30,8 +29,14 @@
 <script setup>
 const localePath = useLocalePath();
 
-
 const name = 'BlogOverview';
-const query = { path: localePath(`/blog`), limit: 25, sort: [{ updated: -1 }] }
+const query = { path: localePath(`/blog/`), limit: 25, sort: [{ updated: 1 }] }
+// update the query to be useAsyncData 
+
+const { data }  = await useAsyncData(localePath(`/blog/`), () => queryContent(localePath(`/blog/`))
+  .without('body')
+  .sort({'updated': -1})
+  .find());
+
 
 </script>
