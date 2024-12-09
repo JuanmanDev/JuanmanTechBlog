@@ -13,6 +13,7 @@ const page = {
   "hero": {
     "title": "Hello! I'm Juanma :)",
     "description": "Here you will find all my projects and blog posts.",
+    "lastBlogsPosts": "Last blog posts",
     "links": [
       {
         "label": "Go to the Blog",
@@ -46,10 +47,19 @@ const page = {
 if (locale.value === 'es') {
   page.hero.title = "¡Hola! Soy Juanma :)";
   page.hero.description = "Aquí encontrarás todos mis proyectos y posts de blog.";
+  page.hero.lastBlogsPosts = "Lo último en el blog";
   page.hero.links[0].label = "Ir al Blog";
   page.hero.links[1].label = "Ver este proyecto en github";
   page.logos.title = "Usando las mejores tecnologías:";
 }
+
+
+const { data: blogs }  = await useAsyncData(localePath(`/blog/`), () => queryContent(localePath(`/blog/`))
+  .without('body')
+  .sort({'updated': -1})
+  .limit(3)
+  .find());
+
 
 </script>
 
@@ -159,13 +169,38 @@ if (locale.value === 'es') {
       </UPageColumns>
     </ULandingSection>
 
-    <ULandingSection class="bg-primary-50 dark:bg-primary-400 dark:bg-opacity-10">
-      <ULandingCTA
-        v-if="page.cta"
-        v-bind="page.cta"
-        :card="false"
-      />
-    </ULandingSection>
+    <div class="bg-primary-50 dark:bg-primary-400 dark:bg-opacity-10 py-5 px-3 gap-0">
+      <div class="flex justify-between m-2">
+        <h2> {{ page.hero.lastBlogsPosts }} </h2>
+        <NuxtLink
+          class="focus:outline-none"
+          tabindex="-1"
+        >
+          <UButton
+            :label="page.hero.links[0].label"
+            icon="i-heroicons-arrow-right-20-solid"
+            :trailing="true"
+            :to="localePath('/blog')"
+            size="xl"
+          />
+        </NuxtLink>
+      </div>
+      
+      <div class="flex flex-wrap">
+        <template v-for="article in blogs" :key="article._path">
+          <NuxtLink :to="article._path" class="flex-1 min-w-[200px] font-semibold m-2"  >
+            <UCard
+              :to="article._path"
+            >
+              <h2>
+                {{ article.title }}
+              </h2>
+            </UCard>
+          </NuxtLink>
+        </template>
+        </div>
+            
+    </div>
 
     <ULandingSection
       v-if="page.faq"
