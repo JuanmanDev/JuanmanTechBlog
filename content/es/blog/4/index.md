@@ -35,10 +35,10 @@ Falta mejorar el código, implementar pruebas y pulir muchos aspectos más. Pero
 # Vídeos
 
 ### Error si no has completado todos los campos:
-<video controls src="ExportToGhostfolio_NoSetShotfpholiaACcount.mp4" title="Title"></video>
+<video controls src="./ExportToGhostfolio_NoSetShotfpholiaACcount.mp4" title="Title"></video>
 
 ### Sesión exitosa
-<video controls src="ExportToGhostfolio_AllFine.mp4" title="Title"></video>
+<video controls src="./ExportToGhostfolio_AllFine.mp4" title="Title"></video>
 
 # Anotaciones adicionales
 
