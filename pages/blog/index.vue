@@ -7,7 +7,6 @@
     <UPageGrid>
       <template v-for="article in data" :key="article._path">
         <NuxtLink :to="article._path">
-          {{ article.updated }}
           <ULandingCard
             :title="article.title"
             :description="article.short"
