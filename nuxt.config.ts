@@ -2,17 +2,9 @@
 export default defineNuxtConfig({
   extends: ['@nuxt/ui-pro'],
 
-  modules: [
-    'nuxt-content-assets',
-    '@nuxt/content', // '@nuxtjs/tailwindcss',
-    '@nuxtjs/i18n',
-    '@nuxt/eslint',
-    '@nuxt/fonts',
-    // '@nuxt/image',
-    '@nuxt/ui',
-    'nuxt-disqus',
-    'nuxt-disqus',
-  ],
+  modules: ['nuxt-content-assets', // '@nuxtjs/tailwindcss',
+  '@nuxt/content', '@nuxtjs/i18n', '@nuxt/eslint', '@nuxt/fonts', // '@nuxt/image',
+  '@nuxt/ui', 'nuxt-disqus', 'nuxt-disqus', '@nuxtjs/seo'],
 
   content: {
     documentDriven: true
@@ -69,6 +61,10 @@ export default defineNuxtConfig({
   
   disqus: {
     shortname: "juanmantech",
+  },
+
+  ogImage: {
+    strictNuxtContentPaths: true
   },
 
   compatibilityDate: '2024-11-15',
