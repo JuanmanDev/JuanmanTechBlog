@@ -50,6 +50,15 @@ const disqusConfig = ref({
   identifier: route.path,
   title: post.value?.title,
 });
+
+
+defineOgImageComponent('Pergel', {
+  title: 'Juanman Tech! 👨🏻‍💻',
+  description: "Blog",
+  headline: post.title,
+})
+
+
 </script>
 
 <style>
