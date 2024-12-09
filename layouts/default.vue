@@ -52,6 +52,25 @@ const disqusConfig = ref({
 });
 
 
+import { useHead } from '#imports'
+
+
+useHead({
+  title: post.title,
+  meta: [
+    { name: 'description', content: post.short },
+    // Open Graph tags
+    { property: 'og:title', content: post.title },
+    { property: 'og:description', content: post.short },
+    { property: 'og:image', content: post.image },
+    // Twitter Card tags
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: post.title },
+    { name: 'twitter:description', content: post.short },
+    { name: 'twitter:image', content: post.image }
+  ]
+})
+
 useSeoMeta({
   title: post.title,
   ogTitle: post.title,
