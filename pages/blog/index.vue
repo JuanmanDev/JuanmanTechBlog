@@ -32,6 +32,4 @@ const { data }  = await useAsyncData(localePath(`/blog/`), () => queryContent(lo
   .without('body')
   .sort({'updated': -1})
   .find());
-
-
 </script>

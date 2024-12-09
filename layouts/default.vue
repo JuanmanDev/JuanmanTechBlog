@@ -50,6 +50,15 @@ const disqusConfig = ref({
   identifier: route.path,
   title: post.value?.title,
 });
+
+
+useSeoMeta({
+  title: post.title,
+  ogTitle: post.title,
+  description: post.short,
+  ogDescription: post.short,
+  ogImage: post.image,
+})
 </script>
 
 <style>
