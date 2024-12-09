@@ -29,10 +29,6 @@
 <script setup>
 const localePath = useLocalePath();
 
-const name = 'BlogOverview';
-const query = { path: localePath(`/blog/`), limit: 25, sort: [{ updated: 1 }] }
-// update the query to be useAsyncData 
-
 const { data }  = await useAsyncData(localePath(`/blog/`), () => queryContent(localePath(`/blog/`))
   .without('body')
   .sort({'updated': -1})
