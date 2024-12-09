@@ -60,7 +60,10 @@ const { data: blogs }  = await useAsyncData(localePath(`/blog/`), () => queryCon
   .limit(3)
   .find());
 
-
+defineOgImageScreenshot({
+  // wait 2 seconds
+  delay: 2000
+})
 </script>
 
 <template>
