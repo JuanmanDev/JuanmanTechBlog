@@ -1,17 +1,15 @@
 <script setup lang="ts">
 import { Analytics } from '@vercel/analytics/nuxt'
-// useHead({
-//   meta: [
-//     { name: 'viewport', content: 'width=device-width, initial-scale=1' }
-//   ],
-//   link: [
-//     { rel: 'icon', href: '/favicon.ico' }
-//   ],
-//   // htmlAttrs: {
-//   //   lang: 'en'
-//   // }
-// })
 
+useHead({
+  script: [
+    {
+      src: "https://analytics.ahrefs.com/analytics.js",
+      "data-key": "FoqN66VqlpHlCmDxNoP9jQ",
+      async: true
+    }
+  ]
+})
 
 
 </script>
