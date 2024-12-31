@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Analytics } from '@vercel/analytics/nuxt'
 // useHead({
 //   meta: [
 //     { name: 'viewport', content: 'width=device-width, initial-scale=1' }
@@ -25,4 +26,5 @@
   <AppFooter />
 
   <UNotifications />
+  <Analytics/>
 </template>
