@@ -4,7 +4,7 @@ short: Envía el modelo 720 en menos de 5 minutos
 tags:
   - inversión extranjera
   - modelo 720
-  - plataforma Giro
+  - plataforma DeGiro
   - declaración de bienes en el extranjero
   - Agencia Tributaria
   - herramientas fiscales
@@ -30,7 +30,7 @@ image: https://720degiro.juanman.tech/og/index.png
 # 720Degiro
 # Simplificando el Modelo 720: Mi Experiencia Invertiendo en el Extranjero
 
-Durante los últimos años, he comenzado a invertir en acciones a través de una plataforma extranjera llamada **Giro**. Sin embargo, al no ser una plataforma española, no informa automáticamente del **Modelo 720**, un formulario obligatorio en España para declarar bienes en el extranjero. Este modelo se divide en tres grupos principales:
+Durante los últimos años, he comenzado a invertir en acciones a través de una plataforma extranjera llamada **DeGiro**. Sin embargo, al no ser una plataforma española, no informa automáticamente del **Modelo 720**, un formulario obligatorio en España para declarar bienes en el extranjero. Este modelo se divide en tres grupos principales:
 
 1. **Efectivo en cuentas bancarias extranjeras**
 2. **Activos inmobiliarios**
