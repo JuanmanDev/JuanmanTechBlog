@@ -56,6 +56,51 @@ El servicio tiene un coste de **5 euros**, aunque inicialmente es **gratuito** m
 
 ## Tecnología detrás de 720 DeGiro
 
+<div class="w-screen relative left-1/2 -translate-x-1/2">
+  <div class="w-screen flex flex-wrap gap-6 justify-center">
+    <!-- Vue 3 -->
+    <a href="https://vuejs.org/" target="_blank" class="flex flex-col items-center p-4 bg-sky-500/10 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+      <img src="https://vuejs.org/images/logo.png" alt="Vue 3" class="w-16 h-16">
+      <span class="mt-2 text-sm font-medium">Vue 3</span>
+    </a>
+    <!-- Nuxt 3 -->
+    <a href="https://nuxt.com/" target="_blank" class="flex flex-col items-center p-4 bg-sky-500/10 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+      <img src="https://nuxt.com/assets/design-kit/icon-green.png" alt="Nuxt 3" class="w-16 h-16">
+      <span class="mt-2 text-sm font-medium">Nuxt 3</span>
+    </a>
+    <!-- Nuxt UI 3 Alpha -->
+    <a href="https://ui.nuxt.com/" target="_blank" class="flex flex-col items-center p-4 bg-sky-500/10 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+      <img src="https://ui.nuxt.com/favicon.ico" alt="Nuxt UI 3 Alpha" class="w-16 h-16">
+      <span class="mt-2 text-sm font-medium">Nuxt UI 3 Alpha</span>
+    </a>
+    <!-- Supabase -->
+    <a href="https://supabase.com/" target="_blank" class="flex flex-col items-center p-4 bg-sky-500/10 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+      <img src="https://avatars.githubusercontent.com/u/54469796?s=200&v=4" alt="Supabase" class="w-16 h-16">
+      <span class="mt-2 text-sm font-medium">Supabase</span>
+    </a>
+    <!-- Vercel -->
+    <a href="https://vercel.com/" target="_blank" class="flex flex-col items-center p-4 bg-sky-500/10 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+      <img src="https://vercel.com/favicon.ico" alt="Vercel" class="w-16 h-16">
+      <span class="mt-2 text-sm font-medium">Vercel</span>
+    </a>
+    <!-- Stripe -->
+    <a href="https://stripe.com/" target="_blank" class="flex flex-col items-center p-4 bg-sky-500/10 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+      <img src="https://www.solodev.com/file/2e7ff4de-48b3-11ed-bb2e-0eaef3759f5f/stripe-icon.png" alt="Stripe" class="w-16 h-16">
+      <span class="mt-2 text-sm font-medium">Stripe</span>
+    </a>
+    <!-- Resend -->
+    <a href="https://resend.com/" target="_blank" class="flex flex-col items-center p-4 bg-sky-500/10 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+      <img src="https://resend.com/static/brand/resend-icon-black.svg" alt="Resend" class="w-16 h-16">
+      <span class="mt-2 text-sm font-medium">Resend</span>
+    </a>
+    <!-- Sentry -->
+    <a href="https://sentry.io/" target="_blank" class="flex flex-col items-center p-4 bg-sky-500/10 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+      <img src="https://www.svgrepo.com/show/354332/sentry-icon.svg" alt="Sentry" class="w-16 h-16">
+      <span class="mt-2 text-sm font-medium">Sentry</span>
+    </a>
+  </div>
+</div>
+
 Este proyecto ha sido desarrollado en **Vue 3** con **Nuxt 3** y **Nuxt UI 3 Alpha**, y está desplegado en **Vercel**. Para el seguimiento de errores, utilizamos **Sentry**, y nos conectamos a una base de datos a través de **Supabase**, utilizando el patrón **Frontend for Backend** para mantener la seguridad de los datos. Además, empleamos **Resend** para el envío de correos electrónicos y **Stripe** como pasarela de pago, integrada con **webhooks** que se conectan a las funciones de Vercel.
 
 El proyecto fue desarrollado en un mes, durante **enero de 2025**, con el objetivo de analizar la viabilidad de un producto útil para el mercado y, al mismo tiempo, mejorar mis habilidades técnicas.
