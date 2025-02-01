@@ -1,128 +1,120 @@
 ---
-title: Persianas inteligentes con ESP Home
-short: Cómo conectar esp home a tus persianas electricas sin romper nada
+title: 720 Degiro - un nuevo proyecto
+short: Envía el modelo 720 en menos de 5 minutos
 tags:
-  - ESP HOME
-  - Home assistant
-  - ESP32
-  - Cables electricos
-  - Relé
-  - Relé quemado
-created: 2023-08-03 23:00
-updated: 2023-08-03 23:00
+  - inversión extranjera
+  - modelo 720
+  - plataforma DeGiro
+  - declaración de bienes en el extranjero
+  - Agencia Tributaria
+  - herramientas fiscales
+  - simplificación de trámites
+  - Vue 3
+  - Nuxt 3
+  - Supabase
+  - Vercel
+  - Stripe
+  - Resend
+  - Sentry
+  - desarrollo web
+  - automatización de procesos
+  - fiscalidad internacional
+  - ahorro de tiempo
+  - proyectos tecnológicos
+  - emprendimiento
+created: 2025-02-01 23:00
+updated: 2025-02-01 23:00
+image: https://720degiro.juanman.tech/og/index.png
 ---
 
-# Cómo controlar una persiana electrica
+![alt text](https://720degiro.juanman.tech/og/index.png)
 
-Al comprar una persiana eléctrica, si no tiene control de velocidad, tendrá 4 cables.
-- Verde-Amarillo: Tierra
-- Azul: Neutro (Retorno de electricidad)
-- Negro: Línea para subir la persiana
-- Marrón: Línea para bajar la persiana
+# 720Degiro
+# Simplificando el Modelo 720: Mi Experiencia Invertiendo en el Extranjero
 
-_Revisa el manual de instruccione de tu persiana para verificar el código de colores_
+Durante los últimos años, he comenzado a invertir en acciones a través de una plataforma extranjera llamada **DeGiro**. Sin embargo, al no ser una plataforma española, no informa automáticamente del **Modelo 720**, un formulario obligatorio en España para declarar bienes en el extranjero. Este modelo se divide en tres grupos principales:
 
+1. **Efectivo en cuentas bancarias extranjeras**
+2. **Activos inmobiliarios**
+3. **Acciones y similares**
 
-## Cómo controlar una persiana eléctrica con ESP Home
+En mi caso, llevo un tiempo invirtiendo en el extranjero y, por eso, decidí prepararme para hacer más fácil el proceso de generar el Modelo 720. No solo para evitar posibles multas, sino también para facilitar el proceso a otras personas que seguramente están en la misma situación que yo. Para ello, he creado una página web llamada **[720 DeGiro](https://www.720degiro.com)**.
 
-Para controlar un circuito eléctrico tan sencillo, podemos utilizar dos relés para encender la subida de la persiana o la bajada de la persiana.
+## ¿Qué ofrece 720 DeGiro?
 
-Existen dos maneras de conectar los relés:
-- Conectar un relé de Fase a la subida y un relé de la Fase a la bajada de la persiana.  
-Esto puede ser peligroso ya que ambos relés pueden activarse por software y quemar el motor de la persiana
-- Conectar un relé a la fase, y ese mismo relé al otro relé.  
-Desde el segundo relé, conectar la salida del primer rele y conectar las dos salidas del relé a la subida y bajada.  
-De esta manera se puede controlar con el primer relé si la persiana recibe electricidad, y con el segundo se controlar si sube o baja.
+En esta web, en menos de **cinco minutos**, puedes generar el Modelo 720 si es la primera vez que lo presentas ante la Agencia Tributaria. El proceso es sencillo y se realiza a través de un pequeño formulario. Además, en la página de ayuda, se explican todos los pasos necesarios para obtener el archivo que se puede exportar directamente desde la plataforma DeGiro.
 
-_En ambas opciones es necesario conectar el cable neutro de la persiana al neutro de la casa y el cable de tierra de la persiana al de la casa._
+### ¿Cómo funciona?
 
-Utilizaremos la segunda opción debido a que si hay problemas software o hardware no habrá problemas con el motor de la persiana al activarse tanto la fase de subida como de bajada.
+1. **Rellena el formulario**: Introduce los datos necesarios para generar el Modelo 720.
+2. **Exporta el archivo**: Descarga el archivo generado en formato compatible con la Agencia Tributaria.
+3. **Presenta el archivo**: Sube el archivo a la página web de la Agencia Tributaria y realiza la presentación.
 
+El proceso está diseñado para ser lo más intuitivo posible, y en la página de ayuda se detalla cómo presentar el archivo correctamente.
 
-## Código para ESP Home 
+### Precio y Futuro del Proyecto
 
-```yaml
-cover:
-  - platform: time_based
-    name: "Time-Based Cover"
+El servicio tiene un coste de **5 euros**, aunque inicialmente es **gratuito** mientras se encuentra en fase de prueba. Esto nos permite comprobar si existe un mercado de personas dispuestas a pagar por ahorrar tiempo con este sistema. En el futuro, planeamos incluir otros brokers y la posibilidad de gestionar segundas y posteriores presentaciones ante la Agencia Tributaria.
 
-    open_action:
-      - switch.turn_on: power_cover_switch
-      - switch.turn_on: direction_cover_switch
-    open_duration: 18s
+## Tecnología detrás de 720 DeGiro
 
-    close_action:
-      - switch.turn_on: power_cover_switch 
-      - switch.turn_off: direction_cover_switch
-    close_duration: 17.5s
+<div class="w-screen relative left-1/2 -translate-x-1/2">
+  <div class="w-screen flex flex-wrap gap-6 justify-center">
+    <!-- Vue 3 -->
+    <a href="https://vuejs.org/" target="_blank" class="flex flex-col items-center p-4 bg-sky-500/10 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+      <img src="https://vuejs.org/images/logo.png" alt="Vue 3" class="w-16 h-16">
+      <span class="mt-2 text-sm font-medium">Vue 3</span>
+    </a>
+    <!-- Nuxt 3 -->
+    <a href="https://nuxt.com/" target="_blank" class="flex flex-col items-center p-4 bg-sky-500/10 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+      <img src="https://nuxt.com/assets/design-kit/icon-green.png" alt="Nuxt 3" class="w-16 h-16">
+      <span class="mt-2 text-sm font-medium">Nuxt 3</span>
+    </a>
+    <!-- Nuxt UI 3 Alpha -->
+    <a href="https://ui.nuxt.com/" target="_blank" class="flex flex-col items-center p-4 bg-sky-500/10 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+      <img src="https://ui.nuxt.com/favicon.ico" alt="Nuxt UI 3 Alpha" class="w-16 h-16">
+      <span class="mt-2 text-sm font-medium">Nuxt UI 3 Alpha</span>
+    </a>
+    <!-- Supabase -->
+    <a href="https://supabase.com/" target="_blank" class="flex flex-col items-center p-4 bg-sky-500/10 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+      <img src="https://avatars.githubusercontent.com/u/54469796?s=200&v=4" alt="Supabase" class="w-16 h-16">
+      <span class="mt-2 text-sm font-medium">Supabase</span>
+    </a>
+    <!-- Vercel -->
+    <a href="https://vercel.com/" target="_blank" class="flex flex-col items-center p-4 bg-sky-500/10 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+      <img src="https://vercel.com/favicon.ico" alt="Vercel" class="w-16 h-16">
+      <span class="mt-2 text-sm font-medium">Vercel</span>
+    </a>
+    <!-- Stripe -->
+    <a href="https://stripe.com/" target="_blank" class="flex flex-col items-center p-4 bg-sky-500/10 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+      <img src="https://www.solodev.com/file/2e7ff4de-48b3-11ed-bb2e-0eaef3759f5f/stripe-icon.png" alt="Stripe" class="w-16 h-16">
+      <span class="mt-2 text-sm font-medium">Stripe</span>
+    </a>
+    <!-- Resend -->
+    <a href="https://resend.com/" target="_blank" class="flex flex-col items-center p-4 bg-sky-500/10 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+      <img src="https://resend.com/static/brand/resend-icon-black.svg" alt="Resend" class="w-16 h-16">
+      <span class="mt-2 text-sm font-medium">Resend</span>
+    </a>
+    <!-- Sentry -->
+    <a href="https://sentry.io/" target="_blank" class="flex flex-col items-center p-4 bg-sky-500/10 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+      <img src="https://www.svgrepo.com/show/354332/sentry-icon.svg" alt="Sentry" class="w-16 h-16">
+      <span class="mt-2 text-sm font-medium">Sentry</span>
+    </a>
+  </div>
+</div>
 
-    stop_action:
-      - switch.turn_off: power_cover_switch
-      - switch.turn_off: direction_cover_switch
+Este proyecto ha sido desarrollado en **Vue 3** con **Nuxt 3** y **Nuxt UI 3 Alpha**, y está desplegado en **Vercel**. Para el seguimiento de errores, utilizamos **Sentry**, y nos conectamos a una base de datos a través de **Supabase**, utilizando el patrón **Frontend for Backend** para mantener la seguridad de los datos. Además, empleamos **Resend** para el envío de correos electrónicos y **Stripe** como pasarela de pago, integrada con **webhooks** que se conectan a las funciones de Vercel.
 
-switch:
-  - platform: gpio
-    name: "power_cover_switch"
-    id: "power_cover_switch"
-    pin: GPIO23
-    inverted: True
-        
-  - platform: gpio
-    name: "direction_cover_switch"
-    id: "direction_cover_switch"
-    pin: GPIO22
-    inverted: True
-```
+El proyecto fue desarrollado en un mes, durante **enero de 2025**, con el objetivo de analizar la viabilidad de un producto útil para el mercado y, al mismo tiempo, mejorar mis habilidades técnicas.
 
-En este código se utilizan los pines GPIO 22 y 23 para controlar los 2 relés.
-Cámbialos para poner el que tu quieras.  
-Tambien deberas cambiar los tiempos de subida y bajada.
+## ¿Quieres probarlo?
 
-Fuente: https://esphome.io/components/cover/time_based.html
-
-
-## El relé se quema a los pocos usos 🔥
-
-Si al cabo del tiempo la persiana solo sube o baja, es posible que se haya quemado el relé que cambia la dirección.
-
-Esto se debe a que los motores, cuando se detienen de golpe, provocan un efecto de pico de tensión, llegando entre 4 y 10 veces la tensión habitual.  
-En Europa serían hasta 2500 Voltios.
-
-![Grafico pico de tensión](https://incompliancemag.com/wp-content/uploads/2019/01/1902_ECE_fig15.png)
-
-Más info en: https://passive-components.eu/rc-snubber-design-for-smps-protection/
-
-
-Para ello, existen los circuitos de amortigución RC o snubber RC. R de Resistencia y C de Condensador.
-
-Se deben poner alrededor del relé más cercano a la carga, en este caso a motor de la persiana.
-Debido a que tenemos 2 posibles circuitos de carga, tanto de subida como de bajada, se deben poner dos circuitos de amortiguación.
-Los dos estarán conectados del lado de la resistencia a la conexión entre el primer relé de activación y el segun relé de dirección.
-
-El otro extremo estará conectado entre cada extremo del segundo relé de dirección.
-
-He probado a poner el relé entre ambos relés y aún así se quemó el segundo relé.
-
-![](https://ae01.alicdn.com/kf/HTB1SnK6OyLaK1RjSZFxq6ymPFXae/M-dulo-de-circuito-de-absorci-n-Snubber-RC-rel-de-protecci-n-de-contacto-resistencia.jpg)
-
-Aquí puedes comprarlos en Aliexpres:
-https://s.click.aliexpress.com/e/_DeBu6tN
-
-Y en Amazon:
-https://www.amazon.es/dp/B091FL19WV?psc=1&ref=ppx_yo2ov_dt_b_product_details
+Te dejo un vídeo explicativo del proceso y un enlace para que le eches un vistazo. Cualquier crítica o opinión constructiva será bien recibida a través de los comentarios o por correo electrónico. ¡Muchas gracias!
 
 
-## Pruebas 
+<video controls src="https://720degiro.juanman.tech/_nuxt/hd.BKgdaSBG.mp4"></video>
+[Visitar 720 DeGiro - https://720degiro.juanman.tech/](https://720degiro.juanman.tech/)
 
-Una vez que lo configures todo, puedes conectarlo a Home Assistant.
+---
 
-Y así hacer que las persianas se suban por la mañana, y se bajen al mediodía en verano o cuando tu quieras.
-
-
-Para no sobrecargar los cables, recomiendo que las persianas se vayan subiendo o bajando una a una, además, así parecerá que hay una persona haciendolo y siempre es bueno simular presencia.
-
-Espero poder hacer detalles sobre ello próximamente. Si quieres que siga haciendo esto, hazmelo saber con un algo de interacción.
-
-
-
-<!-- https://www.circuito.io/ -->
+Espero que esta herramienta te sea útil y te ahorre tiempo en la presentación del Modelo 720. ¡No dudes en compartir tus impresiones!
