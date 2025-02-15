@@ -3,4 +3,15 @@
     "start": "Start",
     "blog": "Blog",
     "contact": "Contact",
+    "cv": {
+        "about": "About Me",
+        "work_experience": "Work Experience",
+        "education": "Education",
+        "projects": "Highlighted Projects",
+        "skills": "Technical Skills",
+        "final_project": "Final Project",
+        "view_video": "View Video",
+        "present": "Present",
+        "note": "To get the latest version of this CV, check:"
+    }
 }

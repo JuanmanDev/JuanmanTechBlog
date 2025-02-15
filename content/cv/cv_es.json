@@ -1,0 +1,173 @@
+{
+    "basics": {
+      "name": "Juan Manuel Bécares",
+      "label": "Ingeniero de Software Senior",
+      "email": "JuanmaDeveloper@outlook.com",
+      "url": "https://juanman.tech/",
+      "image": "/cv/juanma.png",
+      "summary": "Ingenierio de software apasionado por crear proyectos impactantes. Centrado en frontend, interesado en todo.",
+      "phone": "+34 679 94 96 54",
+      "location": {
+        "city": "Salamanca",
+        "region": "Castilla y León",
+        "country": "España",
+        "countryCode": "ES"
+      },
+      "profiles": [
+        {
+          "network": "LinkedIn",
+          "url": "www.linkedin.com/in/becares",
+          "icon": "linkedin"
+        },
+        {
+          "network": "Github",
+          "url": "https://github.com/JuanmanDev",
+          "icon": "github"
+        },
+        {
+          "network": "Mail",
+          "url": "mailto:JuanmaDeveloper+cvjuanmantech@outlook.com",
+          "icon": "envelope"
+        },
+        {
+          "network": "Phone",
+          "url": "tel:+34679949654",
+          "icon": "phone"
+        }
+      ]
+    },
+    "work": [
+      {
+        "name": "TUI",
+        "position": "Ingeniero de Software Senior",
+        "startDate": "2025-01",
+        "endDate": null,
+        "summary": "Liderando proyectos de datos frontend, asegurando la integración entre frontends, datalakes y soluciones de IA. Tech stack: Vue, Nuxt, TypeScript, AWS, GitLab CI/CD.",
+        "highlights": [
+          "Desarrollo de bibliotecas independientes del framework con compatibilidad entre versiones de Node.js.",
+          "Implementación pipelines de CI/CD de GitLab y uso de AWS (Firehose, Lambda).",
+          "Optimización de flujo de datos y la escalabilidad para soluciones impulsadas por IA como chatbots."
+        ]
+      },
+      {
+        "name": "TUI",
+        "position": "Ingeniero de Software",
+        "startDate": "2022-04",
+        "endDate": "2025-01",
+        "summary": "Desarrollo frontend con Vue/Nuxt, TypeScript y Node.js.",
+        "highlights": [
+          "Desarrollador de bibliotecas totalmente nativas e integraciones con vue 2-3 y microfrontends.",
+          "Desarrollador principal para análisis de datos desde frontend y conexiones de IA.",
+          "Gestión de registros privados de NPM y pruebas unitarias con Jest."
+        ]
+      },
+      {
+        "name": "ExperiencelT",
+        "position": "Ingeniero de Software Frontend",
+        "startDate": "2021-10",
+        "endDate": "2022-04",
+        "summary": "Trabajando en el sistema web HCIS para el sector médico en España, principalmente con soluciones nativas puras.",
+        "highlights": [
+          "Creación de un estándar para desarrollar software, principios SOLID y nuevas características de ES6.",
+          "Desarrollar componentes web nativos para mejorar las aplicaciones jsp.",
+          "Revisando todo el proyecto de código de MR de Junior para asegurar que todo esté correcto usando TortoiseSVN."
+        ]
+      },
+      {
+        "name": "Grupo Global Exchange",
+        "position": "Ingeniero de Software Full Stack",
+        "startDate": "2016-07",
+        "endDate": "2020-04",
+        "summary": "Desarrolló soluciones frontend con Freemarker, Vue, SignalR y .net.",
+        "highlights": [
+          "Creación de aplicaciones web full stack con .net, angularJS y Vue.",
+          "Gestión de la conexión en Microsoft SQL Server con procedimientos almacenados.",
+          "Liderando proyectos utilizando experiencias en tiempo real como una tableta para apoyar el cambio de dinero en el lado del cliente con un chat multilingüe con voz."
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "Universidad de Salamanca",
+        "area": "Ingeniería Informática",
+        "studyType": "Grado",
+        "startDate": "2012-09",
+        "endDate": "2017-09",
+        "project": {
+          "name": "JOME",
+          "description": "Un sistema de automatización del hogar para automatizar luces, puertas, cubiertas y más, utilizando cable con el protocolo RS485 utilizando una Raspberry Pi y Arduino. Toda la configuración se realiza utilizando una web moderna con vue y Parse server, incluyendo un depurador básico con web.",
+          "video": "https://youtu.be/_qTuDBq7LUA"
+        }
+      }
+    ],
+    "certificates": [
+      {
+        "name": "Computación en la Nube",
+        "issuer": "[Por favor especifique el emisor]"
+      },
+      {
+        "name": "Especialista en Desarrollo de Aplicaciones Web",
+        "issuer": "[Por favor especifique el emisor]"
+      },
+      {
+        "name": "Experto en Desarrollo FullStack",
+        "issuer": "[Por favor especifique el emisor]"
+      }
+    ],
+    "skills": [
+      {
+        "name": "Desarrollo Frontend",
+        "keywords": ["Vue", "Nuxt", "Pinia", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind", "SocketIO", "NPM"],
+        "color": "#FFC107"
+      },
+      {
+        "name": "Cloud & DevOps",
+        "keywords": ["AWS", "GitLab CI/CD", "Lambda", "Node.js", "Vercel", "Docker"],
+        "color": "#2196F3"
+      },
+      {
+        "name": "Backend",
+        "keywords": ["Node.js", "Supabase", "PostgreSQL", "Traefik", "Python", "Home Assistant"],
+        "color": "#4CAF50"
+      },
+      {
+        "name": "Data & AI",
+        "keywords": ["Análisis de Datos", "Snowflake", "Datadog", "Integración de IA", "SQL", "AWS Firehose", "AWS Kinesis", "MongoDB"],
+        "color": "#9C27B0"
+      }
+    ],
+    "languages": [
+      {
+        "language": "Español",
+        "fluency": "Hablante nativo"
+      },
+      {
+        "language": "Inglés",
+        "fluency": "Avanzado"
+      }
+    ],
+    "projects": [
+      {
+        "name": "720 DeGiro",
+        "startDate": "2025-01-20",
+        "endDate": "2025-02-12",
+        "description": "Genera el Modelo 720 para presentarlo fácilmente en el Gobierno de España.",
+        "highlights": ["Supabase", "Nuxt UI 3 Alpha", "Vercel", "Resend", "Strapi"],
+        "url": "https://720degiro.juanman.tech/"
+      },
+      {
+        "name": "Herramienta de Gestión de Hostales (Eliminado)",
+        "startDate": "2018-01-01",
+        "endDate": "2020-02-01",
+        "description": "Usando una foto de dni/pasaporte, la envía a la web oficial de la policía española.",
+        "highlights": ["Puppeteer", "OCR", "Strapi", "Typescript"]
+      },
+      {
+        "name": "Taps!",
+        "startDate": "2014-06-01",
+        "endDate": "2015-02-01",
+        "description": "Un juego básico para tocar la pantalla lo más rápido posible en 10s con múltiples animaciones básicas.",
+        "highlights": ["Lua", "Marmalade", "Blackberry", "Android"]
+      }
+    ]
+  }
