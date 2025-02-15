@@ -1,0 +1,189 @@
+
+  {
+    "basics": {
+      "name": "Juan Manuel Bécares",
+      "label": "Senior Software Engineer",
+      "email": "JuanmaDeveloper@outlook.com",
+      "url": "https://juanman.tech/",
+      "image": "/cv/juanma.png",
+      "summary": "Computer scientist passionate about creating impactful projects. Focus on frontend and interested in everything.",
+      "phone": "+34 679 94 96 54",
+      "location": {
+        "city": "Salamanca",
+        "region": "Castilla y León",
+        "country": "Spain",
+        "countryCode": "ES"
+      },
+      "profiles": [
+        {
+          "network": "LinkedIn",
+          "url": "www.linkedin.com/in/becares",
+          "icon": "linkedin"
+        },
+        {
+          "network": "Github",
+          "url": "https://github.com/JuanmanDev",
+          "icon": "github"
+        },
+        {
+          "network": "Mail",
+          "url": "mailto:JuanmaDeveloper+cvjuanmantech@outlook.com",
+          "icon": "envelope"
+        },
+        {
+          "network": "Phone",
+          "url": "tel:+34679949654",
+          "icon": "phone"
+        }
+      ]
+    },
+    "work": [
+      {
+        "name": "TUI",
+        "position": "Senior Software Engineer",
+        "startDate": "2025-01",
+        "endDate": null,
+        "summary": "Leading frontend data projects, ensuring integration between frontends, data lakes, and AI solutions. Tech stack: Vue, Nuxt, TypeScript, AWS, GitLab CI/CD.",
+        "highlights": [
+          "Developed framework-independent libraries and managed Node.js compatibility.",
+          "Implemented GitLab CI/CD pipelines and utilized AWS services (Firehose, Lambda).",
+          "Optimized data flow and scalability for AI-driven solutions like chatbots."
+        ]
+      },
+      {
+        "name": "TUI",
+        "position": "Software Engineer",
+        "startDate": "2022-04",
+        "endDate": "2025-01",
+        "summary": "Frontend development with Vue/Nuxt, TypeScript, and Node.js.",
+        "highlights": [
+          "Developed pure native libraries and integrations with Vue 2-3 and microfrontends.",
+          "Main developer for data analytics and AI connections.",
+          "Managed NPM registries and unit testing with Jest."
+        ]
+      },
+      {
+        "name": "ExperiencelT",
+        "position": "Frontend Software Engineer",
+        "startDate": "2021-10",
+        "endDate": "2022-04",
+        "summary": "Working on HCIS web system for the medical sector in Spain Frontend mainly with pure native solutions.",
+        "highlights": [
+          "Creating standard ways to develop software, principles SOLID and new features from ES6.",
+          "Develop native web components to improve JSP applications.",
+          "Reviewing all code project from MR of Junior to ensure everything is correct using TortoiseSVN."
+        ]
+      },
+      {
+        "name": "Grupo Global Exchange",
+        "position": "Full stack software Engineer",
+        "startDate": "2016-07",
+        "endDate": "2020-04",
+        "summary": "Developed frontend solutions with Freemarker, Vue, SignalR and .net.",
+        "highlights": [
+          "Creating full stack web applications with .net, AngularJS and introducing Vue.",
+          "Managing connection on Microsoft SQL Server with stored procedures.",
+          "Leading projects using real-time experiences like a tablet to support the money exchange on the customer side with a multi-language chat with voice."
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "Universidad de Salamanca",
+        "area": "Computer Engineering",
+        "studyType": "Bachelor",
+        "startDate": "2012",
+        "endDate": "2017",
+        "project": {
+          "name": "JOME",
+          "description": "A Home Automation system to automate light, doors, covers and more, using cable with the protocol RS485 using a Raspberry Pi and Arduino. All the configuration is done using a modern web with Vue and Parse server including a basic debugger with web.",
+          "video": "https://youtu.be/_qTuDBq7LUA"
+        }
+      }
+    ],
+    "certificates": [
+      {
+        "name": "Cloud Computing",
+        "issuer": "[Please specify issuer]"
+      },
+      {
+        "name": "Specialist in Web Application Development",
+        "issuer": "[Please specify issuer]"
+      },
+      {
+        "name": "Expert in FullStack Development",
+        "issuer": "[Please specify issuer]"
+      }
+    ],
+    "skills": [
+      {
+        "name": "Frontend Development",
+        "keywords": ["Vue", "Nuxt", "Pinia", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind", "SocketIO", "NPM"],
+        "color": "#FFC107"
+      },
+      {
+        "name": "Cloud & DevOps",
+        "keywords": ["AWS", "GitLab CI/CD", "Lambda", "Node.js", "Vercel", "Docker"],
+        "color": "#2196F3"
+      },
+      {
+        "name": "Backend",
+        "keywords": ["Node.js", "Supabase", "PostgreSQL", "Traefik", "Python", "Home Assistant"],
+        "color": "#4CAF50"
+      },
+      {
+        "name": "Data & AI",
+        "keywords": ["Data Analytics", "Snowflake", "Datadog", "AI Integration", "SQL", "AWS Firehose", "AWS Kinesis", "MongoDB"],
+        "color": "#9C27B0"
+      }
+    ],
+    "languages": [
+      {
+        "language": "Spanish",
+        "fluency": "Native speaker"
+      },
+      {
+        "language": "English",
+        "fluency": "Advanced"
+      }
+    ],
+    "projects": [
+      {
+        "name": "720 DeGiro",
+        "startDate": "2025-01-20",
+        "endDate": "2025-02-12",
+        "description": "Generates the Model 720 to present on the Spain Government easily.",
+        "highlights": [
+          "Supabase",
+          "Nuxt UI 3 Alpha",
+          "Vercel",
+          "Resend"
+        ],
+        "url": "https://720degiro.juanman.tech/"
+      },
+      {
+        "name": "Hostel Manager Tool (Removed)",
+        "startDate": "2018-01-01",
+        "endDate": "2020-02-01",
+        "description": "Using a photo of ID/passport send it to the Spanish police official web.",
+        "highlights": [
+          "Puppeteer",
+          "OCR",
+          "Strapi",
+          "Typescript"
+        ]
+      },
+      {
+        "name": "Taps!",
+        "startDate": "2014-06-01",
+        "endDate": "2015-02-01",
+        "description": "A basic game to tap the screen as fast as possible in 10s with multiple basic animations.",
+        "highlights": [
+          "Lua",
+          "Marmalade",
+          "Blackberry",
+          "Android"
+        ]
+      }
+    ]
+  }

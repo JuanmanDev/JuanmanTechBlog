@@ -3,4 +3,14 @@
     "start": "Inicio",
     "blog": "Blog",
     "contact": "Contacto",
+    "cv": {
+        "about": "Sobre mí",
+        "work_experience": "Experiencia Laboral",
+        "education": "Educación",
+        "projects": "Proyectos Destacados",
+        "skills": "Habilidades Técnicas",
+        "final_project": "Proyecto Final",
+        "view_video": "Ver Video",
+        "present": "Presente"
+    }
 }

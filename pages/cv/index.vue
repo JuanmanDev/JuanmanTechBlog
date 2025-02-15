@@ -1,5 +1,5 @@
 <template>
-  <section class="mx-auto w-full max-w-2xl space-y-8 print:space-y-4 mt-8 mb-36">
+  <section class="mx-auto w-full max-w-2xl space-y-8 print:space-y-4 mt-8 mb-36" v-if="cv?.basics?.name">
     <!-- Header Section -->
     <header class="flex items-center justify-between">
       <div class="flex-1 space-y-1.5">
@@ -49,7 +49,7 @@
 
     <!-- About Section -->
     <section class="flex min-h-0 flex-col gap-y-3 print:gap-y-1">
-      <h2 class="text-xl font-bold">Sobre mí</h2>
+      <h2 class="text-xl font-bold">{{ $t('cv.about') }}</h2>
       <div class="text-pretty font-mono text-sm text-foreground/80">
         {{ cv.basics.summary }}
       </div>
@@ -57,7 +57,7 @@
 
     <!-- Work Experience -->
     <section class="flex min-h-0 flex-col gap-y-3 print:gap-y-1">
-      <h2 class="text-xl font-bold">Experiencia Laboral</h2>
+      <h2 class="text-xl font-bold">{{ $t('cv.work_experience') }}</h2>
       <div class="space-y-4" role="feed">
         <article v-for="(job, index) in cv.work" :key="index" class="rounded-lg bg-card py-1">
           <div class="flex flex-col space-y-1.5">
@@ -67,7 +67,7 @@
                 <span class="text-gray-400">@ {{ job.name }}</span>
               </h3>
               <div class="text-sm tabular-nums text-gray-500">
-                {{ formatDate(job.startDate) }} - {{ job.endDate ? formatDate(job.endDate) : 'Presente' }}
+                {{ formatDate(job.startDate) }} - {{ job.endDate ? formatDate(job.endDate) : $t('cv.present') }}
               </div>
             </div>
             <p class="text-pretty font-mono text-sm text-foreground/80">
@@ -83,7 +83,7 @@
 
     <!-- Education -->
     <section class="flex min-h-0 flex-col gap-y-3 print:gap-y-1">
-      <h2 class="text-xl font-bold">Educación</h2>
+      <h2 class="text-xl font-bold">{{ $t('cv.education') }}</h2>
       <article v-for="edu in cv.education" :key="edu.institution" class="rounded-lg bg-card">
         <div class="flex items-center justify-between gap-x-2 text-base">
           <h3 class="font-semibold leading-none">{{ edu.institution }}</h3>
@@ -97,13 +97,13 @@
         <!-- Add Project Section -->
         <div v-if="edu.project" class="mt-2">
           <div class="flex items-center gap-x-2 justify-between">
-            <h4 class="font-medium text-sm">Proyecto Final: {{ edu.project.name }}</h4>
+            <h4 class="font-medium text-sm">{{ $t('cv.final_project') }}: {{ edu.project.name }}</h4>
             <a v-if="edu.project.video"
               :href="edu.project.video" 
               target="_blank"
               class="text-xs text-primary hover:underline print:hidden"
               rel="noopener noreferrer">
-              <Icon name="uil:video" class="inline-block" /> Ver Video
+              <Icon name="uil:video" class="inline-block" /> {{ $t('cv.view_video') }}
             </a>
           </div>
           <p class="text-pretty font-mono text-xs text-foreground/80 mt-1">
@@ -115,7 +115,7 @@
 
     <!-- Projects -->
     <section class="flex min-h-0 flex-col gap-y-3 print:gap-y-1">
-      <h2 class="text-xl font-bold">Proyectos Destacados</h2>
+      <h2 class="text-xl font-bold">{{ $t('cv.projects') }}</h2>
       <div class="-mx-3 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 print:grid-cols-1">
         <article v-for="project in cv.projects" :key="project.name" class="rounded-lg border p-3 print:flex-row print:border-none">
           <div class="space-y-1">
@@ -145,7 +145,7 @@
 
     <!-- Skills -->
     <section class="flex min-h-0 flex-col gap-y-3 print:gap-y-1">
-      <h2 class="text-xl font-bold">Habilidades Técnicas</h2>
+      <h2 class="text-xl font-bold">{{ $t('cv.skills') }}</h2>
       <ul class="flex flex-wrap gap-1">
         <template v-for="skillgroup in cv.skills" :key="skillgroup.name">
           <li v-for="skill in skillgroup.keywords"
@@ -159,216 +159,36 @@
     </section>
   </section>
 </template>
-
   
 <script setup>
-  const cv = ref(
-    {
-  "basics": {
-    "name": "Juan Manuel Bécares",
-    "label": "Senior Software Engineer",
-    "email": "JuanmaDeveloper@outlook.com",
-    "url": "https://juanman.tech/",
-    "image": "/cv/juanma.png",
-    "summary": "Computer scientist passionate about creating impactful projects. Focus on frontend and interested in everything.",
-    "phone": "+34 679 94 96 54",
-    "location": {
-      "city": "Salamanca",
-      "region": "Castilla y León",
-      "country": "Spain",
-      "countryCode": "ES"
-    },
-    "profiles": [
-      {
-        "network": "LinkedIn",
-        "url": "www.linkedin.com/in/becares",
-        "icon": "linkedin",
-      },
-      {
-        "network": "Github",
-        "url": "https://github.com/JuanmanDev",
-        "icon": "github",
-      },
-      {
-        "network": "Mail",
-        "url": "mailto:JuanmaDeveloper+cvjuanmantech@outlook.com",
-        "icon": "envelope",
-      },
-      {
-        "network": "Phone",
-        "url": "tel:+34679949654",
-        "icon": "phone",
-      }
-    ]
-  },
-  "work": [
-    {
-      "name": "TUI",
-      "position": "Senior Software Engineer",
-      "startDate": "2025-01",
-      "endDate": null,
-      "summary": "Leading frontend data projects, ensuring integration between frontends, data lakes, and AI solutions. Tech stack: Vue, Nuxt, TypeScript, AWS, GitLab CI/CD.",
-      "highlights": [
-        "Developed framework-independent libraries and managed Node.js compatibility.",
-        "Implemented GitLab CI/CD pipelines and utilized AWS services (Firehose, Lambda).",
-        "Optimized data flow and scalability for AI-driven solutions like chatbots.",
-      ]
-    },
-    {
-      "name": "TUI",
-      "position": "Ingeniero de Software",
-      "startDate": "2022-04",
-      "endDate": "2025-01",
-      "summary": "Frontend development with Vue/Nuxt, TypeScript, and Node.js.",
-      "highlights": [
-        "Developer pure native libraries and integrations with vue 2-3 and microfrontends.",
-        "Main developer for data analytics and AI connections.",
-        "Managed NPM registries and unit testing with Jest."
-      ]
-    },
-    {
-      "name": "ExperiencelT",
-      "position": "Frontend Sofware Egnineer",
-      "startDate": "2021-10",
-      "endDate": "2022-04",
-      "summary": "Working on HCIS web system for the medical sector in Spain Frontend mainly with pure native solutions.",
-      "highlights": [
-        "Creating standard ways to develop software, priciples SOLID and new featrues from ES6.",
-        "Develop native web componentes to improve jsp applications.",
-        "Reviwing all code project from MR of Junior to ensure eveyrthing is correct using TortoiseSVN."
-      ]
-    },
-    {
-      "name": "Grupo Global Exchange",
-      "position": "Full stack software Engineer",
-      "startDate": "2016-07",
-      "endDate": "2020-04",
-      "summary": "Developed frontend solutions with Freemarker, Vue, SignalR and .net.",
-      "highlights": [
-        "Creating full stack web aplications with .net and angularJS.",
-        "Managing connection on Microsoft SQL Server with storage procedures.",
-        "Leading projects using real time experiences like a tablet to support the money exchange on the customer side with a multi language chat with voice."
-      ]
-    }
-  ],
-  "education": [
-    {
-      "institution": "Universidad de Salamanca",
-      "area": "Ingeniería Informática",
-      "studyType": "Grado",
-      "startDate": "2012",
-      "endDate": "2017",
-      "project": {
-        "name": "JOME",
-        "description": "A Home Automation system to automate light, doors, covers and more, using cable with the protocol RS485 using a Raspberry Pi and Arduino. All the configuration is done using a modern web with vue and Parse server inclusding a basic debuger with web.",
-        "video": "https://youtu.be/_qTuDBq7LUA"
-      } 
-    }
-  ],
-  "certificates": [
-    {
-      "name": "Cloud Computing",
-      "issuer": "[Please specify issuer]"
-    },
-    {
-      "name": "Especialista en Desarrollo de Aplicaciones Web",
-      "issuer": "[Please specify issuer]"
-    },
-    {
-      "name": "Experto en Desarrollo FullStack",
-      "issuer": "[Please specify issuer]"
-    }
-  ],
-  "skills": [
-    {
-      "name": "Frontend Development",
-      "keywords": ["Vue", "Nuxt", "Pinia", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind", "SocketIO", "NPM"],
-      "color": "#FFC107",
-    },
-    {
-      "name": "Cloud & DevOps",
-      "keywords": ["AWS", "GitLab CI/CD", "Lambda", "Node.js", "Vercel", "Docker"],
-      "color": "#2196F3",
-    },
-    {
-      "name": "Backend",
-      "keywords": ["Node.js", "Supabase", "PostgreSQL", "Traefik", "Python", "Home Assistant"],
-      "color": "#4CAF50",
-    },
-    {
-      "name": "Data & AI",
-      "keywords": ["Data Analytics", "Snowflake", "Datadog", "AI Integration", "SQL", "AWS Firehose", "AWS Kinesis", "MongoDB"],
-      "color": "#9C27B0",
-    }
-  ],
-  "languages": [{
-    "language": "Spanish",
-    "fluency": "Native speaker"
-  },{
-    "language": "English",
-    "fluency": "Advanced"
-  },],
-  
-  "projects": [
-    {
-      "name": "720 DeGiro",
-      "startDate": "2025-01-20",
-      "endDate": "2025-02-12",
-      "description": "Generates the Model 720 to present on the Spain Goberment easly.",
-      "highlights": [
-        "Supabase",
-        "Nuxt UI 3 Alpha",
-        "Vercel",
-        "Resend"
-      ],
-      "url": "https://720degiro.juanman.tech/"
-    },
-    {
-      "name": "Hostel Manager Tool (Removed)",
-      "startDate": "2018-01-01",
-      "endDate": "2020-02-01",
-      "description": "Using a photo of id/passport send it to the spanish police official web.",
-      "highlights": [
-        "Puppeteer",
-        "OCR",
-        "Strapi",
-        "Typescript"
-      ],
-    },
-    {
-      "name": "Taps!",
-      "startDate": "2014-06-01",
-      "endDate": "2015-02-01",
-      "description": "A basic game to tap the screen as fast as possible in 10s with multiples basic animations.",
-      "highlights": [
-        "Lua",
-        "Marmalade",
-        "Blackberry",
-        "Android"
-      ],
-    },
-  ]
+import { ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { locale } = useI18n()
+
+const cv = ref({})
+
+const loadCvData = async (lang) => {
+  const data = await import(`../../content/cv/cv_${lang}.json`)
+  cv.value = data.default
 }
 
-  )
-  
-  const formatDate = (dateString) => {
-    if (!dateString) return ''
-    const options = { year: 'numeric', month: 'short' }
-    return new Date(dateString).toLocaleDateString('es-ES', options)
-  }
-  
-  const getProfileIcon = (network) => {
-    const icons = {
-      'GitHub': 'i-mdi-github',
-      'LinkedIn': 'i-mdi-linkedin',
-      'X': 'i-mdi-twitter'
-    }
-    return icons[network] || 'i-mdi-link'
-  }
-  </script>
-  
-  <style>
+// Load initial data
+loadCvData(locale.value)
+
+// Watch for language changes
+watch(locale, (newLocale) => {
+  loadCvData(newLocale)
+})
+
+const formatDate = (dateString) => {
+  if (!dateString) return ''
+  const options = { year: 'numeric', month: 'short' }
+  return new Date(dateString).toLocaleDateString('es-ES', options)
+}
+</script>
+
+<style>
   .container {
     max-width: 1200px;
   }
