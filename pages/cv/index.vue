@@ -44,7 +44,7 @@
           <a :href="`tel:${cv.basics.phone}`" class="underline hover:text-foreground/70">{{ cv.basics.phone }}</a>
         </div>
       </div>
-      <UAvatar :src="cv.basics.image" alt="Profile photo" size="xl" class="rounded-xl"/>
+      <UAvatar :src="cv.basics.image" alt="Profile photo" size="3xl" class="rounded-full bg-white"/>
     </header>
 
     <!-- About Section -->
@@ -169,6 +169,7 @@
     "label": "Senior Software Engineer",
     "email": "JuanmaDeveloper@outlook.com",
     "url": "https://juanman.tech/",
+    "image": "/cv/juanma.png",
     "summary": "Computer scientist passionate about creating impactful projects. Focus on frontend and interested in everything.",
     "phone": "+34 679 94 96 54",
     "location": {
