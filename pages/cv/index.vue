@@ -1,5 +1,5 @@
 <template>
-  <section class="mx-auto w-full max-w-2xl space-y-8 print:space-y-4 mt-8 mb-36" v-if="cv?.basics?.name">
+  <section class="mx-auto w-full max-w-2xl space-y-8 print:space-y-4 mt-8 mb-36 px-2" v-if="cv?.basics?.name">
     <!-- Header Section -->
     <header class="flex items-center justify-between">
       <div class="flex-1 space-y-1.5">
@@ -63,11 +63,13 @@
           <div class="flex flex-col space-y-1.5">
             <div class="flex items-center justify-between gap-x-2 text-base">
               <h3 class="font-semibold leading-none">
-                {{ job.position }}
-                <span class="text-gray-400">@ {{ job.name }}</span>
+                <span class="block sm:inline">{{ job.position }}</span>
+                <span class="block sm:inline text-gray-400"> @&nbsp;{{ job.name }}</span>
               </h3>
               <div class="text-sm tabular-nums text-gray-500">
-                {{ formatDate(job.startDate) }} - {{ job.endDate ? formatDate(job.endDate) : $t('cv.present') }}
+                <span class="block sm:inline">{{ formatDate(job.startDate) }}</span>
+                <span class="hidden sm:inline"> - </span>
+                <span class="block sm:inline">{{ job.endDate ? formatDate(job.endDate) : $t('cv.present') }}</span>
               </div>
             </div>
             <p class="text-pretty font-mono text-sm text-foreground/80">
@@ -88,7 +90,11 @@
         <div class="flex items-center justify-between gap-x-2 text-base">
           <h3 class="font-semibold leading-none">{{ edu.institution }}</h3>
           <div class="text-sm tabular-nums text-gray-500">
-            {{ formatDate(edu.startDate) }} - {{ formatDate(edu.endDate) }}
+            <div class="text-sm tabular-nums text-gray-500">
+              <span class="block sm:inline">{{ formatDate(edu.startDate) }}</span>
+              <span class="hidden sm:inline"> - </span>
+              <span class="block sm:inline">{{ edu.endDate ? formatDate(edu.endDate) : $t('cv.present') }}</span>
+            </div>
           </div>
         </div>
         <p class="text-pretty font-mono text-sm text-foreground/80">
@@ -117,7 +123,7 @@
     <section class="flex min-h-0 flex-col gap-y-3 print:gap-y-1">
       <h2 class="text-xl font-bold">{{ $t('cv.projects') }}</h2>
       <div class="-mx-3 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 print:grid-cols-1">
-        <article v-for="project in cv.projects" :key="project.name" class="rounded-lg border p-3 print:flex-row print:border-none">
+        <article v-for="project in cv.projects" :key="project.name" class="rounded-lg md:border p-3 print:flex-row print:border-none">
           <div class="space-y-1">
             <div class="print:flex print:flex-row print:justify-between">
               <h3 class="font-semibold tracking-tight text-base">
@@ -189,7 +195,7 @@ watch(locale, (newLocale) => {
 const formatDate = (dateString) => {
   if (!dateString) return ''
   const options = { year: 'numeric', month: 'short' }
-  return new Date(dateString).toLocaleDateString('es-ES', options)
+  return new Date(dateString).toLocaleDateString(locale.value, options)
 }
 </script>
 
@@ -206,6 +212,9 @@ const formatDate = (dateString) => {
       /* color: black; */
       --ui-background: var(--color-gray-50);
       --ui-foreground: var(--color-gray-700);
+    }
+    a, a.underline {
+      text-decoration: none;
     }
   }
 

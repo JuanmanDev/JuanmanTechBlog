@@ -91,8 +91,8 @@
         "institution": "Universidad de Salamanca",
         "area": "Ingeniería Informática",
         "studyType": "Grado",
-        "startDate": "2012",
-        "endDate": "2017",
+        "startDate": "2012-09",
+        "endDate": "2017-09",
         "project": {
           "name": "JOME",
           "description": "Un sistema de automatización del hogar para automatizar luces, puertas, cubiertas y más, utilizando cable con el protocolo RS485 utilizando una Raspberry Pi y Arduino. Toda la configuración se realiza utilizando una web moderna con vue y Parse server, incluyendo un depurador básico con web.",

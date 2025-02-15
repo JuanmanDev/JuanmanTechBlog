@@ -92,8 +92,8 @@
         "institution": "Universidad de Salamanca",
         "area": "Computer Engineering",
         "studyType": "Bachelor",
-        "startDate": "2012",
-        "endDate": "2017",
+        "startDate": "2012-09",
+        "endDate": "2017-09",
         "project": {
           "name": "JOME",
           "description": "A Home Automation system to automate light, doors, covers and more, using cable with the protocol RS485 using a Raspberry Pi and Arduino. All the configuration is done using a modern web with Vue and Parse server including a basic debugger with web.",
