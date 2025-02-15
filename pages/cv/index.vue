@@ -157,6 +157,11 @@
         </template>
       </ul>
     </section>
+
+    <!-- Note -->
+    <section class="pt-36 text-center text-sm text-foreground/70 print:block hidden">
+      <p>{{ $t('cv.note') }} <a href="http://juanman.tech/cv" target="_blank" class="underline hover:text-foreground/50">http://juanman.tech/cv</a></p>
+    </section>
   </section>
 </template>
   
