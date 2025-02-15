@@ -81,6 +81,38 @@
       </div>
     </section>
 
+    <!-- Education -->
+    <section class="flex min-h-0 flex-col gap-y-3 print:gap-y-1">
+      <h2 class="text-xl font-bold">Educación</h2>
+      <article v-for="edu in cv.education" :key="edu.institution" class="rounded-lg bg-card">
+        <div class="flex items-center justify-between gap-x-2 text-base">
+          <h3 class="font-semibold leading-none">{{ edu.institution }}</h3>
+          <div class="text-sm tabular-nums text-gray-500">
+            {{ formatDate(edu.startDate) }} - {{ formatDate(edu.endDate) }}
+          </div>
+        </div>
+        <p class="text-pretty font-mono text-sm text-foreground/80">
+          {{ edu.studyType }} en {{ edu.area }}
+        </p>
+        <!-- Add Project Section -->
+        <div v-if="edu.project" class="mt-2">
+          <div class="flex items-center gap-x-2 justify-between">
+            <h4 class="font-medium text-sm">Proyecto Final: {{ edu.project.name }}</h4>
+            <a v-if="edu.project.video"
+              :href="edu.project.video" 
+              target="_blank"
+              class="text-xs text-primary hover:underline print:hidden"
+              rel="noopener noreferrer">
+              <Icon name="uil:video" class="inline-block" /> Ver Video
+            </a>
+          </div>
+          <p class="text-pretty font-mono text-xs text-foreground/80 mt-1">
+            {{ edu.project.description }}
+          </p>
+        </div>
+      </article>
+    </section>
+
     <!-- Projects -->
     <section class="flex min-h-0 flex-col gap-y-3 print:gap-y-1">
       <h2 class="text-xl font-bold">Proyectos Destacados</h2>
@@ -124,39 +156,6 @@
           </li>
         </template>
       </ul>
-    </section>
-
-    <!-- Education -->
-        <!-- Education -->
-        <section class="flex min-h-0 flex-col gap-y-3 print:gap-y-1">
-      <h2 class="text-xl font-bold">Educación</h2>
-      <article v-for="edu in cv.education" :key="edu.institution" class="rounded-lg bg-card py-1">
-        <div class="flex items-center justify-between gap-x-2 text-base">
-          <h3 class="font-semibold leading-none">{{ edu.institution }}</h3>
-          <div class="text-sm tabular-nums text-gray-500">
-            {{ formatDate(edu.startDate) }} - {{ formatDate(edu.endDate) }}
-          </div>
-        </div>
-        <p class="text-pretty font-mono text-sm text-foreground/80">
-          {{ edu.studyType }} en {{ edu.area }}
-        </p>
-        <!-- Add Project Section -->
-        <div v-if="edu.project" class="mt-2 border-t pt-2">
-          <div class="flex items-center gap-x-2">
-            <h4 class="font-medium text-sm">Proyecto Final: {{ edu.project.name }}</h4>
-            <a v-if="edu.project.video" 
-               :href="edu.project.video" 
-               target="_blank"
-               class="text-xs text-primary hover:underline"
-               rel="noopener noreferrer">
-              <Icon name="uil:video" class="inline-block" /> Ver Video
-            </a>
-          </div>
-          <p class="text-pretty font-mono text-xs text-foreground/80 mt-1">
-            {{ edu.project.description }}
-          </p>
-        </div>
-      </article>
     </section>
   </section>
 </template>
@@ -339,14 +338,13 @@
       "name": "Taps!",
       "startDate": "2014-06-01",
       "endDate": "2015-02-01",
-      "description": "A basic game to tap the screen asap in 10s.",
+      "description": "A basic game to tap the screen as fast as possible in 10s with multiples basic animations.",
       "highlights": [
         "Lua",
         "Marmalade",
         "Blackberry",
         "Android"
       ],
-      "url": "https://720degiro.juanman.tech/"
     },
   ]
 }
