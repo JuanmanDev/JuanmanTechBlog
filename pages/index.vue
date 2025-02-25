@@ -173,35 +173,37 @@ defineOgImageScreenshot({
     </ULandingSection>
 
     <div class="bg-primary-50 dark:bg-primary-400 dark:bg-opacity-10 py-5 px-3 gap-0">
-      <div class="flex justify-between m-2">
-        <h2> {{ page.hero.lastBlogsPosts }} </h2>
-        <NuxtLink
-          class="focus:outline-none"
-          tabindex="-1"
-        >
-          <UButton
-            :label="page.hero.links[0].label"
-            icon="i-heroicons-arrow-right-20-solid"
-            :trailing="true"
-            :to="localePath('/blog')"
-            size="xl"
-          />
-        </NuxtLink>
-      </div>
-      
-      <div class="flex flex-wrap">
-        <template v-for="article in blogs" :key="article._path">
-          <NuxtLink :to="article._path" class="flex-1 min-w-[200px] font-semibold m-2"  >
-            <UCard
-              :to="article._path"
-            >
-              <h2>
-                {{ article.title }}
-              </h2>
-            </UCard>
+      <div class="max-w-6xl mx-auto"> 
+        <div class="flex justify-between m-2">
+          <h2> {{ page.hero.lastBlogsPosts }} </h2>
+          <NuxtLink
+            class="focus:outline-none"
+            tabindex="-1"
+          >
+            <UButton
+              :label="page.hero.links[0].label"
+              icon="i-heroicons-arrow-right-20-solid"
+              :trailing="true"
+              :to="localePath('/blog')"
+              size="xl"
+            />
           </NuxtLink>
-        </template>
         </div>
+        
+        <div class="flex flex-wrap">
+          <template v-for="article in blogs" :key="article._path">
+            <NuxtLink :to="article._path" class="flex-1 min-w-[200px] font-semibold m-2"  >
+              <UCard
+                :to="article._path"
+              >
+                <h2>
+                  {{ article.title }}
+                </h2>
+              </UCard>
+            </NuxtLink>
+          </template>
+        </div>
+      </div>
             
     </div>
 

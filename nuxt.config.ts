@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   '@nuxt/ui', 'nuxt-disqus', 'nuxt-disqus', '@nuxtjs/seo'],
 
   content: {
-    documentDriven: true
+    documentDriven: true,
   },
 
   i18n: {
