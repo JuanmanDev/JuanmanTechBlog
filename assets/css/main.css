@@ -47,3 +47,9 @@ n-navbar-item {
 n-navbar-item:hover {
   color: #ddd;
 }
+
+iframe {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
