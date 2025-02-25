@@ -2,9 +2,9 @@
 export default defineNuxtConfig({
   extends: ['@nuxt/ui-pro'],
 
-  modules: ['nuxt-content-assets', // '@nuxtjs/tailwindcss',
-  '@nuxt/content', '@nuxtjs/i18n', '@nuxt/eslint', '@nuxt/fonts', // '@nuxt/image',
-  '@nuxt/ui', 'nuxt-disqus', 'nuxt-disqus', '@nuxtjs/seo'],
+  modules: [// '@nuxtjs/tailwindcss',
+  'nuxt-content-assets', '@nuxt/content', '@nuxtjs/i18n', '@nuxt/eslint', // '@nuxt/image',
+  '@nuxt/fonts', '@nuxt/ui', 'nuxt-disqus', 'nuxt-disqus', '@nuxtjs/seo', '@tresjs/nuxt'],
 
   content: {
     documentDriven: true,
@@ -70,5 +70,9 @@ export default defineNuxtConfig({
 
   devtools: {
     enabled: true,
+  },
+
+  tres: {
+    devtools: true,
   },
 })
