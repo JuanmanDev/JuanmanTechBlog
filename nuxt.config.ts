@@ -58,7 +58,6 @@ export default defineNuxtConfig({
     },
   },
 
-  
   disqus: {
     shortname: "juanmantech",
   },
@@ -68,4 +67,8 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: '2024-11-15',
+
+  devtools: {
+    enabled: true,
+  },
 })
