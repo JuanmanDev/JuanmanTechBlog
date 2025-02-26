@@ -12,7 +12,7 @@ const localePath = useLocalePath()
 const page = {
   "hero": {
     "title": "Hello! I'm Juanma :)",
-    "description": "Here you will find all my projects and blog posts.",
+    "description": "Here i share some things about tech and me.",
     "lastBlogsPosts": "Last blog posts",
     "links": [
       {
@@ -67,7 +67,7 @@ defineOgImageScreenshot({
 </script>
 
 <template>
-  <div class="h-full">
+  <div class="">
     <div class="w-full h-full absolute top-0 left-0 pointer-events-auto -z-10 min-h-80">
       <DecorationTresjs />
     </div>
@@ -161,7 +161,7 @@ defineOgImageScreenshot({
   transition: transform 0.5s ease, opacity 0.5s ease;
 }
 .zoom-image:hover {
-  transform: scale(10); /* Adjust the zoom level */
+  transform: scale(3); /* Adjust the zoom level */
   opacity: 0.8; /* Optional: Add a slight fade effect */
 }
 </style>
