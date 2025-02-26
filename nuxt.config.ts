@@ -10,6 +10,10 @@ export default defineNuxtConfig({
     documentDriven: true,
   },
 
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' }
+  },
+
   i18n: {
     defaultLocale: 'en',
     locales: [{ 
