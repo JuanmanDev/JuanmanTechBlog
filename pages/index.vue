@@ -12,7 +12,7 @@ const localePath = useLocalePath()
 const page = {
   "hero": {
     "title": "Hello! I'm Juanma :)",
-    "description": "Here you will find all my projects and blog posts.",
+    "description": "Here i share some things about tech and me.",
     "lastBlogsPosts": "Last blog posts",
     "links": [
       {
@@ -33,7 +33,7 @@ const page = {
     ]
   },
   "logos": {
-    "title": "Using the best technologies:",
+    "title": "This web has been created with:",
     "icons": [
       "i-simple-icons-vuedotjs",
       "i-simple-icons-nuxtdotjs",
@@ -50,7 +50,7 @@ if (locale.value === 'es') {
   page.hero.lastBlogsPosts = "Lo último en el blog";
   page.hero.links[0].label = "Ir al Blog";
   page.hero.links[1].label = "Ver este proyecto en github";
-  page.logos.title = "Usando las mejores tecnologías:";
+  page.logos.title = "Está web está hecha con:";
 }
 
 
@@ -67,7 +67,10 @@ defineOgImageScreenshot({
 </script>
 
 <template>
-  <div>
+  <div class="">
+    <div class="w-full h-full absolute top-0 left-0 pointer-events-auto -z-10 min-h-80">
+      <DecorationTresjs />
+    </div>
     <ULandingHero
       :title="page.hero.title"
       :description="page.hero.description"
@@ -110,72 +113,15 @@ defineOgImageScreenshot({
           v-for="icon in page.logos.icons"
           :key="icon"
           :name="icon"
-          class="w-12 h-12 lg:w-16 lg:h-16 flex-shrink-0 text-gray-900 dark:text-white"
+          class="w-12 h-12 lg:w-16 lg:h-16 flex-shrink-0 text-gray-900 dark:text-white zoom-image"
         />
       </ULandingLogos>
-    </ULandingHero>
+    </ULandingHero> 
 
-    <ULandingSection
-      v-if="page.features"
-      :title="page.features.title"
-      :description="page.features.description"
-      :headline="page.features.headline"
-    >
-      <UPageGrid
-        id="features"
-        class="scroll-mt-[calc(var(--header-height)+140px+128px+96px)]"
-      >
-        <ULandingCard
-          v-for="(item, index) in page.features.items"
-          :key="index"
-          v-bind="item"
-        />
-      </UPageGrid>
-    </ULandingSection>
-
-    <ULandingSection
-      v-if="page.pricing"
-      :title="page.pricing.title"
-      :description="page.pricing.description"
-      :headline="page.pricing.headline"
-    >
-      <UPricingGrid
-        id="pricing"
-        compact
-        class="scroll-mt-[calc(var(--header-height)+140px+128px+96px)]"
-      >
-        <UPricingCard
-          v-for="(plan, index) in page.pricing.plans"
-          :key="index"
-          v-bind="plan"
-        />
-      </UPricingGrid>
-    </ULandingSection>
-
-    <ULandingSection
-      v-if="page.testimonials"
-      :headline="page.testimonials.headline"
-      :title="page.testimonials.title"
-      :description="page.testimonials.description"
-    >
-      <UPageColumns
-        id="testimonials"
-        class="xl:columns-4 scroll-mt-[calc(var(--header-height)+140px+128px+96px)]"
-      >
-        <div
-          v-for="(testimonial, index) in page.testimonials.items"
-          :key="index"
-          class="break-inside-avoid"
-        >
-          <ULandingTestimonial v-bind="testimonial" />
-        </div>
-      </UPageColumns>
-    </ULandingSection>
-
-    <div class="bg-primary-50 dark:bg-primary-400 dark:bg-opacity-10 py-5 px-3 gap-0">
+    <div class="bg-primary-50 dark:bg-primary-40 bg-opacity-70 backdrop-blur py-5 px-3 gap-0">
       <div class="max-w-6xl mx-auto"> 
         <div class="flex justify-between m-2">
-          <h2> {{ page.hero.lastBlogsPosts }} </h2>
+          <h2 class="dark:text-slate-950"> {{ page.hero.lastBlogsPosts }} </h2>
           <NuxtLink
             class="focus:outline-none"
             tabindex="-1"
@@ -204,29 +150,18 @@ defineOgImageScreenshot({
           </template>
         </div>
       </div>
-            
     </div>
-
-    <ULandingSection
-      v-if="page.faq"
-      id="faq"
-      :title="page.faq.title"
-      :description="page.faq.description"
-      class="scroll-mt-[var(--header-height)]"
-    >
-      <ULandingFAQ
-        multiple
-        :items="page.faq.items"
-        :ui="{
-          button: {
-            label: 'font-semibold',
-            trailingIcon: {
-              base: 'w-6 h-6'
-            }
-          }
-        }"
-        class="max-w-4xl mx-auto"
-      />
-    </ULandingSection>
   </div>
 </template>
+
+<style lang="css">
+/* Style the image */
+.zoom-image {
+  object-fit: cover;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.zoom-image:hover {
+  transform: scale(3); /* Adjust the zoom level */
+  opacity: 0.8; /* Optional: Add a slight fade effect */
+}
+</style>
