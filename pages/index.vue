@@ -33,7 +33,7 @@ const page = {
     ]
   },
   "logos": {
-    "title": "Using the best technologies:",
+    "title": "This web has been created with:",
     "icons": [
       "i-simple-icons-vuedotjs",
       "i-simple-icons-nuxtdotjs",
@@ -50,7 +50,7 @@ if (locale.value === 'es') {
   page.hero.lastBlogsPosts = "Lo último en el blog";
   page.hero.links[0].label = "Ir al Blog";
   page.hero.links[1].label = "Ver este proyecto en github";
-  page.logos.title = "Usando las mejores tecnologías:";
+  page.logos.title = "Está web está hecha con:";
 }
 
 
@@ -67,7 +67,10 @@ defineOgImageScreenshot({
 </script>
 
 <template>
-  <div>
+  <div class="relative">
+    <div class="w-full h-full absolute top-0 left-0 pointer-events-auto -z-10">
+      <DecorationTresjs />
+    </div>
     <ULandingHero
       :title="page.hero.title"
       :description="page.hero.description"
@@ -114,24 +117,7 @@ defineOgImageScreenshot({
         />
       </ULandingLogos>
     </ULandingHero>
-
-    <ULandingSection
-      v-if="page.features"
-      :title="page.features.title"
-      :description="page.features.description"
-      :headline="page.features.headline"
-    >
-      <UPageGrid
-        id="features"
-        class="scroll-mt-[calc(var(--header-height)+140px+128px+96px)]"
-      >
-        <ULandingCard
-          v-for="(item, index) in page.features.items"
-          :key="index"
-          v-bind="item"
-        />
-      </UPageGrid>
-    </ULandingSection>
+    
 
     <ULandingSection
       v-if="page.pricing"
@@ -204,29 +190,6 @@ defineOgImageScreenshot({
           </template>
         </div>
       </div>
-            
     </div>
-
-    <ULandingSection
-      v-if="page.faq"
-      id="faq"
-      :title="page.faq.title"
-      :description="page.faq.description"
-      class="scroll-mt-[var(--header-height)]"
-    >
-      <ULandingFAQ
-        multiple
-        :items="page.faq.items"
-        :ui="{
-          button: {
-            label: 'font-semibold',
-            trailingIcon: {
-              base: 'w-6 h-6'
-            }
-          }
-        }"
-        class="max-w-4xl mx-auto"
-      />
-    </ULandingSection>
   </div>
 </template>
