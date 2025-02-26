@@ -67,8 +67,8 @@ defineOgImageScreenshot({
 </script>
 
 <template>
-  <div class="relative">
-    <div class="w-full h-full absolute top-0 left-0 pointer-events-auto -z-10">
+  <div class="h-full">
+    <div class="w-full h-full absolute top-0 left-0 pointer-events-auto -z-10 min-h-80">
       <DecorationTresjs />
     </div>
     <ULandingHero
@@ -158,10 +158,10 @@ defineOgImageScreenshot({
       </UPageColumns>
     </ULandingSection>
 
-    <div class="bg-primary-50 dark:bg-primary-400 dark:bg-opacity-10 py-5 px-3 gap-0">
+    <div class="bg-primary-50 dark:bg-primary-40 bg-opacity-70 backdrop-blur py-5 px-3 gap-0">
       <div class="max-w-6xl mx-auto"> 
         <div class="flex justify-between m-2">
-          <h2> {{ page.hero.lastBlogsPosts }} </h2>
+          <h2 class="dark:text-slate-950"> {{ page.hero.lastBlogsPosts }} </h2>
           <NuxtLink
             class="focus:outline-none"
             tabindex="-1"

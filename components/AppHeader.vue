@@ -26,7 +26,7 @@ const links = computed(() => [{
 </script>
 
 <template>
-  <UHeader :links="links">
+  <UHeader :links="links" class="backdrop-blur">
     <template #left>
       <NuxtLink :to="localePath('/')" 
         class="router-link-active router-link-exact-active flex-shrink-0 font-bold text-xl text-gray-900 dark:text-white flex items-end gap-1.5"
