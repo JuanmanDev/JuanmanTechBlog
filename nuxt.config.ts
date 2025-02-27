@@ -3,11 +3,13 @@ export default defineNuxtConfig({
   extends: ['@nuxt/ui-pro'],
 
   modules: [// '@nuxtjs/tailwindcss',
-  'nuxt-content-assets', '@nuxt/content', '@nuxtjs/i18n', '@nuxt/eslint', // '@nuxt/image',
-  '@nuxt/fonts', '@nuxt/ui', 'nuxt-disqus', 'nuxt-disqus', '@nuxtjs/seo', '@tresjs/nuxt'],
+    'nuxt-content-assets', '@nuxt/content', '@nuxtjs/i18n', '@nuxt/eslint', // '@nuxt/image',
+    '@nuxt/fonts', '@nuxt/ui', 'nuxt-disqus', 'nuxt-disqus', '@nuxtjs/seo', '@tresjs/nuxt',
+    'nuxt-llms'
+  ],
 
   content: {
-    documentDriven: true,
+    documentDriven: true
   },
 
   app: {
@@ -16,7 +18,7 @@ export default defineNuxtConfig({
 
   i18n: {
     defaultLocale: 'en',
-    locales: [{ 
+    locales: [{
       code: 'en',
       iso: 'en-US',
       file: 'en-US.json',
@@ -30,13 +32,13 @@ export default defineNuxtConfig({
     }
     ],
     langDir: 'locales/',
-    vueI18n: "en",
-    lazy: true,
+    vueI18n: 'en',
+    lazy: true
   },
 
   tailwindcss: {
     config: {
-      darkMode: 'class',
+      darkMode: 'class'
     }
   },
 
@@ -58,12 +60,12 @@ export default defineNuxtConfig({
   postcss: {
     plugins: {
       tailwindcss: {},
-      autoprefixer: {},
-    },
+      autoprefixer: {}
+    }
   },
 
   disqus: {
-    shortname: "juanmantech",
+    shortname: 'juanmantech'
   },
 
   ogImage: {
@@ -73,10 +75,19 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-15',
 
   devtools: {
-    enabled: true,
+    enabled: true
   },
 
   tres: {
-    devtools: true,
+    devtools: true
+  },
+
+  llms: {
+    domain: 'https://juanman.tech',
+    title: 'Juanman Tech',
+    full: {
+      title: 'Juanman Tech',
+      description: 'Juanman Tech is a blog about web development, programming, and technology by Juan Manuel Béc.',
+    },
   },
 })

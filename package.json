@@ -19,17 +19,18 @@
     "@nuxtjs/i18n": "npm:@nuxtjs/i18n-edge",
     "@nuxtjs/seo": "^2.0.2",
     "@nuxtjs/tailwindcss": "^6.12.2",
+    "nuxt-llms": "^0.1.0",
     "@tailwindcss/typography": "^0.5.15",
+    "@tresjs/cientos": "^4.1.0",
+    "@tresjs/core": "^4.3.3",
     "@tresjs/nuxt": "^3.0.8",
     "@types/node": "^22.9.0",
     "@types/three": "^0.173.0",
     "@vercel/analytics": "^1.4.1",
+    "gsap": "^3.12.7",
     "nuxt": "^3.14.159",
     "nuxt-disqus": "^1.1.1",
-    "three": "^0.173.0",
-    "@tresjs/cientos": "^4.1.0",
-    "@tresjs/core": "^4.3.3",
-    "gsap": "^3.12.7"
+    "three": "^0.173.0"
   },
   "dependencies": {
     "nuxt-content-assets": "^1.4.4"
