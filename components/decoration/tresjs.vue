@@ -1,15 +1,27 @@
 <script setup lang="ts">
-import { TresCanvas } from '@tresjs/core';
-import { Shape, ExtrudeGeometry, Mesh, MeshStandardMaterial, DoubleSide, Vector3, PerspectiveCamera,
-  
+import { TresCanvas, dispose } from '@tresjs/core';
+import { 
+  Shape, ExtrudeGeometry, Mesh, MeshStandardMaterial, DoubleSide,
  } from 'three';
 
 import { shallowRef, watch } from 'vue';
 import { OrbitControls } from '@tresjs/cientos';
 import gsap from 'gsap';
 
-const heptagon = shallowRef();
+function isWebGLAvailable() {
+  try {
+    const canvas = document.createElement('canvas');
+    return !!(
+      window.WebGLRenderingContext &&
+      (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))
+    );
+  } catch (e) {
+    return false;
+  }
+}
+const webGL = isWebGLAvailable();
 
+const heptagon = shallowRef();
 
 // Create a heptagon shape
 const heptagonShape = new Shape();
@@ -80,22 +92,28 @@ watch(heptagon, () => {
   });
 });
 
+
+onUnmounted(() => {
+  dispose(heptagonMesh)
+})
 </script>
 
 <template>
-  <TresCanvas>
-    <TresPerspectiveCamera
-      ref="cam"
-      :position="[0, 0, 3]"
-      :fov="45"
-      :near="0.1"
-      :far="1000"
-      :look-at="[0, 0, 0]"
-    />
-    <OrbitControls />
-    <primitive :object="heptagonMesh" :position="[0, 0, 0]" ref="heptagon" />
-    <TresGridHelper :args="[30, 30, 0x444444, 'teal']" :position="[0, -2, 0]" />
-    <TresAmbientLight :intensity="1" />
-    <DirectionalLight :position="[5, 5, 5]" :intensity="2" />
-  </TresCanvas>
+  <Suspense v-if="webGL">
+    <TresCanvas ref="canvas">
+      <TresPerspectiveCamera
+        ref="cam"
+        :position="[0, 0, 3]"
+        :fov="45"
+        :near="0.1"
+        :far="1000"
+        :look-at="[0, 0, 0]"
+      />
+      <OrbitControls />
+      <primitive :object="heptagonMesh" :position="[0, 0, 0]" ref="heptagon" />
+      <TresGridHelper :args="[30, 30, 0x444444, 'teal']" :position="[0, -2, 0]" />
+      <TresAmbientLight :intensity="1" />
+      <DirectionalLight :position="[5, 5, 5]" :intensity="2" />
+    </TresCanvas>
+  </Suspense>
 </template>
