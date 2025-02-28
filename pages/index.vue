@@ -54,11 +54,41 @@ if (locale.value === 'es') {
 }
 
 
-const { data: blogs }  = await useAsyncData(localePath(`/blog/`), () => queryContent(localePath(`/blog/`))
-  .without('body')
-  .sort({'updated': -1})
+// const { data: blogs } = await useAsyncData(localePath(`/blog/`), () => queryContent(localePath(`/blog/`))
+//   .where({ _path: /^\/blog/ })
+//   .skip(0)
+//   .limit(3)
+//   .sort({ updated: -1 })
+//   .find()
+// );
+
+// const blogs = await queryCollectionItemSurroundings(
+//   'content',
+//   localePath(`/blog/`),
+//   {
+//     fields: ['title', 'description', 'navigation']
+//   }
+// )
+
+// const { data: blogs } = await useAsyncData(localePath(`/blog/`), () => {
+//   return queryCollectionItemSurroundings(
+//     'content',
+//     localePath(`/blog/`),
+//     {
+//       fields: ['title', 'description', 'navigation']
+//     }
+//   )
+// });
+
+
+const { data: blogs3 } = await useAsyncData(localePath(`/blog/`), () => queryContent()
+  .where({ _path: /^\/blog/ })
+  .without(['body'])
+  .sort({ updated: -1 })
   .limit(3)
-  .find());
+  .find()
+);
+
 
 defineOgImageScreenshot({
   // wait 2 seconds
@@ -67,10 +97,13 @@ defineOgImageScreenshot({
 </script>
 
 <template>
-  <div class="">
-    <div class="w-full h-full absolute top-0 left-0 pointer-events-auto -z-10 min-h-80">
-      <DecorationTresjs />
+  <div class="relative w-full h-full min-h-[calc(100vh-var(--header-height))]">
+    <div class="absolute -z-10 max-h-screen max-w-screen h-full  w-full h-full">
+      <div class="min-h-80 max-h-screen max-w-screen h-full  w-full h-full">
+        <DecorationTresjs class="min-h-80 max-h-screen max-w-screen h-full  w-full h-full" />
+      </div>
     </div>
+    
     <ULandingHero
       :title="page.hero.title"
       :description="page.hero.description"
@@ -109,8 +142,8 @@ defineOgImageScreenshot({
         </div>
         
         <div class="flex flex-wrap place-items-stretch items-stretch">
-          <template v-for="article in blogs" :key="article._path">
-            <NuxtLink :to="article._path" class="flex-1 min-w-[200px] font-semibold m-2 h-full" >
+          <template v-for="(article, index) in blogs3" :key="article._path">
+            <NuxtLink :to="article._path" class="flex-1 min-w-[200px] font-semibold m-2 h-full" v-if="index < 3">
               <UCard
                 :to="article._path"
               >

@@ -1,7 +1,7 @@
 <template>
   <UContainer>
     <Placeholder class="h-32" />
-    <h1 class="my-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+    <h1 class="mt-20 mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
       Blog
     </h1>
     <UPageGrid>
@@ -27,9 +27,10 @@
 
 <script setup>
 const localePath = useLocalePath();
-
-const { data }  = await useAsyncData(localePath(`/blog/`), () => queryContent(localePath(`/blog/`))
-  .without('body')
-  .sort({'updated': -1})
-  .find());
+const { data } = await useAsyncData(localePath(`/blog/`), () => queryContent()
+  .where({ _path: /^\/blog/ })
+  .without(['body'])
+  .sort({ updated: -1 })
+  .find()
+);
 </script>

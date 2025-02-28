@@ -1,12 +1,11 @@
 <template>
-  <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
+  <div class="min-h-screen bg-gray-50 dark:bg-gray-900 mt-36">
     <UMain class="mx-1">
       <h1 class="text-5xl font-bold text-center my-10">{{ post.title }}</h1>
       <div class="prose dark:prose-invert">
         <slot />
       </div>
 
-      
       <UContainer class="flex  items-center justify-center my-4 flex-wrap">
         <UBadge
           icon="heroicons:calendar"
@@ -42,9 +41,25 @@
 import { useRoute } from 'vue-router'
 import { ref } from 'vue'
 
+const localePath = useLocalePath()
 const route = useRoute()
 
-const { data: post } = await useAsyncData(() => queryContent(route.path).findOne())
+
+const { data: posts } = await useAsyncData('index', () => queryCollection('/blog/' + route.path).findOne())
+
+let path = route.path;
+if (path.endsWith("/")) {
+  path = path.slice(0, -1);
+}
+
+const { data: post } = await useAsyncData(localePath(`/blog/`), () => queryContent()
+  .where({ _path: {  $eq: path } }) 
+  .findOne()
+);
+
+const { data: page } = await useAsyncData(route.path, () => {
+  return queryCollection().find()
+})
 
 const disqusConfig = ref({
   identifier: route.path,
@@ -57,8 +72,6 @@ defineOgImageComponent('Pergel', {
   description: "Blog",
   headline: post.title,
 })
-
-
 </script>
 
 <style>

@@ -3,17 +3,35 @@ export default defineNuxtConfig({
   extends: ['@nuxt/ui-pro'],
 
   modules: [// '@nuxtjs/tailwindcss',
-    'nuxt-content-assets', '@nuxt/content', '@nuxtjs/i18n', '@nuxt/eslint', // '@nuxt/image',
-    '@nuxt/fonts', '@nuxt/ui', 'nuxt-disqus', 'nuxt-disqus', '@nuxtjs/seo', '@tresjs/nuxt',
-    'nuxt-llms'
+    'nuxt-content-assets',
+    '@nuxtjs/seo',
+    '@nuxtjs/i18n',
+    '@nuxt/content',
+    '@nuxt/eslint',
+    // '@nuxt/image',
+    '@nuxt/fonts',
+    '@nuxt/ui',
+    'nuxt-disqus',
+    '@tresjs/nuxt',
+    'nuxt-llms',
   ],
 
   content: {
-    documentDriven: true
+    documentDriven: true,
+    navigation: {
+      fields: ['title', 'description', 'image', '_path', 'updated']
+    }
   },
 
   app: {
-    pageTransition: { name: 'page', mode: 'out-in' }
+    pageTransition: {
+      name: 'page',
+      mode: 'out-in',
+      //css: false,
+      // onBeforeEnter: () => {
+      //   window.scrollTo(0, 0);
+      // }
+     }
   },
 
   i18n: {
@@ -31,7 +49,7 @@ export default defineNuxtConfig({
       name: 'Español'
     }
     ],
-    langDir: 'locales/',
+    langDir: '../locales/',
     vueI18n: 'en',
     lazy: true
   },
@@ -68,9 +86,9 @@ export default defineNuxtConfig({
     shortname: 'juanmantech'
   },
 
-  ogImage: {
-    strictNuxtContentPaths: true
-  },
+  // ogImage: {
+  //   strictNuxtContentPaths: true
+  // },
 
   compatibilityDate: '2024-11-15',
 
