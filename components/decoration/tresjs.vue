@@ -4,16 +4,16 @@ import {
   Shape, ExtrudeGeometry, Mesh, MeshStandardMaterial, DoubleSide,
  } from 'three';
 
-import { shallowRef, watch } from 'vue';
+import { shallowRef, watch, ref } from 'vue';
 import { OrbitControls } from '@tresjs/cientos';
 import gsap from 'gsap';
 
 function isWebGLAvailable() {
   try {
-    const canvas = document.createElement('canvas');
+    const c = document.createElement('canvas');
     return !!(
       window.WebGLRenderingContext &&
-      (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))
+      (c.getContext('webgl') || c.getContext('experimental-webgl'))
     );
   } catch (e) {
     return false;
@@ -22,6 +22,7 @@ function isWebGLAvailable() {
 const webGL = isWebGLAvailable();
 
 const heptagon = shallowRef();
+const isLoading = ref(true);
 
 // Create a heptagon shape
 const heptagonShape = new Shape();
@@ -51,12 +52,12 @@ for (let i = 0; i < points.length; i++) {
 
 // Define extrusion settings
 const extrudeSettings = {
-  depth: 0.02,
+  depth: 0.001,
   bevelEnabled: true,
   bevelThickness: 0.05,
   bevelSize: 0.3,
-  bevelSegments: 30,
-  curveSegments: 10,
+  bevelSegments: 3,
+  curveSegments: 1,
 };
 
 const heptagonGeometry = new ExtrudeGeometry(heptagonShape, extrudeSettings);
@@ -81,7 +82,6 @@ const faceMaterial = new MeshStandardMaterial({
 // Use an array of materials
 const heptagonMesh = new Mesh(heptagonGeometry, [borderMaterial, faceMaterial]);
 
-
 watch(heptagon, () => {
   gsap.to(heptagonMesh.rotation, {
     z: Math.PI,
@@ -90,8 +90,14 @@ watch(heptagon, () => {
     yoyo: true,
     ease: 'power1.inOut',
   });
-});
 
+  // Fade out loading screen
+  gsap.to(isLoading, {
+    value: false,
+    duration: 1,
+    ease: 'power2.inOut'
+  });
+});
 
 onUnmounted(() => {
   dispose(heptagonMesh)
@@ -99,21 +105,31 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <Suspense v-if="webGL">
-    <TresCanvas ref="canvas">
-      <TresPerspectiveCamera
-        ref="cam"
-        :position="[0, 0, 3]"
-        :fov="45"
-        :near="0.1"
-        :far="1000"
-        :look-at="[0, 0, 0]"
-      />
-      <OrbitControls />
-      <primitive :object="heptagonMesh" :position="[0, 0, 0]" ref="heptagon" />
-      <TresGridHelper :args="[30, 30, 0x444444, 'teal']" :position="[0, -2, 0]" />
-      <TresAmbientLight :intensity="1" />
-      <DirectionalLight :position="[5, 5, 5]" :intensity="2" />
-    </TresCanvas>
-  </Suspense>
+  <TresCanvas ref="canvas" :class="{ 'opacity-simple-animation-100': !isLoading, 'opacity-simple-animation-0': isLoading }" >
+    <TresPerspectiveCamera
+      ref="cam"
+      :position="[0, 0, 3]"
+      :fov="45"
+      :near="0.1"
+      :far="1000"
+      :look-at="[0, 0, 0]"
+    />
+    <OrbitControls />
+    <primitive :object="heptagonMesh" :position="[0, 0, 0]" ref="heptagon" />
+    <TresGridHelper :args="[30, 30, 0x444444, 'teal']" :position="[0, -2, 0]" />
+    <TresAmbientLight :intensity="1" />
+    <DirectionalLight :position="[5, 5, 5]" :intensity="2" />
+  </TresCanvas>
 </template>
+
+<style lang="css">
+.opacity-simple-animation-0 {
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.opacity-simple-animation-100 {
+  opacity: 1;
+  transition: opacity 1.5s ease;
+}
+</style>
