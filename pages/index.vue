@@ -75,36 +75,8 @@ defineOgImageScreenshot({
       :title="page.hero.title"
       :description="page.hero.description"
       :links="page.hero.links"
+      class="2xl:pt-[35vh] xl:pt-[25vh] pt-[15vh]"
     >
-      <template #headline>
-        <UBadge
-          v-if="page.hero.headline"
-          variant="subtle"
-          size="lg"
-          class="relative rounded-full font-semibold"
-        >
-          <NuxtLink
-            :to="localePath(page.hero.headline.to)"
-            target="_blank"
-            class="focus:outline-none"
-            tabindex="-1"
-          >
-            <span
-              class="absolute inset-0"
-              aria-hidden="true"
-            />
-          </NuxtLink>
-
-          {{ page.hero.headline.label }}
-
-          <UIcon
-            v-if="page.hero.headline.icon"
-            :name="page.hero.headline.icon"
-            class="ml-1 w-4 h-4 pointer-events-none"
-          />
-        </UBadge>
-      </template>
-
       <ULandingLogos
         :title="page.logos.title"
         align="center"
@@ -136,9 +108,9 @@ defineOgImageScreenshot({
           </NuxtLink>
         </div>
         
-        <div class="flex flex-wrap">
+        <div class="flex flex-wrap place-items-stretch items-stretch">
           <template v-for="article in blogs" :key="article._path">
-            <NuxtLink :to="article._path" class="flex-1 min-w-[200px] font-semibold m-2"  >
+            <NuxtLink :to="article._path" class="flex-1 min-w-[200px] font-semibold m-2 h-full" >
               <UCard
                 :to="article._path"
               >

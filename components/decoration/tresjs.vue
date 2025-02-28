@@ -1,15 +1,28 @@
 <script setup lang="ts">
-import { TresCanvas } from '@tresjs/core';
-import { Shape, ExtrudeGeometry, Mesh, MeshStandardMaterial, DoubleSide, Vector3, PerspectiveCamera,
-  
+import { TresCanvas, dispose } from '@tresjs/core';
+import { 
+  Shape, ExtrudeGeometry, Mesh, MeshStandardMaterial, DoubleSide,
  } from 'three';
 
-import { shallowRef, watch } from 'vue';
+import { shallowRef, watch, ref } from 'vue';
 import { OrbitControls } from '@tresjs/cientos';
 import gsap from 'gsap';
 
-const heptagon = shallowRef();
+function isWebGLAvailable() {
+  try {
+    const c = document.createElement('canvas');
+    return !!(
+      window.WebGLRenderingContext &&
+      (c.getContext('webgl') || c.getContext('experimental-webgl'))
+    );
+  } catch (e) {
+    return false;
+  }
+}
+const webGL = isWebGLAvailable();
 
+const heptagon = shallowRef();
+const isLoading = ref(true);
 
 // Create a heptagon shape
 const heptagonShape = new Shape();
@@ -39,12 +52,12 @@ for (let i = 0; i < points.length; i++) {
 
 // Define extrusion settings
 const extrudeSettings = {
-  depth: 0.02,
+  depth: 0.001,
   bevelEnabled: true,
   bevelThickness: 0.05,
   bevelSize: 0.3,
-  bevelSegments: 30,
-  curveSegments: 10,
+  bevelSegments: 3,
+  curveSegments: 1,
 };
 
 const heptagonGeometry = new ExtrudeGeometry(heptagonShape, extrudeSettings);
@@ -69,7 +82,6 @@ const faceMaterial = new MeshStandardMaterial({
 // Use an array of materials
 const heptagonMesh = new Mesh(heptagonGeometry, [borderMaterial, faceMaterial]);
 
-
 watch(heptagon, () => {
   gsap.to(heptagonMesh.rotation, {
     z: Math.PI,
@@ -78,12 +90,22 @@ watch(heptagon, () => {
     yoyo: true,
     ease: 'power1.inOut',
   });
+
+  // Fade out loading screen
+  gsap.to(isLoading, {
+    value: false,
+    duration: 1,
+    ease: 'power2.inOut'
+  });
 });
 
+onUnmounted(() => {
+  dispose(heptagonMesh)
+})
 </script>
 
 <template>
-  <TresCanvas>
+  <TresCanvas ref="canvas" :class="{ 'opacity-simple-animation-100': !isLoading, 'opacity-simple-animation-0': isLoading }" >
     <TresPerspectiveCamera
       ref="cam"
       :position="[0, 0, 3]"
@@ -99,3 +121,15 @@ watch(heptagon, () => {
     <DirectionalLight :position="[5, 5, 5]" :intensity="2" />
   </TresCanvas>
 </template>
+
+<style lang="css">
+.opacity-simple-animation-0 {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.opacity-simple-animation-100 {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+</style>
