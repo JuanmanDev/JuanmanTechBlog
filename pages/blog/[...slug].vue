@@ -49,7 +49,7 @@
   
   // Redirect if URL doesn't end with /
   if (!route.path.endsWith('/')) {
-    navigateTo(route.path + '/')
+    navigateTo(route.path + '/', { replace: true })
   }
   
   const { data: posts } = await useAsyncData('index', () => queryCollection('/blog/' + route.path).findOne())
