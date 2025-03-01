@@ -1,22 +1,3 @@
-<!-- <script setup lang="ts">
-const route = useRoute()
-
-const { data: page } = await useAsyncData('page-' + route.path, () => {
-  return queryCollection('content').path(route.path).first()
-})
-
-if (!page.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
-}
-</script>
-
-<template>
-  <ContentRenderer
-    v-if="page"
-    :value="page"
-  />
-</template> -->
-
 <template>
     <div class="min-h-screen bg-gray-50 dark:bg-gray-900 mt-36">
       <UMain class="mx-1">
@@ -73,34 +54,9 @@ if (!page.value) {
   if (path.endsWith("/")) {
     path = path.slice(0, -1);
   }
-  
-  // const { data: post } = await useAsyncData(localePath(`/blog/`), () => queryContent()
-  //   .where({ _path: {  $eq: path } }) 
-  //   .findOne()
-  // );
-  
-  
-//   const { data: post } = await useAsyncData(() => queryCollection('content')
-//     .path(path)
-//     // .select(
-//     //   '_path',
-//     //   'title',
-//     //   'short',
-//     //   'updated',
-//     //   'image',
-//     // )
-//     .all()
-//   )
-  
-  
-//   const { data: page } = await useAsyncData(route.path, () => {
-//     return queryCollection().find()
-//   })
 
-  // const route = useRoute()
-
-  const { data: post } = await useAsyncData('page-' + route.path, () => {
-    return queryCollection('content').path(route.path).first()
+  const { data: post } = await useAsyncData('page-' + path, () => {
+    return queryCollection('content').path(path).first()
   })
 
   if (!post.value) {

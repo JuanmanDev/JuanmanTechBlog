@@ -19,7 +19,7 @@ async function copyPngFiles(sourcePath: string, targetPath: string) {
       
       if (entry.isDirectory()) {
         await copyPngFiles(srcPath, targetPath)
-      } else if (entry.name.toLowerCase().endsWith('.png')) {
+      } else if (entry.name.toLowerCase().endsWith('.png') || entry.name.toLowerCase().endsWith('.webp')) {
         const relPath = relative('./content', srcPath)
         const destPath = join(targetPath, relPath)
         

@@ -17,7 +17,7 @@ updated: 2025-02-25 20:00
 image: ../es/blog/6/image.png
 ---
 
-![imagen CV](image.png)
+![imagen CV](./image.png)
 
 # Mi CV en línea con JSON Resume
 

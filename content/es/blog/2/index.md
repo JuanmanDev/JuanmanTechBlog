@@ -33,7 +33,7 @@ Mi servidor tiene un **HDD de 750 GB** conectado que no estaba utilizando. Inici
 
 Este es el disco en **Proxmox**:
 
-![Discos en Proxmox](image.png)
+![Discos en Proxmox](./image.png)
 
 El disco está montado en Proxmox y es accesible:  
 
@@ -66,8 +66,8 @@ Para utilizarlo en un contenedor **LXC**, necesito compartir un punto de montaje
 5. **Verifica el acceso desde el contenedor:**  
    Comprueba que puedes acceder a los archivos desde el contenedor:
 
-   ![Acceso desde el LXC](image-3.png)  
-   ![Punto de montaje en Proxmox](image-2.png)  
+   ![Acceso desde el LXC](./image-3.png)  
+   ![Punto de montaje en Proxmox](./image-2.png)  
 
 ¡Listo! Ahora tienes más espacio disponible en el LXC. 🥳
 
@@ -141,6 +141,6 @@ Reinicia los contenedores afectados para aplicar los cambios.
 
 Ahora, gracias al HDD adicional, tengo mucho más espacio disponible en mi servidor:  
 
-![Resultado final](image-5.png)
+![Resultado final](./image-5.png)
 
 Gracias por leer hasta aquí. 😊
