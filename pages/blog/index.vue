@@ -40,6 +40,13 @@
 
 <script setup>
 const localePath = useLocalePath();
+
+// Redirect if URL doesn't end with /
+if (!route.path.endsWith('/')) {
+  navigateTo(route.path + '/', { replace: true })
+}
+
+
 const { data: a } = await useAsyncData(localePath(`/blog/`), () =>
   queryCollection('blog') // Changed collection from 'content' to 'blog'
     .without(['body'])
