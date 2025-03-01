@@ -1,6 +1,5 @@
 <template>
   <UContainer>
-    <Placeholder class="h-32" />
     <h1 class="md:pt-28 md:pb-12 pt-20 pb-2 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
       Blog
     </h1>

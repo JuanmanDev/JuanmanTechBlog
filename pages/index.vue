@@ -54,40 +54,17 @@ if (locale.value === 'es') {
 }
 
 
-// const { data: blogs } = await useAsyncData(localePath(`/blog/`), () => queryContent(localePath(`/blog/`))
-//   .where({ _path: /^\/blog/ })
-//   .skip(0)
-//   .limit(3)
-//   .sort({ updated: -1 })
-//   .find()
-// );
 
-// const blogs = await queryCollectionItemSurroundings(
-//   'content',
-//   localePath(`/blog/`),
-//   {
-//     fields: ['title', 'description', 'navigation']
-//   }
-// )
-
-// const { data: blogs } = await useAsyncData(localePath(`/blog/`), () => {
-//   return queryCollectionItemSurroundings(
-//     'content',
-//     localePath(`/blog/`),
-//     {
-//       fields: ['title', 'description', 'navigation']
-//     }
-//   )
-// });
-
-
-const { data: blogs3 } = await useAsyncData(localePath(`/blog/`), () => queryContent()
-  .where({ _path: /^\/blog/ })
-  .without(['body'])
-  .sort({ updated: -1 })
+const { data: blogs3 } = await useAsyncData(() => queryCollection('content')
+  .select(
+    'path',
+    'title',
+  )
+  .where('path', 'LIKE', localePath(`/blog/`) + '%' )
+  .order('updated', 'DESC')
   .limit(3)
-  .find()
-);
+  .all()
+)
 
 
 defineOgImageScreenshot({
@@ -142,10 +119,10 @@ defineOgImageScreenshot({
         </div>
         
         <div class="flex flex-wrap place-items-stretch items-stretch">
-          <template v-for="(article, index) in blogs3" :key="article._path">
-            <NuxtLink :to="article._path" class="flex-1 min-w-[200px] font-semibold m-2 h-full" v-if="index < 3">
+          <template v-for="(article, index) in blogs3" :key="article.path">
+            <NuxtLink :to="article.path" class="flex-1 min-w-[200px] font-semibold m-2 h-full" v-if="index < 3">
               <UCard
-                :to="article._path"
+                :to="article.path"
               >
                 <h2>
                   {{ article.title }}
