@@ -56,7 +56,7 @@
     throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
   }
 
-  function updateImageSources(arr, routePath) {
+  function updateImageSources(arr, routePath, postPath) {
     if (!Array.isArray(arr)) {
         return arr;
     }
@@ -65,7 +65,17 @@
     if (arr[0] === 'img' && typeof arr[1] === 'object') {
         // Update src attribute if it exists and is relative
         if (arr[1].src && !arr[1].src.startsWith('http') && !arr[1].src.startsWith('//')) {
-            arr[1].src = `${routePath}/${arr[1].src}`.replace(/\/+/g, '/');
+          //  __  /blog/2/../es/blog/2/image-1.png  
+          //  __  content\blog\2.md
+          //  __ ../es/blog/2/image.png
+          // if (arr[1].src.startsWith('..')){
+          //   while (arr[1].src.startsWith('../')) {
+
+          //   }
+          // } else {
+          // }
+          arr[1].src = `${postPath}/${arr[1].src}`.replace(/\/+/g, '/');
+
         }
     }
 
@@ -79,7 +89,7 @@
     return arr;
   }
 
-  updateImageSources(post.value.body.value, path);
+  updateImageSources(post.value.body.value, path, post.value.path);
   
   const disqusConfig = ref({
     identifier: route.path,
