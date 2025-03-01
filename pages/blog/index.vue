@@ -39,23 +39,15 @@
 </template>
 
 <script setup>
+import { useRoute } from 'vue-router'
+
 const localePath = useLocalePath();
+const route = useRoute()
 
 // Redirect if URL doesn't end with /
 if (!route.path.endsWith('/')) {
   navigateTo(route.path + '/', { replace: true })
 }
-
-
-const { data: a } = await useAsyncData(localePath(`/blog/`), () =>
-  queryCollection('blog') // Changed collection from 'content' to 'blog'
-    .without(['body'])
-    .sort({ updated: -1 })
-    .find()
-);
-
-
-const route = useRoute();
 
 const { data } = await useAsyncData(() => queryCollection('content')
   //.where({ path: { "$startsWith": route.path } }) // filter documents with _path starting with currentPath
