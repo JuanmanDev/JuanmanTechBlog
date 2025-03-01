@@ -106,4 +106,8 @@ export default defineNuxtConfig({
       description: 'Juanman Tech is a blog about web development, programming, and technology by Juan Manuel Béc.',
     },
   },
+
+  nitro: {
+    plugins: ['~/scripts/copy-content-images']
+  }
 })
