@@ -47,18 +47,19 @@
   const localePath = useLocalePath()
   const route = useRoute()
   
+  // Redirect if URL doesn't end with /
+  if (!route.path.endsWith('/')) {
+    navigateTo(route.path + '/')
+  }
   
   const { data: posts } = await useAsyncData('index', () => queryCollection('/blog/' + route.path).findOne())
   
-  let path = route.path;
-  if (path.endsWith("/")) {
-    path = path.slice(0, -1);
-  }
-
+  const path = route.path // Remove the trailing slash removal logic
+  
   const { data: post } = await useAsyncData('page-' + path, () => {
     return queryCollection('content').path(path).first()
   })
-
+  
   if (!post.value) {
     throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
   }
