@@ -17,7 +17,7 @@ useHead({
 <template>
   <AppHeader />
 
-  <div class="min-h-100vh">
+  <div class="min-h-dvh">
     <NuxtPage />
   </div>
   <!-- <UMain>

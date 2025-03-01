@@ -118,7 +118,7 @@ onUnmounted(() => {
     <primitive :object="heptagonMesh" :position="[0, 0, 0]" ref="heptagon" />
     <TresGridHelper :args="[30, 30, 0x444444, 'teal']" :position="[0, -2, 0]" />
     <TresAmbientLight :intensity="1" />
-    <DirectionalLight :position="[5, 5, 5]" :intensity="2" />
+    <TresDirectionalLight :position="[5, 5, 5]" :intensity="2" />
   </TresCanvas>
 </template>
 

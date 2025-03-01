@@ -26,7 +26,7 @@ const links = computed(() => [{
 </script>
 
 <template>
-  <Header class="border-b border-gray-200 dark:border-gray-800 -mb-px fixed top-0 z-50 lg:!border-transparent bg-gray-50/75 dark:bg-gray-950/75 backdrop-blur backdrop-blur w-full">
+  <header class="border-b border-gray-200 dark:border-gray-800 -mb-px fixed top-0 z-50 lg:!border-transparent bg-gray-50/75 dark:bg-gray-950/75 backdrop-blur backdrop-blur w-full">
     <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex items-center justify-between gap-3 h-[--header-height]">
       <!-- <template #left> -->
         <NuxtLink :to="localePath('/')" 
@@ -78,5 +78,5 @@ const links = computed(() => [{
         block
       /> -->
     <!-- </template> -->
-  </Header>
+  </header>
 </template>

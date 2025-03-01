@@ -97,7 +97,7 @@ defineOgImageScreenshot({
 </script>
 
 <template>
-  <div class="relative w-full h-full min-h-[calc(100vh-var(--header-height))]">
+  <div class="relative w-full h-full min-h-dvh">
     <div class="absolute -z-10 max-h-screen max-w-screen h-full  w-full h-full">
       <div class="min-h-80 max-h-screen max-w-screen h-full  w-full h-full">
         <DecorationTresjs class="min-h-80 max-h-screen max-w-screen h-full  w-full h-full" />

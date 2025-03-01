@@ -2,13 +2,12 @@
 export default defineNuxtConfig({
   extends: ['@nuxt/ui-pro'],
 
-  modules: [// '@nuxtjs/tailwindcss',
+  modules: [
     'nuxt-content-assets',
     '@nuxtjs/seo',
     '@nuxtjs/i18n',
     '@nuxt/content',
     '@nuxt/eslint',
-    // '@nuxt/image',
     '@nuxt/fonts',
     '@nuxt/ui',
     'nuxt-disqus',
