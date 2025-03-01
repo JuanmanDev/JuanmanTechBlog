@@ -1,5 +1,5 @@
 <template>
-  <section class="mx-auto w-full max-w-2xl space-y-8 print:space-y-4 mt-8 print:mt-0 mb-36 px-2" v-if="cv?.basics?.name">
+  <section class="mx-auto w-full max-w-2xl space-y-8 print:space-y-4 mt-32 print:mt-0 mb-36 px-2" v-if="cv?.basics?.name">
     <!-- Header Section -->
     <header class="flex items-center justify-between">
       <div class="flex-1 space-y-1.5">

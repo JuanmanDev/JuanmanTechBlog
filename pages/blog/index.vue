@@ -5,9 +5,9 @@
       Blog
     </h1>
     <div class="flex flex-wrap mb-8">
-      <template v-for="article in data" :key="article._path">
+      <template v-for="article in data" :key="article.path">
         <div class="w-full sm:w-1/2 my-2">
-          <NuxtLink :to="article._path">
+          <NuxtLink :to="article.path">
             <ULandingCard
               color="primary"
               orientation="vertical"
@@ -41,13 +41,29 @@
 
 <script setup>
 const localePath = useLocalePath();
-const { data } = await useAsyncData(localePath(`/blog/`), () => queryContent()
-  .where({ _path: /^\/blog/ })
-  .without(['body'])
-  .sort({ updated: -1 })
-  .find()
+const { data: a } = await useAsyncData(localePath(`/blog/`), () =>
+  queryCollection('blog') // Changed collection from 'content' to 'blog'
+    .without(['body'])
+    .sort({ updated: -1 })
+    .find()
 );
 
+
+const route = useRoute();
+
+const { data } = await useAsyncData(() => queryCollection('content')
+  //.where({ path: { "$startsWith": route.path } }) // filter documents with _path starting with currentPath
+  .select(
+    'path',
+    'title',
+    'short',
+    'updated',
+    'image',
+  )
+  .where('path', 'LIKE', route.path + '%' )
+  .order('updated', 'DESC')
+  .all()
+)
 
 const formatDate = (dateString) => {
   if (!dateString) return '';

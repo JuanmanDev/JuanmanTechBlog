@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   extends: ['@nuxt/ui-pro'],
 
   modules: [
-    'nuxt-content-assets',
+    'nuxt-llms',
     '@nuxtjs/seo',
     '@nuxtjs/i18n',
     '@nuxt/content',
@@ -12,7 +12,6 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     'nuxt-disqus',
     '@tresjs/nuxt',
-    'nuxt-llms',
   ],
 
   content: {
