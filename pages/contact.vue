@@ -38,12 +38,17 @@ if (locale.value === 'es') {
     <div class="w-full h-full absolute top-0 left-0 pointer-events-auto -z-10">
       <DecorationMessages />
     </div>
+    <div>
+      <div class="w-full pb-48" />
+    </div>
     <ULandingHero
       :title="page.hero.title"
       :description="page.hero.description"
       :links="page.hero.links"
+      class="bg-primary-50 dark:bg-primary-40 bg-opacity-25 backdrop-blur px-3 gap-0"
     >
-      <template #headline>
+      <template #headline 
+      class="bg-primary-50 dark:bg-primary-40 bg-opacity-25 backdrop-blur px-3 gap-0">
         <UBadge
           v-if="page.hero.headline"
           variant="subtle"

@@ -2,21 +2,49 @@
 export default defineNuxtConfig({
   extends: ['@nuxt/ui-pro'],
 
-  modules: [// '@nuxtjs/tailwindcss',
-  'nuxt-content-assets', '@nuxt/content', '@nuxtjs/i18n', '@nuxt/eslint', // '@nuxt/image',
-  '@nuxt/fonts', '@nuxt/ui', 'nuxt-disqus', 'nuxt-disqus', '@nuxtjs/seo', '@tresjs/nuxt'],
+  modules: [
+    'nuxt-llms',
+    '@nuxtjs/seo',
+    '@nuxtjs/i18n',
+    '@nuxt/content',
+    '@nuxt/eslint',
+    '@nuxt/fonts',
+    '@nuxt/ui',
+    'nuxt-disqus',
+    '@tresjs/nuxt',
+  ],
 
   content: {
     documentDriven: true,
+    navigation: {
+      fields: ['title', 'description', 'image', '_path', 'updated']
+    }
   },
 
   app: {
-    pageTransition: { name: 'page', mode: 'out-in' }
+    pageTransition: {
+      name: 'page',
+      mode: 'out-in',
+      //css: false,
+      // onBeforeEnter: () => {
+      //   window.scrollTo(0, 0);
+      // }
+    },
+    
+    head: {
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/favicon/apple-touch-icon.png' },
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon/favicon-32x32.png' },
+        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon/favicon-16x16.png' },
+        { rel: 'manifest', href: '/favicon/site.webmanifest' },
+      ],
+    },
   },
 
   i18n: {
     defaultLocale: 'en',
-    locales: [{ 
+    locales: [{
       code: 'en',
       iso: 'en-US',
       file: 'en-US.json',
@@ -29,14 +57,14 @@ export default defineNuxtConfig({
       name: 'Español'
     }
     ],
-    langDir: 'locales/',
-    vueI18n: "en",
-    lazy: true,
+    langDir: '../locales/',
+    vueI18n: 'en',
+    lazy: true
   },
 
   tailwindcss: {
     config: {
-      darkMode: 'class',
+      darkMode: 'class'
     }
   },
 
@@ -58,25 +86,38 @@ export default defineNuxtConfig({
   postcss: {
     plugins: {
       tailwindcss: {},
-      autoprefixer: {},
-    },
+      autoprefixer: {}
+    }
   },
 
   disqus: {
-    shortname: "juanmantech",
+    shortname: 'juanmantech'
   },
 
-  ogImage: {
-    strictNuxtContentPaths: true
-  },
+  // ogImage: {
+  //   strictNuxtContentPaths: true
+  // },
 
   compatibilityDate: '2024-11-15',
 
   devtools: {
-    enabled: true,
+    enabled: true
   },
 
   tres: {
-    devtools: true,
+    devtools: true
   },
+
+  llms: {
+    domain: 'https://juanman.tech',
+    title: 'Juanman Tech',
+    full: {
+      title: 'Juanman Tech',
+      description: 'Juanman Tech is a blog about web development, programming, and technology by Juan Manuel Béc.',
+    },
+  },
+
+  nitro: {
+    plugins: ['~/scripts/copy-content-images']
+  }
 })

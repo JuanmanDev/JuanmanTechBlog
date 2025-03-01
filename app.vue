@@ -15,11 +15,12 @@ useHead({
 </script>
 
 <template>
+  <NuxtLoadingIndicator/>
   <AppHeader />
 
-  <UMain>
+  <div class="min-h-dvh">
     <NuxtPage />
-  </UMain>
+  </div>
 
   <AppFooter />
 
