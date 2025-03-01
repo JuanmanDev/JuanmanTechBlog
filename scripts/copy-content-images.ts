@@ -38,7 +38,11 @@ async function copyPngFiles(sourcePath: string, targetPath: string) {
 
 export default defineNitroPlugin(async () => {
   const contentDir = './content'
-  const outputDir = './.output/public'
+  let outputDir = './.output/public'
+  
+  if (process.env.VERCEL) {
+    outputDir = '.vercel/output/functions'
+  }
 
   if (await exists(contentDir)) {
     await copyPngFiles(contentDir, outputDir)
