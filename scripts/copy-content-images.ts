@@ -41,10 +41,12 @@ export default defineNitroPlugin(async () => {
   let outputDir = './.output/public'
   
   if (process.env.VERCEL) {
-    outputDir = '.vercel/output/functions'
+    outputDir = './.vercel/output/static'
   }
 
   if (await exists(contentDir)) {
+    console.log('📁 Starting asset migration...')
     await copyPngFiles(contentDir, outputDir)
+    console.log('✨ Asset migration complete')
   }
 })
