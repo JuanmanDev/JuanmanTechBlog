@@ -44,15 +44,7 @@
   import { useRoute } from 'vue-router'
   import { ref } from 'vue'
   
-  const localePath = useLocalePath()
   const route = useRoute()
-  
-  // Redirect if URL doesn't end with /
-  if (!route.path.endsWith('/')) {
-    navigateTo(route.path + '/', { replace: true })
-  }
-  
-  const { data: posts } = await useAsyncData('index', () => queryCollection('/blog/' + route.path).findOne())
   
   const path = route.path // Remove the trailing slash removal logic
   
@@ -63,12 +55,47 @@
   if (!post.value) {
     throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
   }
+
+  function updateImageSources(arr, routePath) {
+    if (!Array.isArray(arr)) {
+        return arr;
+    }
+
+    // Process current array
+    if (arr[0] === 'img' && typeof arr[1] === 'object') {
+        // Update src attribute if it exists and is relative
+        if (arr[1].src && !arr[1].src.startsWith('http') && !arr[1].src.startsWith('//')) {
+            arr[1].src = `${routePath}/${arr[1].src}`.replace(/\/+/g, '/');
+        }
+    }
+
+    // Recursively process remaining elements
+    for (let i = 2; i < arr.length; i++) {
+        if (Array.isArray(arr[i])) {
+            arr[i] = updateImageSources(arr[i], routePath);
+        }
+    }
+
+    return arr;
+  }
+
+  updateImageSources(post.value.body.value, path);
   
   const disqusConfig = ref({
     identifier: route.path,
     title: post.value?.title,
   });
   
+  useHead({
+    title: post.value?.title,
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: post.value?.short,
+      },
+    ],
+  })
   
   defineOgImageComponent('Pergel', {
     title: 'Juanman Tech! 👨🏻‍💻',
