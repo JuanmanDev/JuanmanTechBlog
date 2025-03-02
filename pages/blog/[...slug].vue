@@ -1,5 +1,8 @@
 <template>
     <div class="min-h-screen bg-gray-50 dark:bg-gray-900 mt-36">
+      <pre>
+        {{ post.path }}
+      </pre>
       <UMain class="mx-1">
         <h1 class="text-5xl font-bold text-center my-10">{{ post.title }}</h1>
         <div class="prose dark:prose-invert">
@@ -48,15 +51,44 @@
   
   const path = route.path // Remove the trailing slash removal logic
   
-  const { data: post } = await useAsyncData('page-' + path, () => {
-    return queryCollection('content').path(path).first()
-  })
-  
-  if (!post.value) {
-    throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
-  }
+  const joinPaths = (...parts) => {
+    console.log("joinPaths", parts);
+    // Remove empty parts and trim slashes
+    const cleanParts = parts
+        .map(part => part.trim().replace(/^\/+|\/+$/g, ''))
+        .filter(Boolean);
+
+    let part1 = parts[0];
+    let part2 = parts[1];
+
+    if (!part1.endsWith('/')) {
+      part1 = part1.split('/');
+      part1.pop();
+      parts[0] = part1.join('/');
+    }
+
+    const x = parts.join("/").split("/");
+
+    let finalPath = [];
+
+    for (let i = 0; i < x.length; i++) {
+      const element = x[i];
+      if (element === '') continue;
+      if (element === '..') {
+          finalPath.pop();
+        }
+      else if (element === '.') {
+        finalPath.pop();
+      } else {
+        finalPath.push(element);
+      }
+    }
+
+    return "/" + finalPath.join('/');
+}
 
   function updateImageSources(arr, routePath, postPath) {
+    console.log("postPath", postPath);
     if (!Array.isArray(arr)) {
         return arr;
     }
@@ -74,20 +106,36 @@
           //   }
           // } else {
           // }
-          arr[1].src = `${postPath}/${arr[1].src}`.replace(/\/+/g, '/');
-
+          // console.log("PRE__" + arr[1].src, postPath, routePath);
+          // arr[1].src =k `${postPath}${arr[1].src}`;
+          arr[1].src = joinPaths(postPath, arr[1].src);
+          // console.log("POS__" + arr[1].src);
         }
     }
 
     // Recursively process remaining elements
     for (let i = 2; i < arr.length; i++) {
         if (Array.isArray(arr[i])) {
-            arr[i] = updateImageSources(arr[i], routePath);
+            arr[i] = updateImageSources(arr[i], routePath, postPath);
         }
     }
 
     return arr;
   }
+
+  const { data: post } = await useAsyncData('page-' + path, async () => {
+    const r = await queryCollection('content').path(path).first();
+    if (r.fixed) return r;
+    console.log("r.path", r.path);
+    r.body = updateImageSources(r.body, path, r.path);
+    r.fixed = true;
+    return r;
+  })
+  
+  if (!post.value) {
+    throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
+  }
+
 
   updateImageSources(post.value.body.value, path, post.value.path);
   
