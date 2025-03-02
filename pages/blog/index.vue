@@ -41,26 +41,28 @@
 <script setup>
 import { useRoute } from 'vue-router'
 
+import { updateImagePosts } from '~/utils/updateImageSources'
+
 const localePath = useLocalePath();
 const route = useRoute()
 
-// Redirect if URL doesn't end with /
-if (!route.path.endsWith('/')) {
-  navigateTo(route.path + '/', { replace: true })
-}
-
-const { data } = await useAsyncData(() => queryCollection('content')
-  //.where({ path: { "$startsWith": route.path } }) // filter documents with _path starting with currentPath
-  .select(
-    'path',
-    'title',
-    'short',
-    'updated',
-    'image',
-  )
-  .where('path', 'LIKE', route.path + '%' )
-  .order('updated', 'DESC')
-  .all()
+const { data } = await useAsyncData(
+  'blog-post.list', 
+  () => queryCollection('content')
+    //.where({ path: { "$startsWith": route.path } }) // filter documents with _path starting with currentPath
+    .select(
+      'path',
+      'title',
+      'short',
+      'updated',
+      'image',
+    )
+    .where('path', 'LIKE', route.path + '%' )
+    .order('updated', 'DESC')
+    .all(),
+  {
+    transform: updateImagePosts,
+  }  
 )
 
 const formatDate = (dateString) => {
