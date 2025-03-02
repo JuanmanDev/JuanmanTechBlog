@@ -23,6 +23,13 @@ const links = computed(() => [{
   active: route.path === localePath('/contact'),
 }])
 
+const menu = ref(false);
+
+// on change page hide menu
+watch(() => route.path, () => {
+  menu.value = false;
+});
+
 </script>
 
 <template>
@@ -34,7 +41,7 @@ const links = computed(() => [{
         Juanman Tech 👨🏻‍💻 
       </NuxtLink>
 
-      <ul class="items-center ring-1 ring-gray-200 dark:ring-gray-800 px-3 gap-x-0 rounded-full hidden lg:flex">
+      <ul class="items-center ring-1 ring-gray-200 dark:ring-gray-800 px-3 gap-x-0 rounded-full hidden sm:flex">
         <li v-for="link in links" :key="link.to" class="relative">
           <NuxtLink 
             :to="link.to"
@@ -51,9 +58,9 @@ const links = computed(() => [{
         </li>
       </ul>
 
-      <LanguageSwitcher class="ml-4 hidden lg:block" />
+      <LanguageSwitcher class="ml-4 hidden sm:block" />
       
-      <UPopover overlay class="lg:hidden">
+      <UPopover overlay class="block sm:hidden" v-model:open="menu">
         <UButton 
           color="white" 
           variant="ghost"
