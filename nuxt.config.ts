@@ -17,7 +17,7 @@ export default defineNuxtConfig({
   content: {
     documentDriven: true,
     navigation: {
-      fields: ['title', 'description', 'image', '_path', 'updated']
+      fields: ['title', 'description', 'image', '_path', 'updated', 'created']
     }
   },
 
