@@ -46,7 +46,7 @@ const page = {
 
 if (locale.value === 'es') {
   page.hero.title = "¡Hola! Soy Juanma :)";
-  page.hero.description = "Aquí encontrarás todos mis proyectos y posts de blog.";
+  page.hero.description = "Web, blog y proyectos";
   page.hero.lastBlogsPosts = "Lo último en el blog";
   page.hero.links[0].label = "Ir al Blog";
   page.hero.links[1].label = "Ver este proyecto en github";
