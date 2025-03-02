@@ -1,28 +1,34 @@
 ---
-title: Migrating from Nuxt Content Assets to Nuxt Content V3
-short: Solving asset management challenges when upgrading to Nuxt Content V3
+title: Migrando de Nuxt Content Assets a Nuxt Content V3
+short: Resolviendo desafíos de gestión de assets al actualizar a Nuxt Content V3
 tags:
   - Nuxt Content
   - Nuxt.js
-  - Migration Guide
-  - Asset Management
+  - Guía de Migración
+  - Gestión de Assets
 created: 2025-03-01 22:00
-updated: 2025-03-01 22:00
+updated: 2025-03-02 10:00
 ---
 
-# The Challenge
+# El Desafío
 
-When migrating to Nuxt Content V3 for LLM compatibility (specifically for [Nuxt LLM](https://nuxt.com/modules/llms)), we lose the convenient asset management provided by [Nuxt Content Assets](https://nuxt.com/modules/content-assets). This guide explains how to maintain organized blog assets while upgrading.
+Al migrar a Nuxt Content V3 para compatibilidad con LLM, nos enfrentamos a dos desafíos principales:
+1. Pérdida de la gestión de assets de Nuxt Content Assets
+2. Problemas con rutas relativas de imágenes en archivos markdown, especialmente con URLs que terminan con o sin barras diagonales
 
-## Understanding the Problem
+## Entendiendo los Problemas
 
-In Nuxt Content V2, assets were automatically handled within content folders. However, V3 requires manual asset management. The solution? A custom Nitro plugin that mirrors our content structure to the public directory.
+### Gestión de Assets
+En Nuxt Content V2, los assets se manejaban automáticamente dentro de las carpetas de contenido. V3 requiere gestión manual de assets.
 
-## Implementation
+### Problemas de Resolución de Rutas
+Las URLs con o sin barras diagonales al final pueden causar problemas con las rutas relativas de imágenes, especialmente en entornos de producción como Vercel. Necesitamos manejar estos casos específicamente.
 
-### 1. Configure Nitro Plugin
+## Implementación
 
-First, update your `nuxt.config.ts`:
+### 1. Configuración de Copia de Assets
+
+Primero, actualiza tu `nuxt.config.ts`:
 
 ```ts
 export default defineNuxtConfig({
@@ -32,94 +38,79 @@ export default defineNuxtConfig({
 })
 ```
 
-### 2. Create the Plugin
+### 2. Middleware del Servidor para Desarrollo
 
-Create `scripts/copy-content-images.ts`:
+Crea un middleware del servidor para manejar el servicio de imágenes en desarrollo:
 
-```typescript
-import { promises as fs } from 'fs'
-import { join, relative, dirname } from 'path'
+```ts
+// server/middleware/serve-images.ts
+import { join } from 'node:path'
+import { readFileSync, existsSync } from 'node:fs'
+import { defineEventHandler } from 'h3'
 
-// Helper to check file existence
-async function exists(path: string) {
-  try {
-    await fs.access(path)
-    return true
-  } catch {
-    return false
-  }
-}
+// ... código del middleware ...
+```
 
-async function copyPngFiles(sourcePath: string, targetPath: string) {
-  try {
-    const entries = await fs.readdir(sourcePath, { withFileTypes: true })
+Este middleware:
+- Intercepta peticiones de imágenes
+- Las sirve directamente desde el directorio de contenido
+- Maneja múltiples formatos de imagen
+- Funciona perfectamente en desarrollo
 
-    for (const entry of entries) {
-      const srcPath = join(sourcePath, entry.name)
-      
-      if (entry.isDirectory()) {
-        await copyPngFiles(srcPath, targetPath)
-      } else if (entry.name.toLowerCase().endsWith('.png')) {
-        const relPath = relative('./content', srcPath)
-        const destPath = join(targetPath, relPath)
-        
-        await fs.mkdir(dirname(destPath), { recursive: true })
-        await fs.copyFile(srcPath, destPath)
-        console.log(`✓ Asset copied: ${relPath}`)
-      }
-    }
-  } catch (error) {
-    console.error('❌ Error copying assets:', error)
-  }
-}
+### 3. Solución para la Resolución de Rutas
 
-export default defineNitroPlugin(async () => {
-  const contentDir = './content'
-  const outputDir = './.output/public'
-  
-  if (process.env.VERCEL) {
-    outputDir = '.vercel/output/functions'
-  }
+Para manejar correctamente las rutas relativas, implementamos una función de transformación al obtener contenido:
 
-  if (await exists(contentDir)) {
-    console.log('📁 Starting asset migration...')
-    await copyPngFiles(contentDir, outputDir)
-    console.log('✨ Asset migration complete')
+```ts
+const { data: post } = await useAsyncData('page-' + path, async () => {
+  return queryCollection('content').path(path).first();
+}, {
+  transform: (data) => {
+    data.body.value = updateImageSources(data.body.value, data.path);
+    return data;
   }
 })
 ```
 
-## How It Works
+La función de transformación procesa recursivamente el array de contenido markdown y convierte las rutas relativas en absolutas.
 
-1. The plugin activates during the Nuxt build process
-2. It recursively scans your `content` directory for PNG files
-3. Maintains the exact folder structure when copying to `.output/public`
-4. Provides console feedback during the build process
+## Cómo Funciona
 
-## Benefits
+1. El plugin Nitro maneja la copia de assets durante la compilación
+2. La función de transformación procesa el contenido markdown para corregir las rutas
+3. Manejo especial para despliegues en Vercel a través de comprobaciones de entorno
 
-- Maintains organized content structure
-- Automatic asset copying during build
-- Compatible with Nuxt Content V3 and Nuxt LLM
-- Zero runtime overhead
+## Beneficios
 
-## Limitations
+- Mantiene la estructura organizada del contenido
+- Copia automática de assets durante la compilación
+- Compatible con Nuxt Content V3 y Nuxt LLM
+- Sin sobrecarga en tiempo de ejecución
 
-- Currently only handles PNG files (modify the code to support other formats)
-- Assets must be rebuilt when content changes
-- Manual cleanup of old assets required
+## Limitaciones Actuales
 
-## Future Improvements
+- La resolución de rutas puede necesitar atención manual en algunos casos extremos
+- Los entornos de desarrollo y producción pueden comportarse de manera diferente
+- Los despliegues en Vercel requieren configuración adicional
+- Se necesita recompilar manualmente cuando cambia el contenido
 
-Consider these enhancements:
+## Mejores Prácticas
 
-- Add support for more image formats (jpg, webp, etc.)
-- Implement file watching for development
-- Add hash-based caching
-- Create a reusable npm package
+1. Usar siempre formatos de ruta consistentes en archivos markdown
+2. Probar tanto con como sin barras diagonales al final
+3. Verificar rutas de imágenes tanto en desarrollo como en producción
+4. Considerar usar rutas absolutas cuando sea posible
 
-## Resources
+## Mejoras Futuras
 
-- [Nuxt Content V3 Documentation](https://content.nuxt.com/)
-- [Nuxt LLM Module](https://nuxt.com/modules/llms)
+- Implementar una resolución de rutas más robusta
+- Crear un comportamiento unificado entre desarrollo y producción
+- Añadir pruebas automatizadas para resolución de rutas
+- Considerar implementar una capa de caché
+- Usar un transformador de nuxt content
+
+## Recursos
+
+- [Documentación de Nuxt Content V3](https://content.nuxt.com/)
+- [Módulo Nuxt LLM](https://nuxt.com/modules/llms)
 - [Nuxt Content Assets (Legacy)](https://nuxt.com/modules/content-assets)
