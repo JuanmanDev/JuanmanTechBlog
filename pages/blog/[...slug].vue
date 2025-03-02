@@ -1,8 +1,5 @@
 <template>
     <div class="min-h-screen bg-gray-50 dark:bg-gray-900 mt-36">
-      <pre>
-        {{ post.path }}
-      </pre>
       <UMain class="mx-1">
         <h1 class="text-5xl font-bold text-center my-10">{{ post.title }}</h1>
         <div class="prose dark:prose-invert">
@@ -33,7 +30,6 @@
               class="m-1"
             >{{ tag }}</UBadge>
           </template>
-          
         </UContainer>
   
         <UContainer>

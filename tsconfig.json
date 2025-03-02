@@ -6,7 +6,7 @@
       "@nuxt/types",
       "@nuxt/content",
       "@nuxt/i18n"
-    ]
+    ],
   },
   "extends": "./.nuxt/tsconfig.json"
 }
