@@ -95,17 +95,17 @@ jobs:
 
 Al ejecutar este script, se generará automáticamente una imagen de Docker en el proyecto:
 
-![Package en el proyecto](image.png)
+![Package en el proyecto](./image.png)
 
-![Package en la lista de packages](image-1.png)
+![Package en la lista de packages](./image-1.png)
 
-![Lista de imagenes de docker](image-2.png)
+![Lista de imagenes de docker](./image-2.png)
 
 https://github.com/JuanmanDev/Export-To-Ghostfolio/actions/runs/12216823940
-![Github Action](image-3.png)
+![Github Action](./image-3.png)
 
 https://github.com/JuanmanDev/Export-To-Ghostfolio/actions/runs/12216823940/job/34080344574
-![Publich docker inside Github action](image-4.png)
+![Publich docker inside Github action](./image-4.png)
 
 ## Siempre se puede mejorar
 Una mejora interesante sería generar una versión en GitHub con notas de la versión. Esto podría lograrse utilizando[semantic-release](https://github.com/semantic-release/semantic-release)Por el momento, este script es suficiente para proyectos que requieran una imagen de Docker rápida y sencilla.

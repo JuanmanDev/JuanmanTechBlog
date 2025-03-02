@@ -10,7 +10,7 @@ created: 2024-12-08 23:00
 updated: 2024-12-08 23:00
 ---
 
-![alt text](image.png)
+![alt text](./image.png)
 
 # Una interfaz web más sencilla que un comando CLI
 

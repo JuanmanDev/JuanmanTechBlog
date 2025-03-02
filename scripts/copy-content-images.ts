@@ -19,8 +19,9 @@ async function copyPngFiles(sourcePath: string, targetPath: string) {
       
       if (entry.isDirectory()) {
         await copyPngFiles(srcPath, targetPath)
-      } else if (entry.name.toLowerCase().endsWith('.png')) {
-        const relPath = relative('./content', srcPath)
+      } else if (entry.name.toLowerCase().match(/\.(png|jpe?g|gif|webp)$/i)) {
+        // Remove 'content' from the path if it exists
+        const relPath = relative('./content', srcPath).replace(/^content\//, '')
         const destPath = join(targetPath, relPath)
         
         // Create destination directory if it doesn't exist

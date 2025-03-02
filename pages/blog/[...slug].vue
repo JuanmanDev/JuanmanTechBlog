@@ -1,22 +1,3 @@
-<!-- <script setup lang="ts">
-const route = useRoute()
-
-const { data: page } = await useAsyncData('page-' + route.path, () => {
-  return queryCollection('content').path(route.path).first()
-})
-
-if (!page.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
-}
-</script>
-
-<template>
-  <ContentRenderer
-    v-if="page"
-    :value="page"
-  />
-</template> -->
-
 <template>
     <div class="min-h-screen bg-gray-50 dark:bg-gray-900 mt-36">
       <UMain class="mx-1">
@@ -49,7 +30,6 @@ if (!page.value) {
               class="m-1"
             >{{ tag }}</UBadge>
           </template>
-          
         </UContainer>
   
         <UContainer>
@@ -62,47 +42,22 @@ if (!page.value) {
   <script setup>
   import { useRoute } from 'vue-router'
   import { ref } from 'vue'
+
+  import { updateImageSources } from '~/utils/updateImageSources'
   
-  const localePath = useLocalePath()
   const route = useRoute()
   
-  
-  const { data: posts } = await useAsyncData('index', () => queryCollection('/blog/' + route.path).findOne())
-  
-  let path = route.path;
-  if (path.endsWith("/")) {
-    path = path.slice(0, -1);
-  }
-  
-  // const { data: post } = await useAsyncData(localePath(`/blog/`), () => queryContent()
-  //   .where({ _path: {  $eq: path } }) 
-  //   .findOne()
-  // );
-  
-  
-//   const { data: post } = await useAsyncData(() => queryCollection('content')
-//     .path(path)
-//     // .select(
-//     //   '_path',
-//     //   'title',
-//     //   'short',
-//     //   'updated',
-//     //   'image',
-//     // )
-//     .all()
-//   )
-  
-  
-//   const { data: page } = await useAsyncData(route.path, () => {
-//     return queryCollection().find()
-//   })
+  const path = route.path // Remove the trailing slash removal logic
 
-  // const route = useRoute()
-
-  const { data: post } = await useAsyncData('page-' + route.path, () => {
-    return queryCollection('content').path(route.path).first()
+  const { data: post } = await useAsyncData('page-' + path, async () => {
+    return queryCollection('content').path(path).first();
+  }, {
+    transform: (data) => {
+      data.body.value = updateImageSources(data.body.value, data.path);
+      return data;
+    }
   })
-
+  
   if (!post.value) {
     throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
   }
@@ -112,6 +67,16 @@ if (!page.value) {
     title: post.value?.title,
   });
   
+  useHead({
+    title: post.value?.title,
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: post.value?.short,
+      },
+    ],
+  })
   
   defineOgImageComponent('Pergel', {
     title: 'Juanman Tech! 👨🏻‍💻',

@@ -39,29 +39,30 @@
 </template>
 
 <script setup>
+import { useRoute } from 'vue-router'
+
+import { updateImagePosts } from '~/utils/updateImageSources'
+
 const localePath = useLocalePath();
-const { data: a } = await useAsyncData(localePath(`/blog/`), () =>
-  queryCollection('blog') // Changed collection from 'content' to 'blog'
-    .without(['body'])
-    .sort({ updated: -1 })
-    .find()
-);
+const route = useRoute()
 
-
-const route = useRoute();
-
-const { data } = await useAsyncData(() => queryCollection('content')
-  //.where({ path: { "$startsWith": route.path } }) // filter documents with _path starting with currentPath
-  .select(
-    'path',
-    'title',
-    'short',
-    'updated',
-    'image',
-  )
-  .where('path', 'LIKE', route.path + '%' )
-  .order('updated', 'DESC')
-  .all()
+const { data } = await useAsyncData(
+  'blog-post.list', 
+  () => queryCollection('content')
+    //.where({ path: { "$startsWith": route.path } }) // filter documents with _path starting with currentPath
+    .select(
+      'path',
+      'title',
+      'short',
+      'updated',
+      'image',
+    )
+    .where('path', 'LIKE', route.path + '%' )
+    .order('updated', 'DESC')
+    .all(),
+  {
+    transform: updateImagePosts,
+  }  
 )
 
 const formatDate = (dateString) => {
