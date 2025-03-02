@@ -1,8 +1,5 @@
 <template>
     <div class="min-h-screen bg-gray-50 dark:bg-gray-900 mt-36">
-      <pre>
-        {{ JSON.stringify(post, null, 2) }}
-      </pre>
       <UMain class="mx-1">
         <h1 class="text-5xl font-bold text-center my-10">{{ post.title }}</h1>
         <div class="prose dark:prose-invert">
