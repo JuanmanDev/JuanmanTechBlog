@@ -40,7 +40,6 @@ export function joinPaths(...parts) {
 }
 
 export function updateImageSources(arr, postPath) {
-  console.log("postPath", postPath);
   if (!Array.isArray(arr)) {
       return arr;
   }
