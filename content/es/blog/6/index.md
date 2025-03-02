@@ -14,7 +14,7 @@ tags:
   - emprendimiento
 created: 2025-02-25 20:00
 updated: 2025-02-25 20:00
-image: ../es/blog/6/image.png
+image: ./image.png
 ---
 
 ![imagen CV](./image.png)
