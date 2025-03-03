@@ -105,7 +105,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <TresCanvas ref="canvas" :class="{ 'opacity-simple-animation-100': !isLoading, 'opacity-simple-animation-0': isLoading }" v-if="webGL" >
+  <TresCanvas ref="canvas" class="opacity-simple-animation" :class="{ 'opacity-simple-animation-100': !isLoading, 'opacity-simple-animation-0': isLoading }" v-if="webGL" >
     <TresPerspectiveCamera
       ref="cam"
       :position="[0, 0, 3]"
@@ -123,6 +123,7 @@ onUnmounted(() => {
 </template>
 
 <style lang="css">
+.opacity-simple-animation,
 .opacity-simple-animation-0 {
   opacity: 0;
   transition: opacity 1s ease;
