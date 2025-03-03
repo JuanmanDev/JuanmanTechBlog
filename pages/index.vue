@@ -100,7 +100,7 @@ defineOgImageScreenshot({
       </ULandingLogos>
     </ULandingHero> 
 
-    <div class="bg-primary-50 dark:bg-primary-40 bg-opacity-70 backdrop-blur py-5 px-3 gap-0">
+    <div class="bg-primary-50 dark:bg-primary-40 bg-opacity-70 backdrop-blur py-5 px-3 gap-0 lg:mx-10">
       <div class="max-w-6xl mx-auto"> 
         <div class="flex justify-between m-2">
           <h2 class="dark:text-slate-950"> {{ page.hero.lastBlogsPosts }} </h2>
