@@ -38,7 +38,7 @@ if (locale.value === 'es') {
     <DecorationMessages class=" absolute -z-10 min-h-80 max-h-screen max-w-screen h-full w-full h-full" />
     <div class="pt-[10vh] invisible"></div>
     <div class="mx-[10vw]">
-      <div class="py-[10vh] flex flex-col h-full w-full mt-20 bg-primary-50 dark:bg-primary-40 bg-opacity-25 backdrop-blur px-3 gap-0 center items-center">
+      <div class="py-[10vh] flex flex-col h-full w-full mt-20 bg-primary-50 dark:bg-primary-40 bg-opacity-25 backdrop-blur px-3 gap-0 center items-center text-center">
         <h1 class="text-5xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-7xl">
           {{ page.hero.title }}
         </h1>
