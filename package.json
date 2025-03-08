@@ -31,5 +31,8 @@
     "nuxt-disqus": "^1.1.1",
     "nuxt-llms": "^0.1.0",
     "three": "^0.174.0"
+  },
+  "dependencies": {
+    "wrangler": "^3.114.0"
   }
 }
