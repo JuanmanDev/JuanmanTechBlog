@@ -118,6 +118,9 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    plugins: ['~/scripts/copy-content-images']
+    plugins: ['~/scripts/copy-content-images'],
+    prerender: {
+      autoSubfolderIndex: false
+    }
   }
 })
