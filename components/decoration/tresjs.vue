@@ -105,7 +105,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <TresCanvas ref="canvas" class="opacity-simple-animation" :class="{ 'opacity-simple-animation-100': !isLoading, 'opacity-simple-animation-0': isLoading }" v-if="webGL" >
+  <TresCanvas class="opacity-simple-animation" :class="{ 'opacity-simple-animation-100': !isLoading, 'opacity-simple-animation-0': isLoading }" v-if="webGL" >
     <TresPerspectiveCamera
       ref="cam"
       :position="[0, 0, 3]"

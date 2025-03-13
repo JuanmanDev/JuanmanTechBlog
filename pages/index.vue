@@ -8,6 +8,7 @@ useSeoMeta({
 
 const { locale } = useI18n()
 const localePath = useLocalePath()
+const route = useRoute();
 
 const page = {
   "hero": {
@@ -55,17 +56,17 @@ if (locale.value === 'es') {
 
 
 
-const { data: blogs3 } = await useAsyncData(() => queryCollection('content')
-  .select(
-    'path',
-    'title',
+const { data: blogs3 } = await useAsyncData(route.path,
+  () => queryCollection('content')
+    .select(
+      'path',
+      'title',
+    )
+    .where('path', 'LIKE', localePath(`/blog/`) + '%' )
+    .order('updated', 'DESC')
+    .limit(3)
+    .all()
   )
-  .where('path', 'LIKE', localePath(`/blog/`) + '%' )
-  .order('updated', 'DESC')
-  .limit(3)
-  .all()
-)
-
 
 defineOgImageScreenshot({
   // wait 2 seconds
@@ -77,7 +78,9 @@ defineOgImageScreenshot({
   <div class="relative w-full h-full min-h-dvh">
     <div class="absolute -z-10 max-h-screen max-w-screen h-full  w-full h-full">
       <div class="min-h-80 max-h-screen max-w-screen h-full  w-full h-full">
-        <DecorationTresjs class="min-h-80 max-h-screen max-w-screen h-full  w-full h-full" />
+        <ClientOnly>
+          <DecorationTresjs class="min-h-80 max-h-screen max-w-screen h-full w-full h-full" />
+        </ClientOnly>
       </div>
     </div>
     
@@ -107,18 +110,18 @@ defineOgImageScreenshot({
           <NuxtLink
             class="focus:outline-none"
             tabindex="-1"
+            :to="localePath('/blog')"
           >
             <UButton
               :label="page.hero.links[0].label"
               icon="i-heroicons-arrow-right-20-solid"
               :trailing="true"
-              :to="localePath('/blog')"
               size="xl"
             />
           </NuxtLink>
         </div>
         
-        <div class="flex flex-wrap place-items-stretch items-stretch">
+        <div class="flex flex-wrap place-items-stretch items-stretch" v-if="blogs3">
           <template v-for="(article, index) in blogs3" :key="article.path">
             <NuxtLink :to="article.path" class="flex-1 min-w-[200px] font-semibold m-2 h-full" v-if="index < 3">
               <UCard
