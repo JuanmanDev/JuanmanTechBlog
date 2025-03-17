@@ -49,7 +49,7 @@ if (locale.value === 'es') {
 
 
 
-const { data: blogs3 } = await useAsyncData(route.path,
+const { data: blogs3 } = await useAsyncData('p-' + route.path,
   () => queryCollection('content')
     .select(
       'path',
