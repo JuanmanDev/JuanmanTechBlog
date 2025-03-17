@@ -1,11 +1,4 @@
 <script setup lang="ts">
-useSeoMeta({
-  title: "Juanman Tech - Welcome!",
-  ogTitle: "Juanman Tech - Welcome!",
-  description: "This is my website",
-  ogDescription: "This is my website"
-})
-
 const { locale } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute();
@@ -67,6 +60,13 @@ const { data: blogs3 } = await useAsyncData(route.path,
     .limit(3)
     .all()
   )
+
+useSeoMeta({
+  title: "Juanman Tech - Welcome!",
+  ogTitle: "Juanman Tech - Welcome!",
+  description: "This is my website",
+  ogDescription: "This is my website"
+})
 
 defineOgImageScreenshot({
   // wait 2 seconds
