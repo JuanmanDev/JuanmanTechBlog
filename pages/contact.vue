@@ -58,6 +58,18 @@ if (locale.value === 'es') {
         >
           LinkedIn  
         </UButton>
+        <UButton
+          icon="i-heroicons-envelope"
+          size="xl"
+          color="black"
+          variant="outline" 
+          :trailing="false"
+          :ui="{ rounded: 'rounded-full' }"
+          class="mt-4 hover:bg-gray-100 dark:hover:bg-gray-900"
+          to="mailto:JuanmaDeveloper+contactjuanmantech@outlook.com"
+        >
+          Email
+        </UButton>
       </div>
     </div>
   </div>
