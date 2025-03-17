@@ -54,6 +54,7 @@ if (locale.value === 'es') {
           :trailing="false"
           :ui="{ rounded: 'rounded-full' }"
           class="mt-4 hover:bg-gray-100 dark:hover:bg-gray-900"
+          :to="page.hero.links[0].to"
         >
           LinkedIn  
         </UButton>
