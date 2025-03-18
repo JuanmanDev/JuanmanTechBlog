@@ -29,7 +29,7 @@ async function copyPngFiles(sourcePath: string, targetPath: string) {
         
         // Copy the file
         await fs.copyFile(srcPath, destPath)
-        console.log(`Copied: ${relPath}`)
+        console.log(`Copied: ${relPath} >>> ${destPath}`)
       }
     }
   } catch (error) {
@@ -37,12 +37,15 @@ async function copyPngFiles(sourcePath: string, targetPath: string) {
   }
 }
 
-export default defineNitroPlugin(async () => {
+export default defineNitroPlugin(async (nitro) => {
   const contentDir = './content'
   let outputDir = './.output/public'
   
   if (process.env.VERCEL) {
     outputDir = './.vercel/output/static'
+  }
+  if (process.env.NUXT_ENV_GENERATE || true) {
+    outputDir = './dist'
   }
 
   if (await exists(contentDir)) {
