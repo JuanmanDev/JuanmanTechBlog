@@ -119,7 +119,7 @@ export default defineNuxtConfig({
 
   nitro: {
     plugins: ['~/scripts/copy-content-images'],
-    preset: 'cloudflare_pages',
+    // preset: 'cloudflare_pages',
     // ssr: false,
     prerender: {
       crawlLinks: true,
