@@ -118,6 +118,27 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    plugins: ['~/scripts/copy-content-images']
-  }
+    plugins: ['~/scripts/copy-content-images'],
+    // preset: 'cloudflare_pages',
+    // ssr: false,
+    prerender: {
+      crawlLinks: true,
+      routes: ['/'],
+      ignore: [
+        // Add paths that cause prerender errors
+        '/api',
+        '/admin'
+      ],
+      failOnError: false, // Prevents build failure on prerender errors
+    },
+    
+    // Optional: Add more static routes that need prerendering
+    routeRules: {
+      '/**': { prerender: true }
+    }
+  },
+
+  site: {
+    url: "https://juanman.tech"
+  },
 })
