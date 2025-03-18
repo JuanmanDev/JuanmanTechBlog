@@ -40,7 +40,7 @@ onMounted(() => {
 ## Demo and Source Code
 
 You can see the effect in action in two ways:
-- [In the navigation between blog articles](/blog)
+- [In the navigation between blog articles](/es/blog)
 - [Full screen view](/tools/cursor)
 
 The complete code is available on [GitHub](https://github.com/JuanmanDev/JuanmanTechBlog/blob/main/components/decoration/cursor.vue).
