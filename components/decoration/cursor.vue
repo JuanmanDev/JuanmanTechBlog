@@ -96,12 +96,10 @@ let
   COLOR_UPDATE_SPEED = 0.02,
   BACK_COLOR = { r: 0.5, g: 0, b: 0 },
   TRANSPARENT = true;
-//   const canvasRef = document.querySelector("canvas");
-
   
     const canvas = canvasRef.value;
-    //if (canvas) return; // Guard canvas early
-    console.log(canvas);
+    if (canvas) {
+      
 
     // Pointer and config setup
     let pointers: Pointer[] = [pointerPrototype()];
@@ -1548,7 +1546,8 @@ let
       for (let i = 0; i < touches.length; i++) {
         updatePointerUpData(pointer);
       }
-    });
-    
+    }); 
+  }
 })
+
   </script>

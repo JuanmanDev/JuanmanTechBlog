@@ -4,5 +4,7 @@ import { DecorationCursor } from '#components';
 </script>
 
 <template>
-  <DecorationCursor />
+  <ClientOnly>
+    <LazyDecorationCursor />
+  </ClientOnly>
 </template>
