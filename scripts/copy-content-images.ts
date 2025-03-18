@@ -41,11 +41,11 @@ export default defineNitroPlugin(async (nitro) => {
   const contentDir = './content'
   let outputDir = './.output/public'
   
-  if (process.env.VERCEL) {
-    outputDir = './.vercel/output/static'
-  }
   if (process.env.NUXT_ENV_GENERATE || true) {
     outputDir = './dist'
+  }
+  if (process.env.VERCEL) {
+    outputDir = './.vercel/output/static'
   }
 
   if (await exists(contentDir)) {
