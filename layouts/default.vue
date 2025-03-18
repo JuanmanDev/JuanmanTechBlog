@@ -5,7 +5,7 @@ import { Analytics } from '@vercel/analytics/nuxt'
 <template>
   <div class="flex flex-col min-h-screen relative">
     <NuxtLoadingIndicator/>
-    <AppHeader />
+    <AppHeader class="z-50" />
     
     <div class="min-h-dvh pb-36">
       <NuxtPage />
