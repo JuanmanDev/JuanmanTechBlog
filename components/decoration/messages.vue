@@ -119,7 +119,11 @@
         let activeBubbles: Bubble[] = [];
         let lastSide: 'left' | 'right' = 'right'; // Start with right so first bubble is left
         let lastBubbleTime = 0;
-        const bubbleInterval = 4000; // Interval between new bubbles
+        const bubbleInterval = 3000; // Reduced interval between new bubbles
+
+        // Add initial bubble immediately
+        activeBubbles.push(new Bubble(canvas, 'left'));
+        lastSide = 'left';
   
         // Animation loop
         const animate = (timestamp: number) => {
