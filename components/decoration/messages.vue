@@ -9,6 +9,13 @@
     name: 'BubbleCanvas',
     setup() {
       const canvasRef = ref<HTMLCanvasElement | null>(null);
+
+      let resizeCanvas: () => void;
+
+      // Cleanup
+      onUnmounted(() => {
+        window.removeEventListener('resize', resizeCanvas);
+      });
   
       const emojis = ['💬', '💬', '💬', '💬', '📱', '📨', '📩', '📥', '💭', '🗯️', '👋', '👍', '🎉'];
   
@@ -106,7 +113,7 @@
         if (!ctx) return;
   
         // Set canvas dimensions to match window size
-        const resizeCanvas = () => {
+        resizeCanvas = () => {
           canvas.width = window.innerWidth;
           canvas.height = window.innerHeight;
         };
@@ -151,11 +158,8 @@
   
         requestAnimationFrame(animate);
   
-        // Cleanup
-        onUnmounted(() => {
-          window.removeEventListener('resize', resizeCanvas);
-        });
       });
+      
   
       return {
         canvasRef,
