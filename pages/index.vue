@@ -144,9 +144,11 @@ defineOgImageScreenshot({
 .zoom-image {
   object-fit: cover;
   transition: transform 0.5s ease, opacity 0.5s ease;
+  overflow: hidden;
 }
 .zoom-image:hover {
-  transform: scale(3); /* Adjust the zoom level */
-  opacity: 0.8; /* Optional: Add a slight fade effect */
+  transform: scale(3) rotateY(360deg); /* Scale up and rotate 3 full spins (360deg * 3) */
+  opacity: 0.8;
+  transition: transform 1.2s ease-in-out, opacity 0.5s ease;
 }
 </style>
