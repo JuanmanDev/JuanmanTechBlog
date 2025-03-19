@@ -4,10 +4,10 @@ export default defineAppConfig({
     gray: 'zinc',
     variables: {
       light: {
-        background: 'var(--color-gray-50)'
+        background: 'var(--color-neutral-50)'
       },
       dark: {
-        background: 'var(--color-gray-950)'
+        background: 'var(--color-neutral-950)'
       }
     },
     button: {
@@ -21,30 +21,30 @@ export default defineAppConfig({
       rounded: 'rounded-full'
     },
     header: {
-      wrapper: 'lg:!border-transparent bg-gray-50 dark:bg-gray-950',
+      wrapper: 'lg:!border-transparent bg-neutral-50 dark:bg-neutral-950',
       links: {
-        wrapper: 'ring-1 ring-gray-200 dark:ring-gray-800 px-3 gap-x-0 rounded-full',
-        base: 'py-2 px-4 font-medium transition-colors relative after:absolute after:-bottom-px after:inset-x-2 after:h-px after:rounded-full after:opacity-0 after:bg-gray-900 dark:after:bg-white after:transition-opacity',
-        active: 'text-gray-900 dark:text-white after:opacity-100',
-        inactive: 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
+        wrapper: 'ring-1 ring-neutral-200 dark:ring-neutral-800 px-3 gap-x-0 rounded-full',
+        base: 'py-2 px-4 font-medium transition-colors relative after:absolute after:-bottom-px after:inset-x-2 after:h-px after:rounded-full after:opacity-0 after:bg-neutral-900 dark:after:bg-white after:transition-opacity',
+        active: 'text-neutral-900 dark:text-white after:opacity-100',
+        inactive: 'text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200'
       }
     },
     footer: {
       top: {
-        wrapper: 'border-t border-gray-200 dark:border-gray-800',
+        wrapper: 'border-t border-neutral-200 dark:border-neutral-800',
         container: 'py-8 lg:py-16'
       },
       bottom: {
-        wrapper: 'border-t border-gray-200 dark:border-gray-800'
+        wrapper: 'border-t border-neutral-200 dark:border-neutral-800'
       }
     },
     pricing: {
       card: {
-        highlight: 'ring-gray-900 dark:ring-white',
+        highlight: 'ring-neutral-900 dark:ring-white',
         features: {
           item: {
             icon: {
-              base: 'text-gray-900 dark:text-white'
+              base: 'text-neutral-900 dark:text-white'
             }
           }
         }

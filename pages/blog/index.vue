@@ -4,7 +4,7 @@
       <LazyDecorationCursor />
     </ClientOnly>
     <UContainer>
-      <h1 class="md:pt-28 md:pb-12 pt-20 pb-2 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+      <h1 class="md:pt-28 md:pb-12 pt-20 pb-2 text-4xl font-extrabold leading-none tracking-tight text-neutral-900 md:text-5xl lg:text-6xl dark:text-white">
         Blog
       </h1>
       <div class="flex flex-wrap mb-8">
@@ -15,25 +15,25 @@
                 color="primary"
                 orientation="vertical"
                 class="m-2 p-5 h-full
-                rounded-xl ring-gray-200
-                dark:ring-gray-800
-                divide-gray-200 dark:divide-gray-800 ring-1
-                ring-gray-200 dark:ring-gray-800 shadow
-                bg-white/75 dark:bg-gray-900/75
-                bg-opacity-25 backdrop-blur
+                rounded-xl ring-neutral-200
+                dark:ring-neutral-800
+                divide-neutral-200 dark:divide-neutral-800 ring-1
+                ring-neutral-200 dark:ring-neutral-800 shadow
+                bg-white/75 dark:bg-neutral-900/75
+                backdrop-blur
                 flex-1 flex flex-col flex flex-col lg:flex-row lg:items-stretch
                 transition-transform duration-300 ease-in-out hover:scale-[1.15]
                 transform-gpu
                 "
               >
                 <div class="flex-grow flex flex-col">
-                  <p class="text-gray-900 dark:text-white text-base font-bold">
+                  <p class="text-neutral-900 dark:text-white text-base font-bold">
                     {{ article.title }}
                   </p>
-                  <div class="text-[15px] text-gray-500 dark:text-gray-400 mt-1">
+                  <div class="text-[15px] text-neutral-500 dark:text-neutral-400 mt-1">
                     {{ article.short }}
                   </div>
-                  <div class="text-[15px] text-gray-500 dark:text-gray-400 mt-auto">
+                  <div class="text-[15px] text-neutral-500 dark:text-neutral-400 mt-auto">
                     {{ formatDate(article.updated) }}
                   </div>
                 </div>

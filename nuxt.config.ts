@@ -1,6 +1,8 @@
+import tailwindcss from "@tailwindcss/vite";
+
 // https://nuxt.com/docs/guide/directory-structure/nuxt.config#nuxt-config-file
 export default defineNuxtConfig({
-  extends: ['@nuxt/ui-pro'],
+  // extends: ['@nuxt/ui-pro'],
 
   modules: [
     'nuxt-llms',
@@ -12,6 +14,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     'nuxt-disqus',
     '@tresjs/nuxt',
+    'nuxt-og-image',
   ],
 
   content: {
@@ -70,7 +73,7 @@ export default defineNuxtConfig({
 
   ui: {
     primary: 'blue',
-    gray: 'neutral',
+    gray: 'slate',
     icons: ['mdi', 'heroicons']
   },
 
@@ -85,7 +88,7 @@ export default defineNuxtConfig({
 
   postcss: {
     plugins: {
-      tailwindcss: {},
+      '@tailwindcss/postcss': {}, // Updated to use the new package
       autoprefixer: {}
     }
   },
@@ -139,6 +142,14 @@ export default defineNuxtConfig({
   },
 
   site: {
-    url: "https://juanman.tech"
+    url: "https://juanman.tech",
+    name: 'JuanmanTech - its Me Juanman!' 
+  },
+
+  
+  vite: {
+    plugins: [
+      tailwindcss(),
+    ],
   },
 })

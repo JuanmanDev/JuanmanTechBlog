@@ -64,9 +64,9 @@
             <div class="flex items-center justify-between gap-x-2 text-base">
               <h3 class="font-semibold leading-none">
                 <span class="block sm:inline">{{ job.position }}</span>
-                <span class="block sm:inline text-gray-400"> @&nbsp;{{ job.name }}</span>
+                <span class="block sm:inline text-neutral-400"> @&nbsp;{{ job.name }}</span>
               </h3>
-              <div class="text-sm tabular-nums text-gray-500">
+              <div class="text-sm tabular-nums text-neutral-500">
                 <span class="block sm:inline">{{ formatDate(job.startDate) }}</span>
                 <span class="hidden sm:inline"> - </span>
                 <span class="block sm:inline">{{ job.endDate ? formatDate(job.endDate) : $t('cv.present') }}</span>
@@ -89,8 +89,8 @@
       <article v-for="edu in cv.education" :key="edu.institution" class="rounded-lg bg-card">
         <div class="flex items-center justify-between gap-x-2 text-base">
           <h3 class="font-semibold leading-none">{{ edu.institution }}</h3>
-          <div class="text-sm tabular-nums text-gray-500">
-            <div class="text-sm tabular-nums text-gray-500">
+          <div class="text-sm tabular-nums text-neutral-500">
+            <div class="text-sm tabular-nums text-neutral-500">
               <span class="block sm:inline">{{ formatDate(edu.startDate) }}</span>
               <span class="hidden sm:inline"> - </span>
               <span class="block sm:inline">{{ edu.endDate ? formatDate(edu.endDate) : $t('cv.present') }}</span>
@@ -107,7 +107,7 @@
             <a v-if="edu.project.video"
               :href="edu.project.video" 
               target="_blank"
-              class="text-xs text-primary hover:underline print:hidden"
+              class="text-xs text-(--ui-primary) hover:underline print:hidden"
               rel="noopener noreferrer">
               <Icon name="uil:video" class="inline-block" /> {{ $t('cv.view_video') }}
             </a>
@@ -155,7 +155,7 @@
       <ul class="flex flex-wrap gap-1">
         <template v-for="skillgroup in cv.skills" :key="skillgroup.name">
           <li v-for="skill in skillgroup.keywords"
-            class="inline-flex items-center rounded-md px-2 py-0.5 text-xs font-mono bg-primary/80 text-primary-foreground bg-opacity-40"
+            class="inline-flex items-center rounded-md px-2 py-0.5 text-xs font-mono bg-primary/80 text-(--ui-primary)-foreground "
             :style="'background-color: ' + skillgroup.color + 20"
             >
             {{ skill }}
@@ -210,8 +210,8 @@ const formatDate = (dateString) => {
     }
     body {
       /* color: black; */
-      --ui-background: var(--color-gray-50);
-      --ui-foreground: var(--color-gray-700);
+      --ui-background: var(--color-neutral-50);
+      --ui-foreground: var(--color-neutral-700);
     }
     a, a.underline {
       text-decoration: none;

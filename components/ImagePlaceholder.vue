@@ -1,9 +1,9 @@
 <template>
   <div class="relative">
     <div class="bg-background border-gradient rounded-xl p-4">
-      <div class="aspect-w-16 aspect-h-9 rounded-lg relative overflow-hidden border border-dashed border-gray-950/10 dark:border-white/10">
+      <div class="aspect-w-16 aspect-h-9 rounded-lg relative overflow-hidden border border-dashed border-neutral-950/10 dark:border-white/10">
         <svg
-          class="absolute inset-0 h-full w-full stroke-gray-950/10 dark:stroke-white/10"
+          class="absolute inset-0 h-full w-full stroke-neutral-950/10 dark:stroke-white/10"
           fill="none"
         >
           <defs>
@@ -33,7 +33,7 @@
 <style scoped>
 .border-gradient:after {
   --angle: 0deg;
-  --border-color: rgb(var(--color-gray-300));
+  --border-color: rgb(var(--color-neutral-300));
   --highlight-color: rgb(var(--color-primary-500));
 
   content: '';
@@ -55,8 +55,8 @@
 }
 
 .dark .border-gradient:after {
-  --border-color: rgb(var(--color-gray-700));
-  --highlight-color: rgb(var(--color-gray-400));
+  --border-color: rgb(var(--color-neutral-700));
+  --highlight-color: rgb(var(--color-neutral-400));
 }
 
 @keyframes rotate {

@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen bg-gray-50 dark:bg-gray-900 mt-36">
+    <div class="min-h-screen bg-neutral-50 dark:bg-neutral-900 mt-36">
       <UMain class="mx-1">
         <h1 class="text-5xl font-bold text-center my-10">{{ post.title }}</h1>
         <div class="prose dark:prose-invert">

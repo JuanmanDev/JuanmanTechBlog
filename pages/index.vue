@@ -98,12 +98,12 @@ defineOgImageScreenshot({
           v-for="icon in page.logos.icons"
           :key="icon"
           :name="icon"
-          class="w-12 h-12 lg:w-16 lg:h-16 flex-shrink-0 text-gray-900 dark:text-white zoom-image"
+          class="w-12 h-12 lg:w-16 lg:h-16 flex-shrink-0 text-neutral-900 dark:text-white zoom-image"
         />
       </ULandingLogos>
     </ULandingHero> 
 
-    <div class="bg-primary-50 dark:bg-primary-40 bg-opacity-70 backdrop-blur py-5 px-3 gap-0 lg:mx-10">
+    <div class="bg-primary-50/70 dark:bg-primary-40/70 backdrop-blur py-5 px-3 gap-0 lg:mx-10">
       <div class="max-w-6xl mx-auto"> 
         <div class="flex justify-between m-2">
           <h2 class="dark:text-slate-950"> {{ page.hero.lastBlogsPosts }} </h2>

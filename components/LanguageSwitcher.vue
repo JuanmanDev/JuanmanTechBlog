@@ -1,10 +1,15 @@
 
 <template>
-  <USelectMenu v-model="currentLocale" :options="locales" option-attribute="name"  @change="(locale) => setLocale(locale.code)">
-  </USelectMenu>
+  <USelect
+    v-model="currentLocale"
+    :items="locales"
+    valueKey="code"
+    labelKey="name"
+    @update:modelValue="(locale) => setLocale(locale)" 
+  />
 </template>
 
 <script setup>
 const { locales, locale, setLocale } = useI18n()
-const currentLocale = ref(locales.value.find(l => l.code === locale.value))
+const currentLocale = ref((locales.value.find(l => l.code === locale.value)).code)
 </script>

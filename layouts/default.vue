@@ -11,7 +11,7 @@ import { Analytics } from '@vercel/analytics/nuxt'
       <NuxtPage />
     </div>
     
-    <AppFooter class="absolute bottom-0 w-full z-50 lg:!border-transparent bg-gray-50/75 dark:bg-gray-950/75 backdrop-blur backdrop-blur w-full" />
+    <AppFooter class="absolute bottom-0 w-full z-50 lg:!border-transparent bg-neutral-50/75 dark:bg-neutral-950/75 backdrop-blur backdrop-blur w-full" />
     
     <UNotifications />
     <Analytics/>
