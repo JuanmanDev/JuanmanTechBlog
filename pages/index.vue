@@ -93,10 +93,10 @@ defineOgImageScreenshot({
             {{ page.hero.description }}
           </div>
           <div class="mt-10 flex flex-wrap gap-x-6 gap-y-3 justify-center">
-            <a
+            <NuxtLink
               v-for="link in page.hero.links"
               :key="link.to"
-              :href="link.to"
+              :href="localePath(link.to)"
               :target="link.target || '_self'"
               :class="[
                 'focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-medium rounded-full text-base gap-x-2.5 px-3.5 py-2.5 shadow-sm inline-flex items-center',
@@ -107,7 +107,7 @@ defineOgImageScreenshot({
             >
               <UIcon v-if="link.icon" :name="link.icon"></UIcon>
               <span>{{ link.label }}</span>
-            </a>
+          </NuxtLink>
           </div>
         </div>
 
