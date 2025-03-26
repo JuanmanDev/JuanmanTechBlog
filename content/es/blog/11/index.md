@@ -37,7 +37,10 @@ window.getComputedStyle = function (element, pseudoElt) {
           const value = target.getPropertyValue(property);
           // Reemplazar valores "oklch" o manejarlos según sea necesario
           if (value.includes('oklch')) {
-            return ''; // Devolver un valor alternativo
+            if (document.documentElement.classList.contains("dark")) {
+              return 'black';
+            }
+            return 'white';
           }
           return value;
         };
