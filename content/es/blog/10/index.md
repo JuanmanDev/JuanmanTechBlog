@@ -1,73 +1,73 @@
 ---
-title: Migrating Splash Cursor from React to Vue
-short: Adapting ReactBits' Splash Cursor effect for Vue and lessons on AI code migration
+title: Migrando Splash Cursor de React a Vue
+short: Adaptando el efecto Splash Cursor de ReactBits para Vue y lecciones sobre migración de código con IA
 image: ./image.png
 tags:
   - Vue
   - React
   - WebGL
-  - Animations
-  - AI
+  - Animaciones
+  - IA
 created: 2025-03-19 10:00
 updated: 2025-03-19 10:00
 ---
 
-I recently migrated the Splash Cursor component from [ReactBits](https://www.reactbits.dev/animations/splash-cursor) to integrate it into this Vue blog. This process has been interesting both for the technical details of the migration and the current limitations of AI in code migration tasks.
+Recientemente migré el componente Splash Cursor de [ReactBits](https://www.reactbits.dev/animations/splash-cursor) para integrarlo en este blog hecho con Vue. Este proceso ha sido interesante tanto por los detalles técnicos de la migración como por las limitaciones actuales de las IA en tareas de migración de código.
 
-I ended up adding it as an animated background on the blog posts listing page.
+Terminé añadiéndolo como un fondo animado en la página de listado de artículos del blog.
 
-## Main Adaptations
+## Principales Adaptaciones
 
-The migration required some fundamental changes in how the component interacts with the DOM and manages its lifecycle:
+La migración requirió algunos cambios fundamentales en cómo el componente interactúa con el DOM y gestiona su ciclo de vida:
 
-- `useRef` → `ref`: The direct equivalent in Vue for maintaining DOM element references
-- `useEffect` → `onMounted`: Although not exactly equivalent, it worked perfectly for WebGL integration
+- `useRef` → `ref`: El equivalente directo en Vue para mantener referencias a elementos del DOM
+- `useEffect` → `onMounted`: Aunque no es exactamente equivalente, funcionó perfectamente para la integración con WebGL
 
 ```javascript
-// React original
+// Original en React
 const canvasRef = useRef(null);
 useEffect(() => {
-  // Setup WebGL
+  // Configuración de WebGL
 }, []);
 
-// Vue adaptation
+// Adaptación a Vue
 const canvasRef = ref(null);
 onMounted(() => {
-  // Setup WebGL
+  // Configuración de WebGL
 });
 ```
 
-## Demo and Source Code
+## Demo y Código Fuente
 
-You can see the effect in action in two ways:
-- [In the navigation between blog articles](/es/blog)
-- [Full screen view](/tools/cursor)
+Puedes ver el efecto en acción de dos maneras:
+- [En la navegación entre artículos del blog](/es/blog)
+- [Vista a pantalla completa](/tools/cursor)
 
-The complete code is available on [GitHub](https://github.com/JuanmanDev/JuanmanTechBlog/blob/main/components/decoration/cursor.vue).
+El código completo está disponible en [GitHub](https://github.com/JuanmanDev/JuanmanTechBlog/blob/main/components/decoration/cursor.vue).
 
-## Experience with Code AIs
+## Experiencia con IAs de Código
 
-I tried using several AIs to assist with the migration:
-- GitHub Copilot with Gemini
-- GitHub Copilot with Claude Sonnet
-- GitHub Copilot with GPT-4
+Probé varias IAs para ayudar con la migración:
+- GitHub Copilot con Gemini
+- GitHub Copilot con Claude Sonnet
+- GitHub Copilot con GPT-4
 - DeepSeek R1
 
-Although the migration wasn't particularly complex, none of the AIs could effectively handle the transformation of the complete component. This highlights a current limitation: while AIs are excellent for small and specific tasks, they still struggle with complete component transformations, especially when involving:
-- Multiple paradigms (WebGL + framework)
-- Large files
-- Architectural changes between frameworks
+Aunque la migración no era particularmente compleja, ninguna de las IAs pudo manejar eficazmente la transformación completa del componente. Esto resalta una limitación actual: aunque las IAs son excelentes para tareas pequeñas y específicas, todavía tienen dificultades con transformaciones completas de componentes, especialmente cuando involucran:
+- Múltiples paradigmas (WebGL + framework)
+- Archivos grandes
+- Cambios arquitectónicos entre frameworks
 
-## Conclusions
+## Conclusiones
 
-Manual migration turned out to be the best approach, allowing for:
-1. Better understanding of the original code
-2. Vue-specific optimizations
-3. Simplification of some code parts
+La migración manual resultó ser la mejor opción, permitiendo:
+1. Mejor comprensión del código original
+2. Optimización específica para Vue
+3. Simplificación de algunas partes del código
 
-For developers considering similar migrations, I recommend:
-- Deeply understanding lifecycle equivalents between frameworks
-- Performing the migration in phases, starting with the basic structure
-- Not relying exclusively on AIs for complete migrations
+Para los desarrolladores que consideren migraciones similares, recomiendo:
+- Comprender profundamente los equivalentes de ciclo de vida entre frameworks
+- Realizar la migración en fases, comenzando con la estructura básica
+- No depender exclusivamente de las IAs para migraciones completas
 
-![Final result image in the blog](image.png)
+![Imagen del resultado final en el blog](image.png)
