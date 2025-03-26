@@ -1,10 +1,10 @@
 <template>
-  <section class="mx-auto w-full max-w-2xl space-y-8 print:space-y-4 mt-32 print:mt-0 mb-36 px-2" v-if="cv?.basics?.name">
+  <section class="mx-auto w-full max-w-2xl space-y-8 print:space-y-4 mt-32 print:mt-0 mb-36 px-2 text-black dark:text-white print:text-black" v-if="cv?.basics?.name">
     <!-- Header Section -->
-    <header class="flex items-center justify-between">
+    <div class="flex items-center justify-between">
       <div class="flex-1 space-y-1.5">
-        <h1 class="text-2xl font-bold">{{ cv.basics.name }}</h1>
-        <p class="max-w-md text-pretty font-mono text-sm text-foreground/80">
+        <h1 class="text-2xl font-bold  ">{{ cv.basics.name }}</h1>
+        <p class="max-w-md text-pretty font-mono text-sm opacity-75">
           {{ cv.basics.label }}
         </p>
         <p class="max-w-md items-center text-pretty font-mono text-xs text-foreground">
@@ -24,7 +24,7 @@
         </p>
         
         <!-- Contact Links -->
-        <div class="flex gap-x-1 pt-1 font-mono text-sm text-foreground/80 print:hidden space-x-2">
+        <div class="flex gap-x-1 pt-1 font-mono text-sm opacity-75 print:hidden space-x-2">
           <a v-for="profile in cv.basics.profiles" 
              :key="profile.network"
              :href="profile.url"
@@ -44,13 +44,13 @@
           <a :href="`tel:${cv.basics.phone}`" class="underline hover:text-foreground/70">{{ cv.basics.phone }}</a>
         </div>
       </div>
-      <UAvatar :src="cv.basics.image" alt="Profile photo" size="3xl" class="rounded-full bg-white"/>
-    </header>
+      <img :src="cv.basics.image" alt="Profile photo" class=" rounded-full h-20 w-20 bg-white"/>
+    </div>
 
     <!-- About Section -->
     <section class="flex min-h-0 flex-col gap-y-3 print:gap-y-1">
       <h2 class="text-xl font-bold">{{ $t('cv.about') }}</h2>
-      <div class="text-pretty font-mono text-sm text-foreground/80">
+      <div class="text-pretty font-mono text-sm opacity-75">
         {{ cv.basics.summary }}
       </div>
     </section>
@@ -64,18 +64,18 @@
             <div class="flex items-center justify-between gap-x-2 text-base">
               <h3 class="font-semibold leading-none">
                 <span class="block sm:inline">{{ job.position }}</span>
-                <span class="block sm:inline text-gray-400"> @&nbsp;{{ job.name }}</span>
+                <span class="block sm:inline text-neutral-400"> @&nbsp;{{ job.name }}</span>
               </h3>
-              <div class="text-sm tabular-nums text-gray-500">
+              <div class="text-sm tabular-nums text-neutral-500">
                 <span class="block sm:inline">{{ formatDate(job.startDate) }}</span>
                 <span class="hidden sm:inline"> - </span>
                 <span class="block sm:inline">{{ job.endDate ? formatDate(job.endDate) : $t('cv.present') }}</span>
               </div>
             </div>
-            <p class="text-pretty font-mono text-sm text-foreground/80">
+            <p class="text-pretty font-mono text-sm opacity-75">
               {{ job.summary }}
             </p>
-            <ul class="list-inside list-disc pl-4 text-xs text-foreground/80">
+            <ul class="list-inside list-disc pl-4 text-xs opacity-75">
               <li v-for="(highlight, hi) in job.highlights" :key="hi">{{ highlight }}</li>
             </ul>
           </div>
@@ -89,15 +89,15 @@
       <article v-for="edu in cv.education" :key="edu.institution" class="rounded-lg bg-card">
         <div class="flex items-center justify-between gap-x-2 text-base">
           <h3 class="font-semibold leading-none">{{ edu.institution }}</h3>
-          <div class="text-sm tabular-nums text-gray-500">
-            <div class="text-sm tabular-nums text-gray-500">
+          <div class="text-sm tabular-nums text-neutral-500">
+            <div class="text-sm tabular-nums text-neutral-500">
               <span class="block sm:inline">{{ formatDate(edu.startDate) }}</span>
               <span class="hidden sm:inline"> - </span>
               <span class="block sm:inline">{{ edu.endDate ? formatDate(edu.endDate) : $t('cv.present') }}</span>
             </div>
           </div>
         </div>
-        <p class="text-pretty font-mono text-sm text-foreground/80">
+        <p class="text-pretty font-mono text-sm opacity-75">
           {{ edu.studyType }} en {{ edu.area }}
         </p>
         <!-- Add Project Section -->
@@ -107,12 +107,12 @@
             <a v-if="edu.project.video"
               :href="edu.project.video" 
               target="_blank"
-              class="text-xs text-primary hover:underline print:hidden"
+              class="text-xs text-(--ui-primary) hover:underline print:hidden"
               rel="noopener noreferrer">
               <Icon name="uil:video" class="inline-block" /> {{ $t('cv.view_video') }}
             </a>
           </div>
-          <p class="text-pretty font-mono text-xs text-foreground/80 mt-1">
+          <p class="text-pretty font-mono text-xs opacity-75 mt-1">
             {{ edu.project.description }}
           </p>
         </div>
@@ -155,7 +155,7 @@
       <ul class="flex flex-wrap gap-1">
         <template v-for="skillgroup in cv.skills" :key="skillgroup.name">
           <li v-for="skill in skillgroup.keywords"
-            class="inline-flex items-center rounded-md px-2 py-0.5 text-xs font-mono bg-primary/80 text-primary-foreground bg-opacity-40"
+            class="inline-flex items-center rounded-md px-2 py-0.5 text-xs font-mono bg-primary/80 text-(--ui-primary)-foreground "
             :style="'background-color: ' + skillgroup.color + 20"
             >
             {{ skill }}
@@ -165,8 +165,19 @@
     </section>
 
     <!-- Note -->
-    <section class="pt-36 text-center text-sm text-foreground/70 print:block hidden">
+    <section class="pt-36 text-center text-sm opacity-50 print:block hidden">
       <p>{{ $t('cv.note') }} <a href="http://juanman.tech/cv" target="_blank" class="underline hover:text-foreground/50">http://juanman.tech/cv</a></p>
+    </section>
+
+    
+    <section class="pt-36 block print:hidden">  
+      <NuxtLink :to="localePath('/blog/6')" >
+        <UAlert
+          title="Check how this CV is created with this blog post"
+          :description="useRequestURL().host + localePath('/blog/6')"
+          icon="i-lucide-terminal"
+        />
+      </NuxtLink>
     </section>
   </section>
 </template>
@@ -176,6 +187,7 @@ import { ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { locale } = useI18n()
+const localePath = useLocalePath()
 
 const cv = ref({})
 
@@ -210,8 +222,8 @@ const formatDate = (dateString) => {
     }
     body {
       /* color: black; */
-      --ui-background: var(--color-gray-50);
-      --ui-foreground: var(--color-gray-700);
+      --ui-background: var(--color-neutral-50);
+      --ui-foreground: var(--color-neutral-700);
     }
     a, a.underline {
       text-decoration: none;

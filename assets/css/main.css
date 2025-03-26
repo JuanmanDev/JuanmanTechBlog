@@ -1,6 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss" theme(static);
+/* @import "@nuxt/ui"; */
+@import "@nuxt/ui-pro";
+
+@source "../../content/**/*";
 
 :root {
   --primary-50: 239 246 255;
@@ -13,6 +15,19 @@
   --primary-700: 29 78 216;
   --primary-800: 30 64 175;
   --primary-900: 30 58 138;
+  /* --ui-color-neutral-900: #021814;
+  /* --ui-color-neutral-950 */
+  /* --ui-bg: var(--color-white);
+  --ui-bg-inverted: var(--ui-color-black); */
+}
+
+
+:root {
+  --ui-primary: black;
+}
+
+.dark {
+  --ui-primary: white;
 }
 
 .dark {
@@ -20,8 +35,10 @@
 }
 
 .prose {
-  max-width: 65ch;
+  max-width: 90ch;
   margin: 0 auto;
+  line-height: 1.75;
+
 }
 
 html {
@@ -31,8 +48,7 @@ html {
 body {
   font-family: 'Arial', sans-serif;
   background-color: #f5f5f5;
-  color: #333;
-  @apply bg-gray-50 dark:bg-gray-900;
+  @apply bg-gray-50 dark:bg-gray-950;
 }
 
 n-header, n-footer {
@@ -73,4 +89,72 @@ iframe {
 .page-leave-to {
   opacity: 0;
   transform: translate(10vw, 0);
+}
+
+.prose {
+  /* Titles (h1 to h5) with nice margins */
+  h1, h2, h3, h4, h5 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.25;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+  }
+
+  h2 {
+    font-size: 1.875rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  h4 {
+    font-size: 1.25rem;
+  }
+
+  h5 {
+    font-size: 1.125rem;
+  }
+
+  /* Fix list styles (ul and ol) */
+  ul, ol {
+    margin-left: 1.5rem; /* Ensure bullets/numbers are properly aligned */
+    padding-left: 1.5rem; /* Add padding for better spacing */
+  }
+
+  ul {
+    list-style-type: disc; /* Ensure bullets are visible */
+  }
+
+  ol {
+    list-style-type: decimal; /* Ensure numbers are visible */
+  }
+
+  li {
+    margin-bottom: 0.5rem; /* Add spacing between list items */
+    line-height: 1.5;
+  }
+
+  /* Paragraphs with a bit more grey, respecting light/dark themes */
+  p {
+    opacity: 0.8;
+  }
+
+  pre {
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  img {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+:root {
+  color-scheme: light dark;
 }

@@ -1,23 +1,35 @@
+import tailwindcss from "@tailwindcss/vite";
+
 // https://nuxt.com/docs/guide/directory-structure/nuxt.config#nuxt-config-file
 export default defineNuxtConfig({
-  extends: ['@nuxt/ui-pro'],
+  // extends: ['@nuxt/ui-pro'],
 
   modules: [
+    'nuxt-disqus',
     'nuxt-llms',
     '@nuxtjs/seo',
     '@nuxtjs/i18n',
+    '@nuxt/ui',
+    '@nuxt/ui-pro',
     '@nuxt/content',
     '@nuxt/eslint',
     '@nuxt/fonts',
-    '@nuxt/ui',
-    'nuxt-disqus',
     '@tresjs/nuxt',
+    'nuxt-og-image',
   ],
 
   content: {
     documentDriven: true,
     navigation: {
       fields: ['title', 'description', 'image', '_path', 'updated', 'created']
+    },
+    
+    build: {
+      markdown: {
+        toc: {
+          searchDepth: 1
+        }
+      }
     }
   },
 
@@ -69,9 +81,18 @@ export default defineNuxtConfig({
   },
 
   ui: {
-    primary: 'blue',
-    gray: 'neutral',
-    icons: ['mdi', 'heroicons']
+    colorMode: true,
+    // theme: {
+    //   colors: ['primary', 'error']
+    // },
+    // gray: 'slate',
+    icons: ['mdi', 'heroicons'],
+    // colors: {
+    //   primary: '#FF0000',
+    // },
+  },
+  uiPro: {
+    content: true
   },
 
   colorMode: {
@@ -85,7 +106,7 @@ export default defineNuxtConfig({
 
   postcss: {
     plugins: {
-      tailwindcss: {},
+      '@tailwindcss/postcss': {}, // Updated to use the new package
       autoprefixer: {}
     }
   },
@@ -139,6 +160,14 @@ export default defineNuxtConfig({
   },
 
   site: {
-    url: "https://juanman.tech"
+    url: "https://juanman.tech",
+    name: 'JuanmanTech - its Me Juanman!' 
+  },
+
+  
+  vite: {
+    plugins: [
+      tailwindcss(),
+    ],
   },
 })

@@ -1,8 +1,7 @@
 <template>
-    <div class="min-h-screen bg-gray-50 dark:bg-gray-900 mt-36">
-      <UMain class="mx-1">
+    <div class="min-h-screen mt-36 mb-30">
         <h1 class="text-5xl font-bold text-center my-10">{{ post.title }}</h1>
-        <div class="prose dark:prose-invert">
+        <div class="prose">
           <ContentRenderer
             v-if="post"
             :value="post"
@@ -33,9 +32,12 @@
         </UContainer>
   
         <UContainer>
-          <DisqusComments  :config="disqusConfig" />
+          <ClientOnly>
+            <div class="disqus-container">
+              <DisqusComments :identifier="route.path" :config="disqusConfig" />
+            </div>
+          </ClientOnly>
         </UContainer>
-      </UMain>
     </div>
   </template>
   
@@ -83,14 +85,69 @@
     description: "Blog",
     headline: post.title,
   })
+
+onMounted(() => {
+  
+// Save the original getComputedStyle function
+const originalGetComputedStyle = window.getComputedStyle;
+
+// Override getComputedStyle
+window.getComputedStyle = function (element, pseudoElt) {
+  const styles = originalGetComputedStyle(element, pseudoElt);
+
+  // Return a proxy to intercept calls to getPropertyValue
+  return new Proxy(styles, {
+    get(target, prop) {
+      if (prop === 'getPropertyValue') {
+        return (property) => {
+          const value = target.getPropertyValue(property);
+          // Replace "oklch" values or handle them as needed
+          console.log(property, value);
+          if (value.includes('oklch')) {
+            console.warn(`Property "${property}" contains "oklch", returning fallback value.`);
+            if (document.documentElement.classList.contains("dark")) {
+              return 'black';
+            }
+            return 'white';
+          }
+          return value;
+        };
+      }
+      return target[prop];
+    },
+  });
+};
+
+})
   </script>
   
   <style>
-  :root {
+  /* :root {
     color-scheme: light dark;
+    
   }
   
   iframe {
     color-scheme: light;
+  } */
+
+  .disqus-container a {
+    color: #000001;
   }
-  </style>
+
+ .dark .min-h-screen.bg-neutral-50.dark:bg-neutral-900.mt-36 {
+  color: block
+ }
+ 
+ /* #disqus_thread a {
+  color: red;
+} */
+
+:root {
+  color-scheme: light dark;
+}
+
+iframe {
+  color-scheme: light;
+}
+</style>

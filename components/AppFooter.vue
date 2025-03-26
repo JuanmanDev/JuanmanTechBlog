@@ -54,60 +54,25 @@ function onSubmit() {
 </script>
 
 <template>
-  <UFooter>
-    <!-- <template #top>
-      <UFooterColumns :links="links">
-        <template #right>
-          <form @submit.prevent="onSubmit">
-            <UFormGroup
-              label="Subscribe to our newsletter"
-              :ui="{ container: 'mt-3' }"
-            >
-              <UInput
-                v-model="email"
-                type="email"
-                placeholder="Enter your email"
-                :ui="{ icon: { trailing: { pointer: '' } } }"
-                required
-                size="xl"
-                autocomplete="off"
-                class="max-w-sm"
-              >
-                <template #trailing>
-                  <UButton
-                    type="submit"
-                    size="xs"
-                    :label="loading ? 'Subscribing' : 'Subscribe'"
-                    :loading="loading"
-                  />
-                </template>
-              </UInput>
-            </UFormGroup>
-          </form>
-        </template>
-      </UFooterColumns>
-    </template> -->
-
-    <template #left>
-      <p class="text-gray-500 dark:text-gray-400 text-sm">
+  <footer class="border-t border-neutral-200 dark:border-neutral-800 z-50 lg:!border-transparent bg-neutral-50/75 dark:bg-neutral-950/75 backdrop-blur w-full py-2">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-2 h-[--header-height]">
+      <p class="text-neutral-700 dark:text-neutral-300 text-sm ">
         Copyright © {{ new Date().getFullYear() }}. All rights reserved.
       </p>
-    </template>
-    <template #center>
-      Made with ❤️ by Juanman Béc
-    </template>
+      <p class="text-neutral-900 dark:text-white">
+        Made with ❤️ by Juanman Béc
+      </p>
+      <div>
+        <ButtonsColorModeButton size="sm" />
 
-    <template #right>
-      <UColorModeButton size="sm" />
-
-      <UButton
-        to="https://github.com/JuanmanDev/JuanmanTechBlog?ref=juanman.tech_footer"
-        target="_blank"
-        icon="i-simple-icons-github"
-        aria-label="GitHub"
-        color="gray"
-        variant="ghost"
-      />
-    </template>
-  </UFooter>
+        <UButton
+          to="https://github.com/JuanmanDev/JuanmanTechBlog?ref=juanman.tech_footer"
+          target="_blank"
+          icon="i-simple-icons-github"
+          aria-label="GitHub"
+          color="neutral" variant="ghost"
+        />
+      </div>
+    </div>
+  </footer>
 </template>

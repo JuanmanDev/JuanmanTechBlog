@@ -15,14 +15,13 @@ useHead({
 </script>
 
 <template>
-  <div class="flex flex-col min-h-screen relative">
-    <NuxtLoadingIndicator/>
-    
-    <NuxtLayout>
-      <NuxtPage/>
-    </NuxtLayout>
-        
-    <UNotifications />
-    <Analytics/>
-  </div>
+    <div class="flex flex-col min-h-screen relative ">
+      <NuxtLoadingIndicator/>
+      
+      <NuxtLayout>
+        <NuxtPage/>
+      </NuxtLayout>
+
+      <Analytics/>
+    </div>
 </template>
