@@ -12,8 +12,7 @@ import { Analytics } from '@vercel/analytics/nuxt'
     </div>
     
     <AppFooter/>
-    
-    <UNotifications />
+
     <Analytics/>
   </div>
 </template>
