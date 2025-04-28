@@ -8,6 +8,7 @@ const page = {
     "title": "Hello! I'm Juanma :)",
     "description": "Tech Blog Projects",
     "lastBlogsPosts": "Last blog posts",
+    "projects": "Projects", // Added key for projects section
     "links": [
       {
         "label": "Go to the Blog",
@@ -38,6 +39,20 @@ const page = {
   },
 };
 
+// Example projects array
+let projects = [
+  {
+    title: "720 Degiro",
+    subtitle: "Create Model 720 for the Spanish tax declaration.",
+    path: "https://720degiro.juanman.tech/"
+  },
+  {
+    title: "Bus Salamanca Alexa Skill",
+    subtitle: "Alexa Skill to get time to arrive next buses on Salamanca.",
+    path: "https://www.amazon.es/Juan-Manuel-B%C3%A9c-Bus-Salamanca/dp/B0F59TDK93/"
+  }
+];
+
 if (locale.value === 'es') {
   page.hero.title = "¡Hola! Soy Juanma :)";
   page.hero.description = "Web, blog y proyectos";
@@ -45,6 +60,20 @@ if (locale.value === 'es') {
   page.hero.links[0].label = "Ir al Blog";
   page.hero.links[1].label = "Ver este proyecto en github";
   page.logos.title = "Está web está hecha con:";
+  page.hero.projects = "Proyectos"; // Spanish translation
+
+  projects = [
+    {
+      title: "720 Degiro",
+      subtitle: "Genera el Modelo 720 para la presentación desde DeGiro.",
+      path: "https://720degiro.juanman.tech/"
+    },
+    {
+      title: "Bus Salamanca Alexa Skill",
+      subtitle: "Skill de Alexa para saber los tiempos de llegada de los autbuses urbanos de Salamanca.",
+      path: "https://www.amazon.es/Juan-Manuel-B%C3%A9c-Bus-Salamanca/dp/B0F59TDK93/"
+    }
+  ];
 }
 
 
@@ -83,7 +112,7 @@ defineOgImageScreenshot({
       </div>
     </div>
 
-    <div class="py-24 sm:py-32 md:py-40 relative 2xl:pt-[35vh] xl:pt-[25vh] pt-[15vh]">
+    <div class="py-10 sm:py-32 md:py-20 relative 2xl:pt-[22vh] xl:pt-[12vh] pt-[17vh]">
       <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl gap-16 sm:gap-y-24 flex flex-col">
         <div class="text-center">
           <h1 class="text-5xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-7xl">
@@ -134,6 +163,25 @@ defineOgImageScreenshot({
             <NuxtLink :to="article.path" class="flex-1 min-w-[200px] font-semibold m-2 h-full" v-if="index < 3">
               <UCard :to="article.path">
                 <h2>{{ article.title }}</h2>
+              </UCard>
+            </NuxtLink>
+          </template>
+        </div>
+      </div>
+    </div>
+    
+    <div class="bg-primary-50/70 dark:bg-primary-40/70 backdrop-blur py-5 px-3 gap-0 lg:mx-10 mt-20">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex justify-between m-2">
+          <h2 class="dark:text-slate-950 pt-2">{{ page.hero.projects }}</h2>
+        </div>
+
+        <div class="flex flex-wrap place-items-stretch items-stretch text-gray-900 dark:text-white" >
+          <template v-for="(article, index) in projects" :key="article.title">
+            <NuxtLink :to="article.path" class="flex-1 min-w-[200px] font-semibold m-2 h-full" v-if="index < 3">
+              <UCard :to="article.path">
+                <h2>{{ article.title }}</h2>
+                <h3 class="font-light">{{ article.subtitle }}</h3>
               </UCard>
             </NuxtLink>
           </template>
