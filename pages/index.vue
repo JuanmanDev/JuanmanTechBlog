@@ -6,7 +6,7 @@ const route = useRoute();
 const page = {
   "hero": {
     "title": "Hello! I'm Juanma :)",
-    "description": "Here i share some things about tech and me.",
+    "description": "Tech Blog Projects",
     "lastBlogsPosts": "Last blog posts",
     "links": [
       {
@@ -111,20 +111,7 @@ defineOgImageScreenshot({
           </div>
         </div>
 
-        <div class="text-center">
-          <h2 class="text-lg font-semibold leading-8 text-gray-900 dark:text-white">
-            {{ page.logos.title }}
-          </h2>
-          <div class="mx-auto mt-10 flex flex-wrap items-center justify-between gap-8">
-            <UIcon
-              v-for="icon in page.logos.icons"
-              :key="icon"
-              :name="icon"
-              class=" w-12 h-12 lg:w-16 lg:h-16 flex-shrink-0 text-gray-900 dark:text-white zoom-image"
-              aria-hidden="true"
-            ></UIcon>
-          </div>
-        </div>
+
       </div>
     </div>
 
