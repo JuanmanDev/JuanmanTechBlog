@@ -3,6 +3,16 @@ const { locale } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute();
 
+// State for background animation
+const isSpinning = ref(false)
+
+const triggerSpin = () => {
+  isSpinning.value = true
+  setTimeout(() => {
+    isSpinning.value = false
+  }, 2000) // Stop spinning after 2 seconds
+}
+
 const page = {
   "hero": {
     "title": "Hello! I'm Juanma :)",
@@ -42,14 +52,22 @@ const page = {
 // Example projects array
 let projects = [
   {
+    title: "Hotelier Tools",
+    subtitle: "Improve Little Hotelier to automate hotel operations. Detect errors and inconsistencies. Improve the current Web page with new features. Detect errors and inconsistencies. Generate bulk invoices and download. Mark paid reservatiosns from external sources.",
+    path: "https://hotelier.tools/",
+    image: "/image/projects/hotelier-tools.png"
+  },
+  {
     title: "720 Degiro",
-    subtitle: "Create Model 720 for the Spanish tax declaration.",
-    path: "https://720degiro.juanman.tech/"
+    subtitle: "Create Model 720 for the Spanish tax declaration in 5 minutes. Just Export your DeGiro data and upload it. Guide included.",
+    path: "https://720degiro.juanman.tech/",
+    image: "/image/projects/720degiro.png"
   },
   {
     title: "Bus Salamanca Alexa Skill",
-    subtitle: "Alexa Skill to get time to arrive next buses on Salamanca.",
-    path: "https://www.amazon.es/Juan-Manuel-B%C3%A9c-Bus-Salamanca/dp/B0F59TDK93/"
+    subtitle: "Alexa Skill to get time to arrive next buses on Salamanca. Configure your closest bus stops and ask Alexa for arrival times.",
+    path: "https://www.amazon.es/Juan-Manuel-B%C3%A9c-Bus-Salamanca/dp/B0F59TDK93/",
+    image: "/image/projects/bus-salamanca.png"
   }
 ];
 
@@ -64,17 +82,31 @@ if (locale.value === 'es') {
 
   projects = [
     {
+      title: "Hotelier Tools",
+      subtitle: "Herramientas para la gestión y operación hotelera. Automatiza Little Hotelier. Detecta errores e inconsistencias. Mejora la web actual con nuevas funcionalidades. Genera facturas masivas y descárgalas. Marca reservas pagadas de fuentes externas.",
+      path: "https://hoteliertools.com/",
+      image: "/image/projects/hotelier-tools.png"
+    },
+    {
       title: "720 Degiro",
-      subtitle: "Genera el Modelo 720 para la presentación desde DeGiro.",
-      path: "https://720degiro.juanman.tech/"
+      subtitle: "Genera el Modelo 720 para la presentación desde DeGiro. Exporta tus datos de DeGiro y súbelos. Guía incluida. En 5 minutos listo.",
+      path: "https://720degiro.juanman.tech/",
+      image: "/image/projects/720degiro.png"
     },
     {
       title: "Bus Salamanca Alexa Skill",
-      subtitle: "Skill de Alexa para saber los tiempos de llegada de los autbuses urbanos de Salamanca.",
-      path: "https://www.amazon.es/Juan-Manuel-B%C3%A9c-Bus-Salamanca/dp/B0F59TDK93/"
+      subtitle: "Skill de Alexa para saber los tiempos de llegada de los autobuses urbanos de Salamanca. Configura tus paradas de autobús más cercanas y pregunta a Alexa por los tiempos de llegada.",
+      path: "https://www.amazon.es/Juan-Manuel-B%C3%A9c-Bus-Salamanca/dp/B0F59TDK93/",
+      image: "/image/projects/bus-salamanca.png"
     }
   ];
 }
+
+// Add UTM parameter to project links
+const addUTMToUrl = (url: string) => {
+  const separator = url.includes('?') ? '&' : '?';
+  return `${url}${separator}utm_source=juanman.tech`;
+};
 
 
 
@@ -83,6 +115,8 @@ const { data: blogs3 } = await useAsyncData('p-' + route.path,
     .select(
       'path',
       'title',
+      'image',
+      'short',
     )
     .where('path', 'LIKE', localePath(`/blog/`) + '%' )
     .order('updated', 'DESC')
@@ -107,7 +141,7 @@ defineOgImageScreenshot({
     <div class="absolute -z-10 max-h-screen max-w-screen h-full w-full">
       <div class="min-h-80 max-h-screen max-w-screen h-full w-full">
         <ClientOnly>
-          <DecorationTresjs class="min-h-80 max-h-screen max-w-screen h-full w-full" />
+          <DecorationTresjs :class="['min-h-80 max-h-screen max-w-screen h-full w-full', { 'spin-fast': isSpinning }]" />
         </ClientOnly>
       </div>
     </div>
@@ -133,8 +167,9 @@ defineOgImageScreenshot({
                   ? 'ring-1 ring-inset ring-gray-300 dark:ring-gray-700 text-gray-700 dark:text-gray-200 bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700/50'
                   : 'text-white dark:text-gray-900 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100',
               ]"
+              @click="triggerSpin"
             >
-              <UIcon v-if="link.icon" :name="link.icon"></UIcon>
+              <UIcon v-if="link.icon" :name="link.icon" />
               <span>{{ link.label }}</span>
           </NuxtLink>
           </div>
@@ -144,7 +179,48 @@ defineOgImageScreenshot({
       </div>
     </div>
 
-    <div class="bg-primary-50/70 dark:bg-primary-40/70 backdrop-blur py-5 px-3 gap-0 lg:mx-10">
+    <div class="bg-primary-50/70 dark:bg-primary-40/70 backdrop-blur py-5 px-3 gap-0 lg:mx-10 mt-20">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex justify-between m-2">
+          <h2 class="dark:text-slate-950 pt-2">{{ page.hero.projects }}</h2>
+        </div>
+
+        <div class="flex flex-col gap-4 text-gray-900 dark:text-white">
+          <template v-for="project in projects" :key="project.title">
+            <a
+              :href="addUTMToUrl(project.path)"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-card w-full block"
+              @click="triggerSpin"
+            >
+              <UCard class="project-card-inner h-full overflow-hidden">
+                <div class="flex flex-col md:flex-row gap-4 items-center min-w-0">
+                  <div v-if="project.image" class="w-full md:w-48 h-48 flex-shrink-0">
+                    <img
+                      :src="project.image"
+                      :alt="project.title"
+                      class="w-full h-full object-cover rounded-lg"
+                    >
+                  </div>
+                  <div class="flex-1 min-w-0 max-w-full overflow-hidden">
+                    <h2 class="text-xl font-bold mb-2 overflow-hidden text-ellipsis whitespace-nowrap">{{ project.title }}</h2>
+                    <p class="font-light text-gray-600 dark:text-gray-300 mb-3 overflow-hidden text-ellipsis line-clamp-3">{{ project.subtitle }}</p>
+                    <div class="flex items-center gap-2 text-sm text-primary-600 dark:text-primary-400 max-w-full">
+                      <UIcon name="i-heroicons-link" class="w-4 h-4 flex-shrink-0" />
+                      <span class="overflow-hidden text-ellipsis whitespace-nowrap block min-w-0 flex-shrink">{{ project.path }}</span>
+                      <UIcon name="i-heroicons-arrow-top-right-on-square" class="w-4 h-4 flex-shrink-0" />
+                    </div>
+                  </div>
+                </div>
+              </UCard>
+            </a>
+          </template>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-primary-50/70 dark:bg-primary-40/70 backdrop-blur py-5 px-3 gap-0 lg:mx-10 mt-20">
       <div class="max-w-6xl mx-auto">
         <div class="flex justify-between m-2">
           <h2 class="dark:text-slate-950 pt-2">{{ page.hero.lastBlogsPosts }}</h2>
@@ -154,34 +230,33 @@ defineOgImageScreenshot({
               icon="i-heroicons-arrow-right-20-solid"
               :trailing="true"
               size="xl"
+              @click="triggerSpin"
             />
           </NuxtLink>
         </div>
 
-        <div class="flex flex-wrap place-items-stretch items-stretch text-gray-900 dark:text-white" v-if="blogs3">
+        <div v-if="blogs3" class="grid grid-cols-1 md:grid-cols-3 gap-4 text-gray-900 dark:text-white">
           <template v-for="(article, index) in blogs3" :key="article.path">
-            <NuxtLink :to="article.path" class="flex-1 min-w-[200px] font-semibold m-2 h-full" v-if="index < 3">
-              <UCard :to="article.path">
-                <h2>{{ article.title }}</h2>
-              </UCard>
-            </NuxtLink>
-          </template>
-        </div>
-      </div>
-    </div>
-    
-    <div class="bg-primary-50/70 dark:bg-primary-40/70 backdrop-blur py-5 px-3 gap-0 lg:mx-10 mt-20">
-      <div class="max-w-6xl mx-auto">
-        <div class="flex justify-between m-2">
-          <h2 class="dark:text-slate-950 pt-2">{{ page.hero.projects }}</h2>
-        </div>
-
-        <div class="flex flex-wrap place-items-stretch items-stretch text-gray-900 dark:text-white" >
-          <template v-for="(article, index) in projects" :key="article.title">
-            <NuxtLink :to="article.path" class="flex-1 min-w-[200px] font-semibold m-2 h-full" v-if="index < 3">
-              <UCard :to="article.path">
-                <h2>{{ article.title }}</h2>
-                <h3 class="font-light">{{ article.subtitle }}</h3>
+            <NuxtLink
+              v-if="index < 3"
+              :to="article.path"
+              class="blog-card block h-full"
+              @click="triggerSpin"
+            >
+              <UCard class="blog-card-inner h-full flex flex-col">
+                <div v-if="article.image" class="w-full h-48 mb-4 flex-shrink-0">
+                  <img
+                    :src="article.image"
+                    :alt="article.title"
+                    class="w-full h-full object-cover rounded-lg"
+                  >
+                </div>
+                <div class="flex-1 flex flex-col min-w-0">
+                  <h2 class="font-bold mb-2 overflow-hidden text-ellipsis">{{ article.title }}</h2>
+                  <p v-if="article.short" class="text-sm text-gray-600 dark:text-gray-400 mt-auto overflow-hidden text-ellipsis line-clamp-3">
+                    {{ article.short }}
+                  </p>
+                </div>
               </UCard>
             </NuxtLink>
           </template>
@@ -202,5 +277,66 @@ defineOgImageScreenshot({
   transform: scale(3) rotateY(360deg); /* Scale up and rotate 3 full spins (360deg * 3) */
   opacity: 0.8;
   transition: transform 1.2s ease-in-out, opacity 0.5s ease;
+}
+
+/* Project card animations */
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: scale(1.02);
+}
+
+.project-card:active {
+  transform: scale(0.98);
+  transition: transform 0.1s ease;
+}
+
+.project-card-inner {
+  transition: box-shadow 0.3s ease;
+}
+
+.project-card:hover .project-card-inner {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+/* Blog card animations */
+.blog-card {
+  transition: transform 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: scale(1.02);
+}
+
+.blog-card:active {
+  transform: scale(0.98);
+  transition: transform 0.1s ease;
+}
+
+.blog-card-inner {
+  transition: box-shadow 0.3s ease;
+}
+
+.blog-card:hover .blog-card-inner {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+/* Background spin animation */
+.spin-fast {
+  animation: spinFast 2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes spinFast {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(720deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(1440deg) scale(1);
+  }
 }
 </style>
