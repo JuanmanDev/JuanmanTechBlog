@@ -70,8 +70,20 @@ export default defineNuxtConfig({
     }
     ],
     langDir: '../locales/',
-    vueI18n: 'en',
-    lazy: true
+    lazy: true,
+    compilation: {
+      strictMessage: false,
+    },
+    customBlocks: {
+      defaultSFCLang: 'json',
+      globalSFCScope: false,
+    },
+    types: 'composition',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root',
+    }
   },
 
   colorMode: {
@@ -148,5 +160,13 @@ export default defineNuxtConfig({
     plugins: [
       tailwindcss(),
     ],
+    build: {
+      rollupOptions: {
+        external: []
+      }
+    },
+    optimizeDeps: {
+      exclude: ['data']
+    }
   },
 })
