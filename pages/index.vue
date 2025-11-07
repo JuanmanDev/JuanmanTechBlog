@@ -163,16 +163,14 @@ defineOgImageScreenshot({
 })
 </script>
 <template>
-  <div class="relative w-full h-full min-h-dvh">
-    <div class="fixed -z-10 inset-0 w-full h-full">
-      <div class="w-full h-full">
-        <ClientOnly>
-          <DecorationTresjs 
-            class="w-full h-full"
-            :is-spinning="isSpinning"
-          />
-        </ClientOnly>
-      </div>
+  <div class="relative w-full min-h-dvh">
+    <div class="fixed -z-10 inset-0 w-screen h-screen overflow-hidden max-w-screen max-h-screen">
+      <ClientOnly>
+        <DecorationTresjs 
+          class="w-full h-full"
+          :is-spinning="isSpinning"
+        />
+      </ClientOnly>
     </div>
 
     <div class="py-10 sm:py-32 md:py-20 relative 2xl:pt-[22vh] xl:pt-[12vh] pt-[17vh]">
