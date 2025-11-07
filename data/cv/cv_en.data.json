@@ -5,7 +5,7 @@
       "label": "Senior Software Engineer",
       "email": "JuanmaDeveloper@outlook.com",
       "url": "https://juanman.tech/",
-      "image": "/cv/juanma.png",
+      "image": "/image/cv/juanma.png",
       "summary": "Computer scientist passionate about creating impactful projects. Focus on frontend and interested in everything.",
       "phone": "+34 679 94 96 54",
       "location": {
@@ -149,10 +149,25 @@
     ],
     "projects": [
       {
+        "name": "Hotelier Tools",
+        "startDate": "2025-01-01",
+        "endDate": null,
+        "description": "Improve Little Hotelier to automate hotel operations. Detect errors and inconsistencies. Improve the current Web page with new features. Detect errors and inconsistencies. Generate bulk invoices and download. Mark paid reservations from external sources.",
+        "highlights": [
+          "Automation",
+          "Error Detection",
+          "Reverse Engineering API",
+          "Typescript",
+          "TamperMonkey",
+          "Docker"
+        ],
+        "url": "https://hotelier.tools/"
+      },
+      {
         "name": "720 DeGiro",
         "startDate": "2025-01-20",
         "endDate": "2025-02-12",
-        "description": "Generates the Model 720 to present on the Spain Government easily.",
+        "description": "Create Model 720 for the Spanish tax declaration in 5 minutes. Just Export your DeGiro data and upload it. Guide included.",
         "highlights": [
           "Supabase",
           "Nuxt UI 3 Alpha",
@@ -162,28 +177,17 @@
         "url": "https://720degiro.juanman.tech/"
       },
       {
-        "name": "Hostel Manager Tool (Removed)",
-        "startDate": "2018-01-01",
-        "endDate": "2020-02-01",
-        "description": "Using a photo of ID/passport send it to the Spanish police official web.",
+        "name": "Bus Salamanca Alexa Skill",
+        "startDate": "2025-04-01",
+        "endDate": "2025-06-01",
+        "description": "Alexa Skill to get time to arrive next buses on Salamanca. Configure your closest bus stops and ask Alexa for arrival times.",
         "highlights": [
-          "Puppeteer",
-          "OCR",
-          "Strapi",
-          "Typescript"
-        ]
-      },
-      {
-        "name": "Taps!",
-        "startDate": "2014-06-01",
-        "endDate": "2015-02-01",
-        "description": "A basic game to tap the screen as fast as possible in 10s with multiple basic animations.",
-        "highlights": [
-          "Lua",
-          "Marmalade",
-          "Blackberry",
-          "Android"
-        ]
+          "Alexa Skills Kit",
+          "AWS lambda",
+          "Real-time Data",
+          "Reverse Engineering API"
+        ],
+        "url": "https://www.amazon.es/Juan-Manuel-B%C3%A9c-Bus-Salamanca/dp/B0F59TDK93/"
       }
     ]
   }

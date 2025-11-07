@@ -124,7 +124,8 @@ v-if="edu.project.video"
     </section>
 
     <!-- Projects -->
-    <section class="flex min-h-0 flex-col gap-y-3 print:gap-y-1">
+    <section class="flex min-h-0 flex-col gap-y-3 print:gap-y-1 print:break-before-page print:pt-4">
+      <div class="border-t border-neutral-300 dark:border-neutral-700 print:border-neutral-400 mb-4 print:mb-2" />
       <h2 class="text-xl font-bold">{{ $t('cv.projects') }}</h2>
       <div class="-mx-3 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 print:grid-cols-1">
         <article v-for="project in cv.projects" :key="project.name" class="rounded-lg md:border p-3 print:flex-row print:border-none">
