@@ -1,5 +1,5 @@
 <template>
-  <section class="mx-auto w-full max-w-2xl space-y-8 print:space-y-4 mt-32 print:mt-0 mb-36 px-2 text-black dark:text-white print:text-black" v-if="cv?.basics?.name">
+  <section v-if="cv?.basics?.name" class="mx-auto w-full max-w-2xl space-y-8 print:space-y-4 mt-32 print:mt-0 mb-36 px-2 text-black dark:text-white print:text-black">
     <!-- Header Section -->
     <div class="flex items-center justify-between">
       <div class="flex-1 space-y-1.5">
@@ -8,12 +8,14 @@
           {{ cv.basics.label }}
         </p>
         <p class="max-w-md items-center text-pretty font-mono text-xs text-foreground">
-          <a class="inline-flex gap-x-1.5 align-baseline leading-none hover:underline" 
+          <a
+class="inline-flex gap-x-1.5 align-baseline leading-none hover:underline" 
              href="https://www.google.com/maps/place/Salamanca" 
              target="_blank"
              rel="noopener noreferrer"
              aria-label="Location">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
+            <svg
+xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
                  fill="none" stroke="currentColor" stroke-width="2" class="lucide lucide-globe size-3">
               <circle cx="12" cy="12" r="10"/>
               <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
@@ -25,7 +27,8 @@
         
         <!-- Contact Links -->
         <div class="flex gap-x-1 pt-1 font-mono text-sm opacity-75 print:hidden space-x-2">
-          <a v-for="profile in cv.basics.profiles" 
+          <a
+v-for="profile in cv.basics.profiles" 
              :key="profile.network"
              :href="profile.url"
              target="_blank"
@@ -44,7 +47,7 @@
           <a :href="`tel:${cv.basics.phone}`" class="underline hover:text-foreground/70">{{ cv.basics.phone }}</a>
         </div>
       </div>
-      <img :src="cv.basics.image" alt="Profile photo" class=" rounded-full h-20 w-20 bg-white"/>
+      <img :src="cv.basics.image" alt="Profile photo" class=" rounded-full h-20 w-20 bg-white">
     </div>
 
     <!-- About Section -->
@@ -104,7 +107,8 @@
         <div v-if="edu.project" class="mt-2">
           <div class="flex items-center gap-x-2 justify-between">
             <h4 class="font-medium text-sm">{{ $t('cv.final_project') }}: {{ edu.project.name }}</h4>
-            <a v-if="edu.project.video"
+            <a
+v-if="edu.project.video"
               :href="edu.project.video" 
               target="_blank"
               class="text-xs text-(--ui-primary) hover:underline print:hidden"
@@ -120,7 +124,8 @@
     </section>
 
     <!-- Projects -->
-    <section class="flex min-h-0 flex-col gap-y-3 print:gap-y-1">
+    <section class="flex min-h-0 flex-col gap-y-3 print:gap-y-1 print:break-before-page print:pt-4">
+      <div class="border-t border-neutral-300 dark:border-neutral-700 print:border-neutral-400 mb-4 print:mb-2" />
       <h2 class="text-xl font-bold">{{ $t('cv.projects') }}</h2>
       <div class="-mx-3 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 print:grid-cols-1">
         <article v-for="project in cv.projects" :key="project.name" class="rounded-lg md:border p-3 print:flex-row print:border-none">
@@ -139,7 +144,8 @@
             </div>
             <p class="text-pretty font-mono text-xs">{{ project.description }}</p>
             <ul class="mt-2 flex flex-wrap gap-1">
-              <li v-for="(highlight, hi) in project.highlights" :key="hi"
+              <li
+v-for="(highlight, hi) in project.highlights" :key="hi"
                   class="inline-flex items-center rounded-md border px-2 py-0.5 text-xs font-mono bg-secondary text-secondary-foreground">
                 {{ highlight }}
               </li>
@@ -154,7 +160,8 @@
       <h2 class="text-xl font-bold">{{ $t('cv.skills') }}</h2>
       <ul class="flex flex-wrap gap-1">
         <template v-for="skillgroup in cv.skills" :key="skillgroup.name">
-          <li v-for="skill in skillgroup.keywords"
+          <li
+v-for="skill in skillgroup.keywords"
             class="inline-flex items-center rounded-md px-2 py-0.5 text-xs font-mono bg-primary/80 text-(--ui-primary)-foreground "
             :style="'background-color: ' + skillgroup.color + 20"
             >
@@ -192,7 +199,7 @@ const localePath = useLocalePath()
 const cv = ref({})
 
 const loadCvData = async (lang) => {
-  const data = await import(`../../content/cv/cv_${lang}.json`)
+  const data = await import(`../../data/cv/cv_${lang}.data.json`)
   cv.value = data.default
 }
 

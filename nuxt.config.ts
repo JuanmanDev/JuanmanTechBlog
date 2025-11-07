@@ -10,7 +10,6 @@ export default defineNuxtConfig({
     '@nuxtjs/seo',
     '@nuxtjs/i18n',
     '@nuxt/ui',
-    '@nuxt/ui-pro',
     '@nuxt/content',
     '@nuxt/eslint',
     '@nuxt/fonts',
@@ -32,6 +31,7 @@ export default defineNuxtConfig({
       }
     }
   },
+
 
   app: {
     pageTransition: {
@@ -70,29 +70,20 @@ export default defineNuxtConfig({
     }
     ],
     langDir: '../locales/',
-    vueI18n: 'en',
-    lazy: true
-  },
-
-  tailwindcss: {
-    config: {
-      darkMode: 'class'
+    lazy: true,
+    compilation: {
+      strictMessage: false,
+    },
+    customBlocks: {
+      defaultSFCLang: 'json',
+      globalSFCScope: false,
+    },
+    types: 'composition',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root',
     }
-  },
-
-  ui: {
-    colorMode: true,
-    // theme: {
-    //   colors: ['primary', 'error']
-    // },
-    // gray: 'slate',
-    icons: ['mdi', 'heroicons'],
-    // colors: {
-    //   primary: '#FF0000',
-    // },
-  },
-  uiPro: {
-    content: true
   },
 
   colorMode: {
@@ -169,5 +160,13 @@ export default defineNuxtConfig({
     plugins: [
       tailwindcss(),
     ],
+    build: {
+      rollupOptions: {
+        external: []
+      }
+    },
+    optimizeDeps: {
+      exclude: ['data']
+    }
   },
 })

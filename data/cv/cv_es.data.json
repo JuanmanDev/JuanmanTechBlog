@@ -4,7 +4,7 @@
       "label": "Ingeniero de Software Senior",
       "email": "JuanmaDeveloper@outlook.com",
       "url": "https://juanman.tech/",
-      "image": "/cv/juanma.png",
+      "image": "/image/cv/juanma.png",
       "summary": "Ingenierio de software apasionado por crear proyectos impactantes. Centrado en frontend, interesado en todo.",
       "phone": "+34 679 94 96 54",
       "location": {
@@ -148,26 +148,39 @@
     ],
     "projects": [
       {
+        "name": "Hotelier Tools",
+        "startDate": "2025-01-01",
+        "endDate": null,
+        "description": "Herramientas para la gestión y operación hotelera. Automatiza Little Hotelier. Detecta errores e inconsistencias. Mejora la web actual con nuevas funcionalidades. Genera facturas masivas y descárgalas. Marca reservas pagadas de fuentes externas.",
+        "highlights": [
+          "Automatización", "Detección de Errores",
+          "Ingeniería Reversa de APIs",
+          "Typescript",
+          "TamperMonkey",
+          "Docker"
+        ],
+        "url": "https://hoteliertools.com/"
+      },
+      {
         "name": "720 DeGiro",
         "startDate": "2025-01-20",
         "endDate": "2025-02-12",
-        "description": "Genera el Modelo 720 para presentarlo fácilmente en el Gobierno de España.",
-        "highlights": ["Supabase", "Nuxt UI 3 Alpha", "Vercel", "Resend", "Strapi"],
+        "description": "Genera el Modelo 720 para la presentación desde DeGiro. Exporta tus datos de DeGiro y súbelos. Guía incluida. En 5 minutos listo.",
+        "highlights": ["Supabase", "Nuxt UI 3 Alpha", "Vercel", "Resend"],
         "url": "https://720degiro.juanman.tech/"
       },
       {
-        "name": "Herramienta de Gestión de Hostales (Eliminado)",
-        "startDate": "2018-01-01",
-        "endDate": "2020-02-01",
-        "description": "Usando una foto de dni/pasaporte, la envía a la web oficial de la policía española.",
-        "highlights": ["Puppeteer", "OCR", "Strapi", "Typescript"]
-      },
-      {
-        "name": "Taps!",
-        "startDate": "2014-06-01",
-        "endDate": "2015-02-01",
-        "description": "Un juego básico para tocar la pantalla lo más rápido posible en 10s con múltiples animaciones básicas.",
-        "highlights": ["Lua", "Marmalade", "Blackberry", "Android"]
+        "name": "Bus Salamanca Alexa Skill",
+        "startDate": "2025-04-01",
+        "endDate": "2025-06-01",
+        "description": "Skill de Alexa para saber los tiempos de llegada de los autobuses urbanos de Salamanca. Configura tus paradas de autobús más cercanas y pregunta a Alexa por los tiempos de llegada.",
+        "highlights": [
+          "Alexa Skills Kit",
+          "AWS lambda",
+          "Real-time Data",
+          "Reverse Engineering API"
+      ],
+        "url": "https://www.amazon.es/Juan-Manuel-B%C3%A9c-Bus-Salamanca/dp/B0F59TDK93/"
       }
     ]
   }
