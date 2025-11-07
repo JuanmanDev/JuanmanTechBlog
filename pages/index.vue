@@ -6,11 +6,32 @@ const route = useRoute();
 // State for background animation
 const isSpinning = ref(false)
 
-const triggerSpin = () => {
+const triggerSpin = (event: Event, url?: string, isExternal = false) => {
+  event.preventDefault()
+  
+  // Trigger the animation
   isSpinning.value = true
-  setTimeout(() => {
-    isSpinning.value = false
-  }, 2000) // Stop spinning after 2 seconds
+  
+  if (isExternal) {
+    // Navigate after 500ms for external links
+    setTimeout(() => {
+      isSpinning.value = false
+      if (url) {
+        window.open(url, '_blank')
+      }
+    }, 500)
+  } else {
+    // Navigate immediately for internal links
+    if (url) {
+      
+      setTimeout(() => {
+        navigateTo(url)
+      }, 200)
+    }
+    setTimeout(() => {
+      isSpinning.value = false
+    }, 500)
+  }
 }
 
 const page = {
@@ -138,10 +159,13 @@ defineOgImageScreenshot({
 </script>
 <template>
   <div class="relative w-full h-full min-h-dvh">
-    <div class="absolute -z-10 max-h-screen max-w-screen h-full w-full">
-      <div class="min-h-80 max-h-screen max-w-screen h-full w-full">
+    <div class="fixed -z-10 inset-0 w-full h-full">
+      <div class="w-full h-full">
         <ClientOnly>
-          <DecorationTresjs :class="['min-h-80 max-h-screen max-w-screen h-full w-full', { 'spin-fast': isSpinning }]" />
+          <DecorationTresjs 
+            class="w-full h-full"
+            :is-spinning="isSpinning"
+          />
         </ClientOnly>
       </div>
     </div>
@@ -156,22 +180,22 @@ defineOgImageScreenshot({
             {{ page.hero.description }}
           </div>
           <div class="mt-10 flex flex-wrap gap-x-6 gap-y-3 justify-center">
-            <NuxtLink
+            <a
               v-for="link in page.hero.links"
               :key="link.to"
               :href="localePath(link.to)"
               :target="link.target || '_self'"
               :class="[
-                'focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-medium rounded-full text-base gap-x-2.5 px-3.5 py-2.5 shadow-sm inline-flex items-center',
+                'focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-medium rounded-full text-base gap-x-2.5 px-3.5 py-2.5 shadow-sm inline-flex items-center cursor-pointer',
                 link.color === 'gray'
                   ? 'ring-1 ring-inset ring-gray-300 dark:ring-gray-700 text-gray-700 dark:text-gray-200 bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700/50'
                   : 'text-white dark:text-gray-900 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100',
               ]"
-              @click="triggerSpin"
+              @click="triggerSpin($event, localePath(link.to), !!link.target)"
             >
               <UIcon v-if="link.icon" :name="link.icon" />
               <span>{{ link.label }}</span>
-          </NuxtLink>
+          </a>
           </div>
         </div>
 
@@ -191,8 +215,8 @@ defineOgImageScreenshot({
               :href="addUTMToUrl(project.path)"
               target="_blank"
               rel="noopener noreferrer"
-              class="project-card w-full block"
-              @click="triggerSpin"
+              class="project-card w-full block cursor-pointer"
+              @click="triggerSpin($event, addUTMToUrl(project.path), true)"
             >
               <UCard class="project-card-inner h-full overflow-hidden">
                 <div class="flex flex-col md:flex-row gap-4 items-center min-w-0">
@@ -224,24 +248,28 @@ defineOgImageScreenshot({
       <div class="max-w-6xl mx-auto">
         <div class="flex justify-between m-2">
           <h2 class="dark:text-slate-950 pt-2">{{ page.hero.lastBlogsPosts }}</h2>
-          <NuxtLink class="focus:outline-none" tabindex="-1" :to="localePath('/blog')">
+          <a
+            class="focus:outline-none cursor-pointer"
+            tabindex="-1"
+            :href="localePath('/blog')"
+            @click="triggerSpin($event, localePath('/blog'), false)"
+          >
             <UButton
               :label="page.hero.links[0].label"
               icon="i-heroicons-arrow-right-20-solid"
               :trailing="true"
               size="xl"
-              @click="triggerSpin"
             />
-          </NuxtLink>
+          </a>
         </div>
 
         <div v-if="blogs3" class="grid grid-cols-1 md:grid-cols-3 gap-4 text-gray-900 dark:text-white">
           <template v-for="(article, index) in blogs3" :key="article.path">
-            <NuxtLink
+            <a
               v-if="index < 3"
-              :to="article.path"
-              class="blog-card block h-full"
-              @click="triggerSpin"
+              :href="article.path"
+              class="blog-card block h-full cursor-pointer"
+              @click="triggerSpin($event, article.path, false)"
             >
               <UCard class="blog-card-inner h-full flex flex-col">
                 <div v-if="article.image" class="w-full h-48 mb-4 flex-shrink-0">
@@ -258,7 +286,7 @@ defineOgImageScreenshot({
                   </p>
                 </div>
               </UCard>
-            </NuxtLink>
+            </a>
           </template>
         </div>
       </div>
@@ -321,22 +349,5 @@ defineOgImageScreenshot({
 
 .blog-card:hover .blog-card-inner {
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-}
-
-/* Background spin animation */
-.spin-fast {
-  animation: spinFast 2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-@keyframes spinFast {
-  0% {
-    transform: rotate(0deg) scale(1);
-  }
-  50% {
-    transform: rotate(720deg) scale(1.1);
-  }
-  100% {
-    transform: rotate(1440deg) scale(1);
-  }
 }
 </style>

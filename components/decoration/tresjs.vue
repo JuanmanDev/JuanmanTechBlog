@@ -8,6 +8,11 @@ import { shallowRef, watch, ref } from 'vue';
 import { OrbitControls } from '@tresjs/cientos';
 import gsap from 'gsap';
 
+// Define props
+const props = defineProps<{
+  isSpinning?: boolean
+}>();
+
 function isWebGLAvailable() {
   try {
     const c = document.createElement('canvas');
@@ -99,13 +104,49 @@ watch(heptagon, () => {
   });
 });
 
+// Watch for spinning prop changes
+watch(() => props.isSpinning, (newValue) => {
+  if (newValue && heptagonMesh) {
+    // Kill any existing animations
+    gsap.killTweensOf(heptagonMesh.rotation);
+    gsap.killTweensOf(heptagonMesh.scale);
+    
+    // Fast rotation and scale down animation
+    gsap.to(heptagonMesh.rotation, {
+      z: heptagonMesh.rotation.z + Math.PI * 4, // 2 full rotations (720 degrees)
+      duration: 0.5,
+      ease: 'power2.inOut',
+      onComplete: () => {
+        // Resume normal rotation after the fast spin
+        gsap.to(heptagonMesh.rotation, {
+          z: Math.PI,
+          duration: 10,
+          repeat: -1,
+          yoyo: true,
+          ease: 'power1.inOut',
+        });
+      }
+    });
+    
+    gsap.to(heptagonMesh.scale, {
+      x: 0.6,
+      y: 0.6,
+      z: 0.6,
+      duration: 0.75,
+      ease: 'power2.in',
+      yoyo: true,
+      repeat: 1
+    });
+  }
+});
+
 onUnmounted(() => {
   dispose(heptagonMesh)
 })
 </script>
 
 <template>
-  <TresCanvas class="opacity-simple-animation" :class="{ 'opacity-simple-animation-100': !isLoading, 'opacity-simple-animation-0': isLoading }" v-if="webGL" >
+  <TresCanvas v-if="webGL" class="opacity-simple-animation" :class="{ 'opacity-simple-animation-100': !isLoading, 'opacity-simple-animation-0': isLoading }" >
     <TresPerspectiveCamera
       ref="cam"
       :position="[0, 0, 3]"
@@ -115,7 +156,7 @@ onUnmounted(() => {
       :look-at="[0, 0, 0]"
     />
     <OrbitControls />
-    <primitive :object="heptagonMesh" :position="[0, 0, 0]" ref="heptagon" />
+    <primitive ref="heptagon" :object="heptagonMesh" :position="[0, 0, 0]" />
     <TresGridHelper :args="[30, 30, 0x444444, 'teal']" :position="[0, -2, 0]" />
     <TresAmbientLight :intensity="1" />
     <TresDirectionalLight :position="[5, 5, 5]" :intensity="2" />
