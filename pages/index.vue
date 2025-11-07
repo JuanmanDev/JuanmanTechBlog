@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { updateImagePosts } from '~/utils/updateImageSources'
+
 const { locale } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute();
@@ -142,8 +144,11 @@ const { data: blogs3 } = await useAsyncData('p-' + route.path,
     .where('path', 'LIKE', localePath(`/blog/`) + '%' )
     .order('updated', 'DESC')
     .limit(3)
-    .all()
-  )
+    .all(),
+  {
+    transform: updateImagePosts,
+  }
+)
 
 useSeoMeta({
   title: "Juanman Tech - Welcome!",
