@@ -107,7 +107,7 @@ if (locale.value === 'es') {
     {
       title: "Hotelier Tools",
       subtitle: "Herramientas para la gestión y operación hotelera. Automatiza Little Hotelier. Detecta errores e inconsistencias. Mejora la web actual con nuevas funcionalidades. Genera facturas masivas y descárgalas. Marca reservas pagadas de fuentes externas.",
-      path: "https://hoteliertools.com/",
+      path: "https://hotelier.tools/",
       image: "/image/projects/hotelier-tools.png"
     },
     {
