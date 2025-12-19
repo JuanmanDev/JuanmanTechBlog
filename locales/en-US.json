@@ -12,6 +12,8 @@
         "final_project": "Final Project",
         "view_video": "View Video",
         "present": "Present",
-        "note": "To get the latest version of this CV, check:"
+        "note": "To get the latest version of this CV, check:",
+        "check_blog": "Check how this CV is created with this blog post",
+        "print_download": "Print / Download PDF"
     }
 }

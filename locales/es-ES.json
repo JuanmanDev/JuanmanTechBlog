@@ -12,6 +12,8 @@
         "final_project": "Proyecto Final",
         "view_video": "Ver Video",
         "present": "Presente",
-        "note": "Para obtener la última versión de este CV, consulte:"
+        "note": "Para obtener la última versión de este CV, consulte:",
+        "check_blog": "Puedes ver cómo cree este CV en mi blog",
+        "print_download": "Imprimir / Descargar PDF"
     }
 }

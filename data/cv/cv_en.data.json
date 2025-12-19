@@ -91,7 +91,8 @@
       {
         "institution": "Universidad de Salamanca",
         "area": "Computer Engineering",
-        "studyType": "Bachelor",
+        "studyType": "Degree",
+        "title": "Bachelor of Science in Computer Science",
         "startDate": "2012-09",
         "endDate": "2017-09",
         "project": {

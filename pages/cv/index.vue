@@ -101,7 +101,7 @@ v-for="profile in cv.basics.profiles"
           </div>
         </div>
         <p class="text-pretty font-mono text-sm opacity-75">
-          {{ edu.studyType }} en {{ edu.area }}
+          {{ edu.title }}
         </p>
         <!-- Add Project Section -->
         <div v-if="edu.project" class="mt-2">
@@ -145,8 +145,9 @@ v-if="edu.project.video"
             <p class="text-pretty font-mono text-xs">{{ project.description }}</p>
             <ul class="mt-2 flex flex-wrap gap-1">
               <li
-v-for="(highlight, hi) in project.highlights" :key="hi"
-                  class="inline-flex items-center rounded-md border px-2 py-0.5 text-xs font-mono bg-secondary text-secondary-foreground">
+                v-for="(highlight, hi) in project.highlights" :key="hi"
+                class="inline-flex items-center rounded-md  px-2 py-0.5 text-xs font-mono bg-secondary-800 text-secondary-foreground"
+              >
                 {{ highlight }}
               </li>
             </ul>
@@ -161,10 +162,10 @@ v-for="(highlight, hi) in project.highlights" :key="hi"
       <ul class="flex flex-wrap gap-1">
         <template v-for="skillgroup in cv.skills" :key="skillgroup.name">
           <li
-v-for="skill in skillgroup.keywords"
+            v-for="skill in skillgroup.keywords"
             class="inline-flex items-center rounded-md px-2 py-0.5 text-xs font-mono bg-primary/80 text-(--ui-primary)-foreground "
             :style="'background-color: ' + skillgroup.color + 20"
-            >
+          >
             {{ skill }}
           </li>
         </template>
@@ -178,9 +179,21 @@ v-for="skill in skillgroup.keywords"
 
     
     <section class="pt-36 block print:hidden">  
+
+      <UButton
+        target="_blank"
+        rel="noopener noreferrer"
+        variant="soft"
+        class="w-full mb-12 px-4 py-4"
+        icon="i-lucide-printer"
+        @click="print()"
+        >
+        {{ $t('cv.print_download') }} 
+      </UButton>
+
       <NuxtLink :to="localePath('/blog/6')" >
         <UAlert
-          title="Check how this CV is created with this blog post"
+          :title="$t('cv.check_blog')"
           :description="useRequestURL().host + localePath('/blog/6')"
           icon="i-lucide-terminal"
         />
@@ -215,6 +228,10 @@ const formatDate = (dateString) => {
   if (!dateString) return ''
   const options = { year: 'numeric', month: 'short' }
   return new Date(dateString).toLocaleDateString(locale.value, options)
+}
+
+const print = () => {
+  window.print()
 }
 </script>
 
