@@ -75,6 +75,12 @@ const page = {
 // Example projects array
 let projects = [
   {
+    title: "Bus Salamanca Web",
+    subtitle: "Interactive map with real-time bus tracking and arrival times for Salamanca. Features predictive time caching to handle API outages.",
+    path: "https://bussalamanca.juanman.tech/",
+    image: "/image/projects/bus-salamanca-web.png"
+  },
+  {
     title: "Hotelier Tools",
     subtitle: "Improve Little Hotelier to automate hotel operations. Detect errors and inconsistencies. Improve the current Web page with new features. Detect errors and inconsistencies. Generate bulk invoices and download. Mark paid reservatiosns from external sources.",
     path: "https://hotelier.tools/",
@@ -104,6 +110,12 @@ if (locale.value === 'es') {
   page.hero.projects = "Proyectos"; // Spanish translation
 
   projects = [
+    {
+      title: "Bus Salamanca Web",
+      subtitle: "Mapa interactivo con seguimiento de autobuses en tiempo real y tiempos de llegada para Salamanca. Incluye caché predictiva para manejar cortes de tiempo de la API oficial.",
+      path: "https://bussalamanca.juanman.tech/",
+      image: "/image/projects/bus-salamanca-web.png"
+    },
     {
       title: "Hotelier Tools",
       subtitle: "Herramientas para la gestión y operación hotelera. Automatiza Little Hotelier. Detecta errores e inconsistencias. Mejora la web actual con nuevas funcionalidades. Genera facturas masivas y descárgalas. Marca reservas pagadas de fuentes externas.",
