@@ -11,8 +11,8 @@ import { Analytics } from '@vercel/analytics/nuxt'
       <NuxtPage />
     </div>
     
-    <AppFooter/>
+    <AppFooter />
 
-    <Analytics/>
+    <Analytics />
   </div>
 </template>

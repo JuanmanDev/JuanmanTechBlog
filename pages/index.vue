@@ -256,6 +256,14 @@ defineOgImageScreenshot({
             </a>
           </template>
         </div>
+
+        <div>
+          <p>BETA</p>
+          <a href="https://markshield.juanman.tech/">Markshield</a>
+          <a href="https://dashboard.hotelier.tools/">Hotelier Tools Dashboard</a>
+          
+        </div>
+
       </div>
     </div>
 
