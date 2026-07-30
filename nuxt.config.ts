@@ -51,6 +51,14 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon/favicon-16x16.png' },
         { rel: 'manifest', href: '/favicon/site.webmanifest' },
       ],
+      script: [
+        {
+          src: 'https://umami.juanman.tech/script.js',
+          'data-website-id': '177d5ec5-93e5-4a49-ac33-e296db832d57',
+          async: true,
+          defer: true
+        }
+      ]
     },
   },
 
