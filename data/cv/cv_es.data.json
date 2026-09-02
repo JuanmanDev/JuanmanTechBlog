@@ -154,13 +154,43 @@
         "endDate": null,
         "description": "Herramientas para la gestión y operación hotelera. Automatiza Little Hotelier. Detecta errores e inconsistencias. Mejora la web actual con nuevas funcionalidades. Genera facturas masivas y descárgalas. Marca reservas pagadas de fuentes externas.",
         "highlights": [
-          "Automatización", "Detección de Errores",
+          "Automatización",
+          "Detección de Errores",
           "Ingeniería Reversa de APIs",
           "Typescript",
           "TamperMonkey",
           "Docker"
         ],
         "url": "https://hotelier.tools/"
+      },
+      {
+        "name": "Hostal Sol Zamora",
+        "startDate": "2026-05-01",
+        "endDate": "2026-07-22",
+        "description": "Web oficial y plataforma de reservas directas para Hostal Sol Zamora. Enfocada en máxima velocidad de carga, puntuaciones de 100 en Lighthouse, SEO local y diseño responsivo multiidioma.",
+        "highlights": [
+          "Nuxt",
+          "Tailwind CSS",
+          "SEO & OpenGraph",
+          "Lighthouse 100",
+          "i18n",
+          "Responsive Design"
+        ],
+        "url": "https://hostalsolzamora.com/"
+      },
+      {
+        "name": "Bus Salamanca Web",
+        "startDate": "2026-02-01",
+        "endDate": null,
+        "description": "Mapa interactivo con seguimiento de autobuses en tiempo real y tiempos de llegada para Salamanca. Incluye caché predictiva para manejar cortes de tiempo de la API oficial.",
+        "highlights": [
+          "Vue",
+          "Mapas Interactivos",
+          "Real-time Data",
+          "PWA",
+          "Predictive Caching"
+        ],
+        "url": "https://bussalamanca.juanman.tech/"
       },
       {
         "name": "720 DeGiro",
@@ -180,8 +210,23 @@
           "AWS lambda",
           "Real-time Data",
           "Reverse Engineering API"
-      ],
+        ],
         "url": "https://www.amazon.es/Juan-Manuel-B%C3%A9c-Bus-Salamanca/dp/B0F59TDK93/"
+      },
+      {
+        "name": "MarkShield",
+        "startDate": "2026-04-01",
+        "endDate": "2026-05-10",
+        "description": "Herramienta de marca de agua respetuosa con la privacidad para imágenes y PDFs. Procesamiento 100% client-side en el navegador con más de 25 preajustes inteligentes y exportación por lotes.",
+        "highlights": [
+          "Nuxt 4",
+          "Nuxt UI",
+          "Canvas API",
+          "PDF.js",
+          "Client-side Privacy",
+          "Vercel"
+        ],
+        "url": "https://markshield.juanman.tech/"
       }
     ]
   }

@@ -75,16 +75,22 @@ const page = {
 // Example projects array
 let projects = [
   {
-    title: "Bus Salamanca Web",
-    subtitle: "Interactive map with real-time bus tracking and arrival times for Salamanca. Features predictive time caching to handle API outages.",
-    path: "https://bussalamanca.juanman.tech/",
-    image: "/image/projects/bus-salamanca-web.png"
-  },
-  {
     title: "Hotelier Tools",
     subtitle: "Improve Little Hotelier to automate hotel operations. Detect errors and inconsistencies. Improve the current Web page with new features. Detect errors and inconsistencies. Generate bulk invoices and download. Mark paid reservatiosns from external sources.",
     path: "https://hotelier.tools/",
     image: "/image/projects/hotelier-tools.png"
+  },
+  {
+    title: "Hostal Sol Zamora",
+    subtitle: "High-performance hotel accommodation website optimized for speed, SEO, and direct bookings with top Lighthouse scores. Built with Nuxt and Tailwind CSS.",
+    path: "https://hostalsolzamora.com/",
+    image: "/image/projects/hostal-sol-zamora.png"
+  },
+  {
+    title: "Bus Salamanca Web",
+    subtitle: "Interactive map with real-time bus tracking and arrival times for Salamanca. Features predictive time caching to handle API outages.",
+    path: "https://bussalamanca.juanman.tech/",
+    image: "/image/projects/bus-salamanca-web.png"
   },
   {
     title: "720 Degiro",
@@ -97,6 +103,18 @@ let projects = [
     subtitle: "Alexa Skill to get time to arrive next buses on Salamanca. Configure your closest bus stops and ask Alexa for arrival times.",
     path: "https://www.amazon.es/Juan-Manuel-B%C3%A9c-Bus-Salamanca/dp/B0F59TDK93/",
     image: "/image/projects/bus-salamanca.png"
+  },
+  {
+    title: "aMule Nuxt",
+    subtitle: "Modern web interface and MCP server for the aMule daemon: Nuxt 4, native EC protocol in TypeScript, scheduled searches, in-browser AI assistant, 38 languages, PWA, and live browser simulation.",
+    path: "https://juanmandev.github.io/amule-nuxt/",
+    image: "/image/projects/amule-nuxt.png"
+  },
+  {
+    title: "MarkShield",
+    subtitle: "Privacy-first client-side watermarking tool for images and PDFs with 25+ smart presets, batch export, and dynamic token interpolation. Built with Nuxt 4, Nuxt UI, and Canvas API.",
+    path: "https://markshield.juanman.tech/",
+    image: "/image/projects/markshield.png"
   }
 ];
 
@@ -111,16 +129,22 @@ if (locale.value === 'es') {
 
   projects = [
     {
-      title: "Bus Salamanca Web",
-      subtitle: "Mapa interactivo con seguimiento de autobuses en tiempo real y tiempos de llegada para Salamanca. Incluye caché predictiva para manejar cortes de tiempo de la API oficial.",
-      path: "https://bussalamanca.juanman.tech/",
-      image: "/image/projects/bus-salamanca-web.png"
-    },
-    {
       title: "Hotelier Tools",
       subtitle: "Herramientas para la gestión y operación hotelera. Automatiza Little Hotelier. Detecta errores e inconsistencias. Mejora la web actual con nuevas funcionalidades. Genera facturas masivas y descárgalas. Marca reservas pagadas de fuentes externas.",
       path: "https://hotelier.tools/",
       image: "/image/projects/hotelier-tools.png"
+    },
+    {
+      title: "Hostal Sol Zamora",
+      subtitle: "Web corporativa de alojamiento hotelero de alto rendimiento, optimizada para máxima velocidad, SEO y reservas directas con puntuaciones top en Lighthouse. Creada con Nuxt y Tailwind CSS.",
+      path: "https://hostalsolzamora.com/",
+      image: "/image/projects/hostal-sol-zamora.png"
+    },
+    {
+      title: "Bus Salamanca Web",
+      subtitle: "Mapa interactivo con seguimiento de autobuses en tiempo real y tiempos de llegada para Salamanca. Incluye caché predictiva para manejar cortes de tiempo de la API oficial.",
+      path: "https://bussalamanca.juanman.tech/",
+      image: "/image/projects/bus-salamanca-web.png"
     },
     {
       title: "720 Degiro",
@@ -133,6 +157,18 @@ if (locale.value === 'es') {
       subtitle: "Skill de Alexa para saber los tiempos de llegada de los autobuses urbanos de Salamanca. Configura tus paradas de autobús más cercanas y pregunta a Alexa por los tiempos de llegada.",
       path: "https://www.amazon.es/Juan-Manuel-B%C3%A9c-Bus-Salamanca/dp/B0F59TDK93/",
       image: "/image/projects/bus-salamanca.png"
+    },
+    {
+      title: "aMule Nuxt",
+      subtitle: "Interfaz web moderna y servidor MCP para el daemon de aMule: Nuxt 4, protocolo nativo EC en TypeScript, búsquedas programadas, asistente de IA en el navegador, 38 idiomas, PWA y demo interactiva.",
+      path: "https://juanmandev.github.io/amule-nuxt/",
+      image: "/image/projects/amule-nuxt.png"
+    },
+    {
+      title: "MarkShield",
+      subtitle: "Herramienta de marca de agua en cliente para imágenes y PDFs con más de 25 preajustes inteligentes, exportación por lotes y máxima privacidad (100% en navegador). Creada con Nuxt 4, Nuxt UI y Canvas API.",
+      path: "https://markshield.juanman.tech/",
+      image: "/image/projects/markshield.png"
     }
   ];
 }
@@ -257,12 +293,7 @@ defineOgImageScreenshot({
           </template>
         </div>
 
-        <div>
-          <p>BETA</p>
-          <a href="https://markshield.juanman.tech/">Markshield</a>
-          <a href="https://dashboard.hotelier.tools/">Hotelier Tools Dashboard</a>
-          
-        </div>
+
 
       </div>
     </div>

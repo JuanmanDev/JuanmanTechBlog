@@ -165,6 +165,35 @@
         "url": "https://hotelier.tools/"
       },
       {
+        "name": "Hostal Sol Zamora",
+        "startDate": "2026-05-01",
+        "endDate": "2026-07-22",
+        "description": "Official website and direct booking platform for Hostal Sol Zamora. Optimized for maximum loading speed, perfect 100 Lighthouse scores, local SEO, and multilingual responsive UX.",
+        "highlights": [
+          "Nuxt",
+          "Tailwind CSS",
+          "SEO & OpenGraph",
+          "Lighthouse 100",
+          "i18n",
+          "Responsive Design"
+        ],
+        "url": "https://hostalsolzamora.com/"
+      },
+      {
+        "name": "Bus Salamanca Web",
+        "startDate": "2026-02-01",
+        "endDate": null,
+        "description": "Interactive map with real-time bus tracking and arrival times for Salamanca. Features predictive time caching to handle API outages.",
+        "highlights": [
+          "Vue",
+          "Interactive Maps",
+          "Real-time Data",
+          "PWA",
+          "Predictive Caching"
+        ],
+        "url": "https://bussalamanca.juanman.tech/"
+      },
+      {
         "name": "720 DeGiro",
         "startDate": "2025-01-20",
         "endDate": "2025-02-12",
@@ -189,6 +218,21 @@
           "Reverse Engineering API"
         ],
         "url": "https://www.amazon.es/Juan-Manuel-B%C3%A9c-Bus-Salamanca/dp/B0F59TDK93/"
+      },
+      {
+        "name": "MarkShield",
+        "startDate": "2026-04-01",
+        "endDate": "2026-05-10",
+        "description": "Privacy-first client-side watermarking tool for images and PDFs. 100% in-browser processing with 25+ smart presets, batch export, and dynamic token interpolation.",
+        "highlights": [
+          "Nuxt 4",
+          "Nuxt UI",
+          "Canvas API",
+          "PDF.js",
+          "Client-side Privacy",
+          "Vercel"
+        ],
+        "url": "https://markshield.juanman.tech/"
       }
     ]
   }
